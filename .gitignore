@@ -38,3 +38,11 @@
 *.vcxproj
 *.sln
 Log.txt
+*.pdb
+*.tlog
+*.log
+*.ilk
+*.opendb
+*.idb
+*.res
+*.lastbuildstate
