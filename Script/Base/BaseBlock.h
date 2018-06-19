@@ -12,8 +12,8 @@ public:
 
 private:
 	static const int Block_Size;
-	static const int BlockImage_X_Num;
-	static const int BlockImage_Y_Num;
+	static const int Image_X_Num;
+	static const int Image_Y_Num;
 
 	static int *image;
 

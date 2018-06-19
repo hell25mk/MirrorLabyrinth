@@ -9,6 +9,7 @@ public:
 	C_BaseObject();
 	C_BaseObject(C_Position argPos);
 	virtual ~C_BaseObject();
+	virtual void Update(){ }
 	virtual void Draw() = 0;
 
 protected:
