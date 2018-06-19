@@ -8,8 +8,8 @@
 
 const int C_Laby::Laby_Height = 15;
 const int C_Laby::Laby_Width = 20;
-const int BlockImage_X_Num = 5;
-const int BlockImage_Y_Num = 3;
+const int Image_X_Num = 5;
+const int Image_Y_Num = 3;
 const int Block_Size = 32;
 
 //読み込まれなかった場合のテストマップ
@@ -33,8 +33,8 @@ std::vector<int> LabySampleVector{
 
 C_Laby::C_Laby(int argNowStageNum){
 
-	blockMaterialImage = new int[BlockImage_X_Num * BlockImage_Y_Num];
-	LoadDivGraph("Image/Object/LabyBlockMaterial.png", BlockImage_X_Num * BlockImage_Y_Num, BlockImage_X_Num, BlockImage_Y_Num, Block_Size, Block_Size, blockMaterialImage);
+	blockMaterialImage = new int[Image_X_Num * Image_Y_Num];
+	LoadDivGraph("Image/Object/LabyBlockMaterial.png", Image_X_Num * Image_Y_Num, Image_X_Num, Image_Y_Num, Block_Size, Block_Size, blockMaterialImage);
 
 	labyVector.resize(Laby_Height * Laby_Width);
 	//wall.resize(0);
