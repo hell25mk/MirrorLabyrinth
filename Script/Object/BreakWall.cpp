@@ -5,10 +5,7 @@
 
 const int Reflect_Space = 14;
 
-C_BreakWall::C_BreakWall(C_Position argPos):C_BaseObject(argPos){
-
-	blockMaterialImage = new int[BlockImage_X_Num * BlockImage_Y_Num];
-	LoadDivGraph("Image/Object/LabyBlockMaterial.png", BlockImage_X_Num * BlockImage_Y_Num, BlockImage_X_Num, BlockImage_Y_Num, Block_Size, Block_Size, blockMaterialImage);
+C_BreakWall::C_BreakWall(C_Position argPos):C_BaseBlock(argPos){
 
 	nowWallDamage = 0;
 	breakFlag = false;
@@ -18,9 +15,15 @@ C_BreakWall::C_BreakWall(C_Position argPos):C_BaseObject(argPos){
 C_BreakWall::~C_BreakWall(){
 }
 
+void C_BreakWall::Update(){
+
+
+
+}
+
 void C_BreakWall::Draw(){
 
-	DrawGraph((pos.x * Block_Size), ((Reflect_Space - pos.y) * Block_Size), blockMaterialImage[BreakWall_Image + nowWallDamage], TRUE);
+	DrawGraph((pos.x * Block_Size), ((Reflect_Space - pos.y) * Block_Size), image[BreakWall_Image + nowWallDamage], TRUE);
 
 }
 

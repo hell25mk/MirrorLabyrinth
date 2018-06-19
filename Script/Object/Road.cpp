@@ -2,11 +2,17 @@
 #include "../System/Position.h"
 
 
-C_Road::C_Road(C_Position argPos):C_BaseObject(argPos){
+C_Road::C_Road(C_Position argPos):C_BaseBlock(argPos){
 }
 
 
 C_Road::~C_Road(){
+}
+
+void C_Road::Update(){
+
+
+
 }
 
 void C_Road::Draw(){

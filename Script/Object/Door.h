@@ -1,12 +1,13 @@
 #pragma once
 
-#include "../Base/BaseObject.h"
+#include "../Base/BaseBlock.h"
 
-class C_Door : public C_BaseObject{
+class C_Door : public C_BaseBlock{
 
 public:
 	C_Door(C_Position argPos);
 	virtual ~C_Door();
+	virtual void Update() override;
 	virtual void Draw() override;
 	void SetMaxKeyNum(int argMaxKeyNum);
 	void CheckDoorOpenFlag(int argNowKeyNum);

@@ -3,16 +3,22 @@
 #include "../System/Position.h"
 #include "../Define/Enum.h"
 
-C_Door::C_Door(C_Position argPos):C_BaseObject(argPos){
+C_Door::C_Door(C_Position argPos):C_BaseBlock(argPos){
 
-	blockMaterialImage = new int[BlockImage_X_Num * BlockImage_Y_Num];
-	LoadDivGraph("Image/Object/LabyBlockMaterial.png", BlockImage_X_Num * BlockImage_Y_Num, BlockImage_X_Num, BlockImage_Y_Num, Block_Size, Block_Size, blockMaterialImage);
+	blockMaterialImage = new int[Image_X_Num * Image_Y_Num];
+	LoadDivGraph("Image/Object/LabyBlockMaterial.png", Image_X_Num * Image_Y_Num, Image_X_Num, Image_Y_Num, Block_Size, Block_Size, blockMaterialImage);
 
 	doorOpenFlag = false;
 
 }
 
 C_Door::~C_Door(){
+}
+
+void C_Door::Update(){
+
+
+
 }
 
 void C_Door::Draw(){

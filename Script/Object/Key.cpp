@@ -4,10 +4,10 @@
 #include "../System/SoundPlayer.h"
 #include <time.h>
 
-C_Key::C_Key(C_Position argPos):C_BaseObject(argPos){
+C_Key::C_Key(C_Position argPos):C_BaseBlock(argPos){
 
-	blockMaterialImage = new int[BlockImage_X_Num * BlockImage_Y_Num];
-	LoadDivGraph("Image/Object/LabyBlockMaterial.png", BlockImage_X_Num * BlockImage_Y_Num, BlockImage_X_Num, BlockImage_Y_Num, Block_Size, Block_Size, blockMaterialImage);
+	blockMaterialImage = new int[Image_X_Num * Image_Y_Num];
+	LoadDivGraph("Image/Object/LabyBlockMaterial.png", Image_X_Num * Image_Y_Num, Image_X_Num, Image_Y_Num, Block_Size, Block_Size, blockMaterialImage);
 
 	SRand((int)time(NULL));
 	int rand = GetRand(9);
@@ -21,6 +21,12 @@ C_Key::C_Key(C_Position argPos):C_BaseObject(argPos){
 }
 
 C_Key::~C_Key(){
+}
+
+void C_Key::Update(){
+
+
+
 }
 
 void C_Key::Draw(){

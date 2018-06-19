@@ -1,9 +1,15 @@
 #include "Wall.h"
 
-C_Wall::C_Wall(C_Position argPos):C_BaseObject(argPos){
+C_Wall::C_Wall(C_Position argPos):C_BaseBlock(argPos){
 }
 
 C_Wall::~C_Wall(){
+}
+
+void C_Wall::Update(){
+
+
+
 }
 
 void C_Wall::Draw(){

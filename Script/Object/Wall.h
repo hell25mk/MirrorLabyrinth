@@ -1,12 +1,13 @@
 #pragma once
 
-#include "../Base/BaseObject.h"
+#include "../Base/BaseBlock.h"
 
-class C_Wall : public C_BaseObject{
+class C_Wall : public C_BaseBlock{
 
 public:
 	C_Wall(C_Position argPos);
 	virtual ~C_Wall();
+	virtual void Update() override;
 	virtual void Draw() override;
 
 };
