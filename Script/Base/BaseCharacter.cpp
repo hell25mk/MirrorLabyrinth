@@ -7,7 +7,7 @@ const int C_BaseCharacter::AnimeChange_Time = 30;
 
 C_BaseCharacter::C_BaseCharacter() : C_BaseObject(pos){
 
-	image = new int[PlayerImage_X_Num * PlayerImage_Y_Num];
+	image = new int[Image_X_Num * Image_Y_Num];
 	LoadDivGraph("Image/Object/PlayerMaterial.png", Image_X_Num * Image_Y_Num, Image_X_Num, Image_Y_Num, Image_Size, Image_Size, image);
 
 }

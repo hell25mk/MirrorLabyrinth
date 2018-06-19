@@ -10,7 +10,7 @@ class C_Player : public C_BaseObject{
 public:
 	C_Player(C_Position argPos);
 	virtual ~C_Player();
-	void Update();
+	virtual void Update() override;
 	virtual void Draw() override;
 	void Move(int argMoveDire);
 	void Animation();

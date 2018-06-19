@@ -10,10 +10,10 @@ public:
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
 
-private:
+protected:
 	static const int Image_Size;
-	static const int PlayerImage_X_Num;
-	static const int PlayerImage_Y_Num;
+	static const int Image_X_Num;
+	static const int Image_Y_Num;
 	static const int AnimeChange_Time;
 
 	static int *image;
