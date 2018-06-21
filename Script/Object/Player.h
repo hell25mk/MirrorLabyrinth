@@ -1,11 +1,11 @@
 #pragma once
 
 #include "../Define/Enum.h"
-#include "../Base/BaseObject.h"
+#include "../Base/BaseCharacter.h"
 
 class C_Mirror;
 
-class C_Player : public C_BaseObject{
+class C_Player : public C_BaseCharacter{
 
 public:
 	C_Player(C_Position argPos);
@@ -13,16 +13,12 @@ public:
 	virtual void Update() override;
 	virtual void Draw() override;
 	void Move(int argMoveDire);
-	void Animation();
+	virtual void Animation() override;
 	C_Position GetPosition();
+	e_Direction GetDirection();
 
 private:
-	int *playerImage;
-	int imageType;
 	e_Direction nowDire;
-	int animeTime;
-	int animeImage;
-	bool animeChangeFlag;
 	bool moveFlag;
 	C_Mirror *mirror;
 

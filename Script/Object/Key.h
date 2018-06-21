@@ -17,8 +17,6 @@ private:
 		Key_Diamond,
 	}e_KeyKind;
 
-	int blockSize;
-	int *blockMaterialImage;
 	int keyImageKind;
 
 };

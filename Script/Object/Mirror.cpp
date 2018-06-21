@@ -1,19 +1,15 @@
 #include "Mirror.h"
 #include "DxLib.h"
 #include "../System/Position.h"
+#include "Player.h"
 
-const int Image_Size = 48;
 const int Reflect_Space = 14;
 const int FlashLoopTime = 180;
 const int AnimeChange_Time = 30;
-const int PlayerImage_X_Num = 12;
-const int PlayerImage_Y_Num = 3;
 
-C_Mirror::C_Mirror(C_Position argPos,int argImageType):C_BaseObject(argPos){
+C_Mirror::C_Mirror(C_Position argPos,C_Player *player):C_BaseCharacter(argPos){
 
-	mirrorImage = new int[PlayerImage_X_Num * PlayerImage_Y_Num];
-	LoadDivGraph("Image/Object/PlayerMaterial.png", PlayerImage_X_Num * PlayerImage_Y_Num, PlayerImage_X_Num, PlayerImage_Y_Num, (Image_Size - 12), Image_Size, mirrorImage);
-	imageType = argImageType;
+	this->player = player;
 	nowDire = Dire_Down;
 
 	flashTime = 0;
@@ -29,12 +25,12 @@ C_Mirror::C_Mirror(C_Position argPos,int argImageType):C_BaseObject(argPos){
 C_Mirror::~C_Mirror(){
 }
 
-void C_Mirror::Update(C_Position const argPos, e_Direction argDire){
+void C_Mirror::Update(){
 
-	pos.x = argPos.x;
-	pos.y = (Reflect_Space - (argPos.y / Block_Size)) * Block_Size;
+	pos.x = player->GetPosition().x;
+	pos.y = (Reflect_Space - (player->GetPosition().y / Block_Size)) * Block_Size;
 
-	switch(argDire){
+	switch(player->GetDirection()){
 		case Dire_Up:
 			nowDire = (e_Direction)(Dire_Down * 3);
 			break;
@@ -57,7 +53,7 @@ void C_Mirror::Update(C_Position const argPos, e_Direction argDire){
 void C_Mirror::Draw(){
 
 	if(flashFlag){
-		DrawRotaGraph((pos.x + 16), (pos.y + 16), (Block_Size / (double)Image_Size), 0.0, mirrorImage[imageType + nowDire + animeImage], TRUE);
+		DrawRotaGraph((pos.x + 16), (pos.y + 16), (Block_Size / (double)Image_Size), 0.0, image[nowDire + animeImage], TRUE);
 	}
 
 }

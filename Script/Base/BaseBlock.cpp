@@ -3,6 +3,8 @@
 const int C_BaseBlock::Image_X_Num = 5;
 const int C_BaseBlock::Image_Y_Num = 3;
 
+int* C_BaseBlock::image;
+
 C_BaseBlock::C_BaseBlock(C_Position argPos):C_BaseObject(argPos){
 
 	if(image == NULL){
@@ -14,6 +16,6 @@ C_BaseBlock::C_BaseBlock(C_Position argPos):C_BaseObject(argPos){
 
 C_BaseBlock::~C_BaseBlock(){
 
-	delete image;
+	image = NULL;
 
 }

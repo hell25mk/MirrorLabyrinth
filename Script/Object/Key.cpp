@@ -6,9 +6,6 @@
 
 C_Key::C_Key(C_Position argPos):C_BaseBlock(argPos){
 
-	blockMaterialImage = new int[Image_X_Num * Image_Y_Num];
-	LoadDivGraph("Image/Object/LabyBlockMaterial.png", Image_X_Num * Image_Y_Num, Image_X_Num, Image_Y_Num, Block_Size, Block_Size, blockMaterialImage);
-
 	SRand((int)time(NULL));
 	int rand = GetRand(9);
 
@@ -31,7 +28,7 @@ void C_Key::Update(){
 
 void C_Key::Draw(){
 
-	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), blockMaterialImage[keyImageKind], TRUE);
+	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[keyImageKind], TRUE);
 
 }
 

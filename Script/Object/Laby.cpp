@@ -131,6 +131,8 @@ void C_Laby::StageCreate(int argNowStageNum){
 
 void C_Laby::Update(){
 
+
+
 }
 
 void C_Laby::Draw(){

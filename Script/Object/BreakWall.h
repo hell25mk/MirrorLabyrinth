@@ -15,9 +15,6 @@ public:
 
 private:
 	const int BreakWall_Image = 10;
-
-	int blockSize;
-	int *blockMaterialImage;
 	int mirrorPosy;
 	int nowWallDamage;
 	bool breakFlag;

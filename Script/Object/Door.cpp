@@ -5,9 +5,6 @@
 
 C_Door::C_Door(C_Position argPos):C_BaseBlock(argPos){
 
-	blockMaterialImage = new int[Image_X_Num * Image_Y_Num];
-	LoadDivGraph("Image/Object/LabyBlockMaterial.png", Image_X_Num * Image_Y_Num, Image_X_Num, Image_Y_Num, Block_Size, Block_Size, blockMaterialImage);
-
 	doorOpenFlag = false;
 
 }
@@ -24,9 +21,9 @@ void C_Door::Update(){
 void C_Door::Draw(){
 
 	if(doorOpenFlag){
-		DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), blockMaterialImage[Door_Open], TRUE);
+		DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[Door_Open], TRUE);
 	} else{
-		DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), blockMaterialImage[Door_Close], TRUE);
+		DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[Door_Close], TRUE);
 	}
 }
 

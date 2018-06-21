@@ -19,11 +19,7 @@ private:
 		Door_Open,
 	}e_DoorKind;
 
-	int blockSize;
-	int *blockMaterialImage;
-
 	int maxKeyNum;
-
 	bool doorOpenFlag;
 
 };
