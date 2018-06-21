@@ -13,19 +13,26 @@ public:
 
 };
 
-//l‚¦’†
-/*template <class Type> class C_TPosition{
-
-public:
-	C_TPosition(){}
-	C_TPosition(Type x, Type y){
-		this->x = x;
-		this->y = y;
-	}
-	~C_TPosition(){ }
+/*template <class Type> class C_Position{
 
 public:
 	Type x;
 	Type y;
+
+	//DrawŒnŠÖ”—p•Ï”
+	int dx;
+	int dy;
+
+public:
+	C_Position(){ }
+	~C_Position(){ }
+	void SetPosition(Type x, Type y){
+
+		this->x = x;
+		this->y = y;
+		dx = (int)x;
+		dy = (int)y;
+
+	}
 
 };*/

@@ -12,7 +12,6 @@ public:
 	virtual ~C_Mirror();
 	virtual void Update() override;
 	virtual void Draw() override;
-	virtual void Animation() override;
 	void Fhashing();
 
 private:
@@ -20,6 +19,5 @@ private:
 	int nowDire;
 	int flashTime;
 	bool flashFlag;
-	bool moveFlag;
 
 };

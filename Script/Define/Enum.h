@@ -9,10 +9,10 @@ typedef enum{
 }e_ImageType;
 
 typedef enum{
-	Dire_Up,
 	Dire_Down,
-	Dire_Left,
 	Dire_Right,
+	Dire_Left,
+	Dire_Up,
 
 	Dire_Nore,
 }e_Direction;

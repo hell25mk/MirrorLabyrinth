@@ -4,6 +4,7 @@
 #include "../Base/BaseCharacter.h"
 
 class C_Mirror;
+class C_Animation;
 
 class C_Player : public C_BaseCharacter{
 
@@ -13,7 +14,6 @@ public:
 	virtual void Update() override;
 	virtual void Draw() override;
 	void Move(int argMoveDire);
-	virtual void Animation() override;
 	C_Position GetPosition();
 	e_Direction GetDirection();
 
@@ -21,6 +21,7 @@ private:
 	e_Direction nowDire;
 	bool moveFlag;
 	C_Mirror *mirror;
+	C_Animation *animation;
 
 };
 

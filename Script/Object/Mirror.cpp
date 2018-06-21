@@ -1,6 +1,7 @@
 #include "Mirror.h"
 #include "DxLib.h"
 #include "../System/Position.h"
+#include "../System/Animation.h"
 #include "Player.h"
 
 const int Reflect_Space = 14;
@@ -10,15 +11,12 @@ const int AnimeChange_Time = 30;
 C_Mirror::C_Mirror(C_Position argPos,C_Player *player):C_BaseCharacter(argPos){
 
 	this->player = player;
-	nowDire = Dire_Down;
-
+	nowDire = (e_Direction)(Dire_Down * Image_X_Num);
 	flashTime = 0;
 	flashFlag = true;
-
-	animeTime = 0;
-	animeImage = 0;
-	animeChangeFlag = true;
-	moveFlag = false;
+	int animeOrder[4] = { 0,1,0,2 };
+	int orderSize = sizeof(animeOrder) / sizeof(animeOrder[0]);
+	animation = new C_Animation(animeOrder, orderSize, AnimeChange_Time, &imageNumber);
 
 }
 
@@ -32,20 +30,20 @@ void C_Mirror::Update(){
 
 	switch(player->GetDirection()){
 		case Dire_Up:
-			nowDire = (e_Direction)(Dire_Down * 3);
+			nowDire = (e_Direction)(Dire_Down * Image_X_Num);
 			break;
 		case Dire_Down:
-			nowDire = (e_Direction)(Dire_Up * 3);
+			nowDire = (e_Direction)(Dire_Up * Image_X_Num);
 			break;
 		case Dire_Left:
-			nowDire = (e_Direction)(Dire_Left * 3);
+			nowDire = (e_Direction)(Dire_Left * Image_X_Num);
 			break;
 		case Dire_Right:
-			nowDire = (e_Direction)(Dire_Right * 3);
+			nowDire = (e_Direction)(Dire_Right * Image_X_Num);
 			break;
 	}
 
-	Animation();
+	animation->Update();
 	Fhashing();
 
 }
@@ -53,37 +51,8 @@ void C_Mirror::Update(){
 void C_Mirror::Draw(){
 
 	if(flashFlag){
-		DrawRotaGraph((pos.x + 16), (pos.y + 16), (Block_Size / (double)Image_Size), 0.0, image[nowDire + animeImage], TRUE);
+		DrawRotaGraph((pos.x + 16), (pos.y + 16), (Block_Size / (double)Image_Size), 0.0, image[nowDire + imageNumber], TRUE);
 	}
-
-}
-
-void C_Mirror::Animation(){
-
-	if(moveFlag){
-		animeTime = 0;
-		animeImage = 0;
-		animeChangeFlag = true;
-	}
-
-	animeTime++;
-
-	if(animeTime % AnimeChange_Time != 0){
-		return;
-	}
-
-	if(animeChangeFlag){
-		animeImage++;
-	} else{
-		animeImage--;
-	}
-
-	if(animeTime != AnimeChange_Time * 2){
-		return;
-	}
-
-	animeChangeFlag = !animeChangeFlag;
-	animeTime = 0;
 
 }
 
