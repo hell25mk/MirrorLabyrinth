@@ -44,11 +44,6 @@ C_Laby::C_Laby(int argNowStageNum){
 
 	StageCreate(argNowStageNum);
 
-	//扉が存在するなら鍵の最大数をセット
-	if(door != NULL){
-		door->SetMaxKeyNum(keyList.size());
-	}
-
 }
 
 C_Laby::~C_Laby(){
@@ -123,6 +118,11 @@ void C_Laby::StageCreate(int argNowStageNum){
 			pos.x = 0;
 		}
 
+	}
+
+	//扉が存在するなら鍵の最大数をセット
+	if(door != NULL){
+		door->SetMaxKeyNum(keyList.size());
 	}
 
 	FileRead_close(fp);
@@ -278,7 +278,7 @@ bool C_Laby::MoveCheck(int argDire, C_Position<int> argPos){
 	if(labyVector[vectorPos] == Laby_Block){
 		for(auto itr = breakWallList.begin(); itr != breakWallList.end();){
 
-			if(itr->BWallPosCheck(tempPos)){
+			if(itr->BlockPosCheck(tempPos)){
 				itr->SetWallDamage();
 				if(itr->GetBreakFlag()){
 					itr = breakWallList.erase(itr);

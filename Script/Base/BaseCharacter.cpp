@@ -16,7 +16,7 @@ C_BaseCharacter::C_BaseCharacter(){
 
 }
 
-C_BaseCharacter::C_BaseCharacter(C_Position<int> argPos) : C_BaseObject(pos){
+C_BaseCharacter::C_BaseCharacter(C_Position<int> argPos):C_BaseObject(pos){
 
 	if(image == NULL){
 		image = new int[Image_Width * Image_Height];

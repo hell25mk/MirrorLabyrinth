@@ -2,11 +2,9 @@
 #include "DxLib.h"
 #include "../System/Position.h"
 #include "../System/SoundPlayer.h"
-#include <time.h>
 
 C_Key::C_Key(C_Position<int> argPos):C_BaseBlock(argPos){
 
-	SRand((int)time(NULL));
 	int rand = GetRand(9);
 
 	if(rand % 2){
@@ -28,7 +26,7 @@ void C_Key::Update(){
 
 void C_Key::Draw(){
 
-	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[keyImageKind], TRUE);
+	//DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[keyImageKind], TRUE);
 
 }
 

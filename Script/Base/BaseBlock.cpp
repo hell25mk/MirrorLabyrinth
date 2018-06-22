@@ -5,6 +5,12 @@ const int C_BaseBlock::Image_Height = 3;
 
 int* C_BaseBlock::image;
 
+C_BaseBlock::C_BaseBlock(){
+
+
+
+}
+
 C_BaseBlock::C_BaseBlock(C_Position<int> argPos):C_BaseObject(argPos){
 
 	if(image == NULL){

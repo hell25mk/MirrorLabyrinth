@@ -23,11 +23,11 @@ void C_Block::Update(){
 
 void C_Block::Draw(){
 
-	DrawGraph((pos.x * Block_Size), ((Reflect_Space - pos.y) * Block_Size), image[BreakWall_Image + nowWallDamage], TRUE);
+	//DrawGraph((pos.x * Block_Size), ((Reflect_Space - pos.y) * Block_Size), image[Block_Image + nowWallDamage], TRUE);
 
 }
 
-bool C_Block::BWallPosCheck(C_Position<int> const argPos){
+bool C_Block::BlockPosCheck(C_Position<int> const argPos){
 
 	if(pos.x != argPos.x){
 		return false;

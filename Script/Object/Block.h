@@ -9,12 +9,12 @@ public:
 	virtual ~C_Block();
 	virtual void Update() override;
 	virtual void Draw() override;
-	bool BWallPosCheck(C_Position<int> argPos);
+	bool BlockPosCheck(C_Position<int> argPos);
 	void SetWallDamage();
 	bool GetBreakFlag();
 
 private:
-	const int BreakWall_Image = 10;
+	const int Block_Image = 10;
 	int mirrorPosy;
 	int nowWallDamage;
 	bool breakFlag;

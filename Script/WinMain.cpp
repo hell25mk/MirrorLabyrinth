@@ -5,6 +5,7 @@
 ゲーム名	：MirrorLabyrinth (鏡の迷宮)
 ------------------------------------------------------------------------*/
 #include "DxLib.h"
+#include <ctime>
 #include "Manager/GameManager.h"
 
 void WindowInit();			//ウィンドウ初期化関数
@@ -17,6 +18,7 @@ const char *Game_Title = "Mirror Labyrinth";
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow){
 
+	SRand((int)time(NULL));
 	WindowInit();
 
 	//DxLib初期化
