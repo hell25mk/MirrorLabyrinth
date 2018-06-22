@@ -8,7 +8,7 @@ const int Reflect_Space = 14;
 const int FlashLoopTime = 180;
 const int AnimeChange_Time = 30;
 
-C_Mirror::C_Mirror(C_Position<int> argPos,C_Player *player):C_BaseCharacter(argPos){
+C_Mirror::C_Mirror(C_Player *player):C_BaseCharacter(){
 
 	this->player = player;
 	pos.x = player->GetPosition().x;
@@ -48,7 +48,7 @@ void C_Mirror::Move(){
 	pos.x = player->GetPosition().x;
 	pos.y = (Reflect_Space - (player->GetPosition().y / Block_Size)) * Block_Size;
 
-	int dire = player->GetDirection();
+	int dire = player->GetDirection() / Image_X_Num;
 
 	switch(dire){
 		case Dire_Up:

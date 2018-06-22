@@ -7,6 +7,7 @@ class C_Animation;
 class C_BaseCharacter : public C_BaseObject{
 
 public:
+	C_BaseCharacter();
 	C_BaseCharacter(C_Position<int> argPos);
 	virtual ~C_BaseCharacter();
 	virtual void Update() = 0;
