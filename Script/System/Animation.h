@@ -6,7 +6,6 @@ public:
 	C_Animation(int animeOrder[],int orderSize,int animeChangeTime,int *imageNumber);
 	~C_Animation();
 	void Update();
-	void Change();
 
 private:
 	int *animeOrder;

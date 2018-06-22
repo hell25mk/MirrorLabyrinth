@@ -62,7 +62,6 @@ void C_Player::Move(int argMoveDire){
 	}
 
 	nowDire = (e_Direction)(argMoveDire * Image_X_Num);
-	animation->Change();
 	mirror->Move();
 
 }

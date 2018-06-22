@@ -65,8 +65,6 @@ void C_Mirror::Move(){
 			break;
 	}
 
-	animation->Change();
-
 }
 
 void C_Mirror::Fhashing(){

@@ -36,10 +36,3 @@ void C_Animation::Update(){
 	*imageNumber = animeOrder[animeNumber];
 
 }
-
-void C_Animation::Change(){
-
-	animeCount = 0;
-	animeNumber = 0;
-
-}
