@@ -3,7 +3,7 @@
 #include "../System/Position.h"
 #include "Door.h"
 #include "Key.h"
-#include "BreakWall.h"
+#include "Block.h"
 #include "Wall.h"
 
 const int C_Laby::Laby_Height = 15;
@@ -113,7 +113,7 @@ void C_Laby::StageCreate(int argNowStageNum){
 				keyList.push_back(C_Key(pos));
 				break;
 			case Laby_BreakWall:
-				breakWallList.push_back(C_BreakWall(pos));
+				breakWallList.push_back(C_Block(pos));
 				break;
 		}
 

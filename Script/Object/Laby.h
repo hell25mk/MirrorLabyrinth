@@ -8,7 +8,7 @@
 class C_Wall;
 class C_Door;
 class C_Key;
-class C_BreakWall;
+class C_Block;
 
 class C_Laby{
 
@@ -34,7 +34,7 @@ private:
 	C_Door *door;
 	std::list<C_Key> keyList;
 	int getKeyNum;
-	std::list<C_BreakWall> breakWallList;
+	std::list<C_Block> breakWallList;
 
 	e_GameState gameState;
 	int *blockMaterialImage;
