@@ -112,7 +112,7 @@ void C_Laby::StageCreate(int argNowStageNum){
 			case Laby_Key:
 				keyList.push_back(C_Key(pos));
 				break;
-			case Laby_BreakWall:
+			case Laby_Block:
 				breakWallList.push_back(C_Block(pos));
 				break;
 		}
@@ -275,7 +275,7 @@ bool C_Laby::MoveCheck(int argDire, C_Position<int> argPos){
 
 	}
 	
-	if(labyVector[vectorPos] == Laby_BreakWall){
+	if(labyVector[vectorPos] == Laby_Block){
 		for(auto itr = breakWallList.begin(); itr != breakWallList.end();){
 
 			if(itr->BWallPosCheck(tempPos)){
