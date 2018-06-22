@@ -17,7 +17,6 @@ public:
 
 private:
 	C_Player *player;
-	int nowDire;
 	int flashTime;
 	bool flashFlag;
 

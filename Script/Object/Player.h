@@ -15,10 +15,9 @@ public:
 	virtual void Draw() override;
 	void Move(int argMoveDire);
 	C_Position<int> GetPosition();
-	e_Direction GetDirection();
+	int GetDirection();
 
 private:
-	e_Direction nowDire;
 	bool moveFlag;
 	C_Mirror *mirror;
 	C_Animation *animation;

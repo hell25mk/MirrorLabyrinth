@@ -28,6 +28,7 @@ protected:
 	}e_Direction;*/
 
 	static int *image;
+	int dire;
 	int imageNumber;
 	C_Animation *animation;
 

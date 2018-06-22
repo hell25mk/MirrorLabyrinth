@@ -12,7 +12,7 @@ C_Player::C_Player(C_Position<int> argPos):C_BaseCharacter(argPos){
 
 	pos.x = argPos.x * Block_Size;
 	pos.y = argPos.y * Block_Size;
-	nowDire = (e_Direction)(Dire_Up * Image_X_Num);
+	dire = Dire_Up * Image_X_Num;
 	mirror = new C_Mirror(this);
 	imageNumber = 0;
 	int animeOrder[4] = { 0,1,0,2 };
@@ -38,7 +38,7 @@ void C_Player::Update(){
 
 void C_Player::Draw(){
 	
-	DrawRotaGraph(pos.x + 16, pos.y + 16, (Block_Size / (double)Image_Size), 0.0, image[nowDire + imageNumber], TRUE);
+	DrawRotaGraph(pos.x + 16, pos.y + 16, (Block_Size / (double)Image_Size), 0.0, image[dire + imageNumber], TRUE);
 
 	mirror->Draw();
 
@@ -46,22 +46,12 @@ void C_Player::Draw(){
 
 void C_Player::Move(int argMoveDire){
 
-	switch(argMoveDire){
-		case Dire_Up:
-			pos.y -= Block_Size;
-			break;
-		case Dire_Down:
-			pos.y += Block_Size;
-			break;
-		case Dire_Left:
-			pos.x -= Block_Size;
-			break;
-		case Dire_Right:
-			pos.x += Block_Size;
-			break;
-	}
+	int vy[4] = { Block_Size,0,0,-Block_Size };		//yˆÚ“®—Ê
+	int vx[4] = { 0,Block_Size,-Block_Size,0 };		//xˆÚ“®—Ê
 
-	nowDire = (e_Direction)(argMoveDire * Image_X_Num);
+	pos.y += vy[argMoveDire];
+	pos.x += vx[argMoveDire];
+	dire = argMoveDire * Image_X_Num;
 	mirror->Move();
 
 }
@@ -71,7 +61,7 @@ C_Position<int> C_Player::GetPosition(){
 	return pos;
 }
 
-e_Direction C_Player::GetDirection(){
+int C_Player::GetDirection(){
 
-	return nowDire;
+	return dire;
 }

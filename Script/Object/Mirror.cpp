@@ -13,7 +13,7 @@ C_Mirror::C_Mirror(C_Player *player):C_BaseCharacter(){
 	this->player = player;
 	pos.x = player->GetPosition().x;
 	pos.y = (Reflect_Space - (player->GetPosition().y / Block_Size)) * Block_Size;
-	nowDire = (e_Direction)(Dire_Down * Image_X_Num);
+	dire = Dire_Down * Image_X_Num;
 	flashTime = 0;
 	flashFlag = true;
 	int animeOrder[4] = { 0,1,0,2 };
@@ -38,7 +38,7 @@ void C_Mirror::Update(){
 void C_Mirror::Draw(){
 
 	if(flashFlag){
-		DrawRotaGraph((pos.x + 16), (pos.y + 16), (Block_Size / (double)Image_Size), 0.0, image[nowDire + imageNumber], TRUE);
+		DrawRotaGraph((pos.x + 16), (pos.y + 16), (Block_Size / (double)Image_Size), 0.0, image[dire + imageNumber], TRUE);
 	}
 
 }
@@ -48,22 +48,8 @@ void C_Mirror::Move(){
 	pos.x = player->GetPosition().x;
 	pos.y = (Reflect_Space - (player->GetPosition().y / Block_Size)) * Block_Size;
 
-	int dire = player->GetDirection() / Image_X_Num;
-
-	switch(dire){
-		case Dire_Up:
-			nowDire = (e_Direction)(Dire_Down * Image_X_Num);
-			break;
-		case Dire_Down:
-			nowDire = (e_Direction)(Dire_Up * Image_X_Num);
-			break;
-		case Dire_Left:
-			nowDire = (e_Direction)(Dire_Left * Image_X_Num);
-			break;
-		case Dire_Right:
-			nowDire = (e_Direction)(Dire_Right * Image_X_Num);
-			break;
-	}
+	int arrDire[4]{ Dire_Up ,Dire_Right ,Dire_Left ,Dire_Down };
+	dire = arrDire[player->GetDirection() / Image_X_Num] * Image_X_Num;
 
 }
 

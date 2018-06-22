@@ -5,29 +5,29 @@
 
 const int Reflect_Space = 14;
 
-C_BreakWall::C_BreakWall(C_Position<int> argPos):C_BaseBlock(argPos){
+C_Block::C_Block(C_Position<int> argPos):C_BaseBlock(argPos){
 
 	nowWallDamage = 0;
 	breakFlag = false;
 
 }
 
-C_BreakWall::~C_BreakWall(){
+C_Block::~C_Block(){
 }
 
-void C_BreakWall::Update(){
+void C_Block::Update(){
 
 
 
 }
 
-void C_BreakWall::Draw(){
+void C_Block::Draw(){
 
 	DrawGraph((pos.x * Block_Size), ((Reflect_Space - pos.y) * Block_Size), image[BreakWall_Image + nowWallDamage], TRUE);
 
 }
 
-bool C_BreakWall::BWallPosCheck(C_Position<int> const argPos){
+bool C_Block::BWallPosCheck(C_Position<int> const argPos){
 
 	if(pos.x != argPos.x){
 		return false;
@@ -40,21 +40,21 @@ bool C_BreakWall::BWallPosCheck(C_Position<int> const argPos){
 	return true;
 }
 
-void C_BreakWall::SetWallDamage(){
+void C_Block::SetWallDamage(){
 
 	nowWallDamage++;
 
-	C_SoundPlayer::GetInstance().PlaySE("BreakWall1");
+	C_SoundPlayer::GetInstance().PlaySE("Block1");
 
 	breakFlag = nowWallDamage > 3;
 
 	if(breakFlag){
-		C_SoundPlayer::GetInstance().PlaySE("BreakWall2");
+		C_SoundPlayer::GetInstance().PlaySE("Block2");
 	}
 
 }
 
-bool C_BreakWall::GetBreakFlag(){
+bool C_Block::GetBreakFlag(){
 
 	return breakFlag;
 }
