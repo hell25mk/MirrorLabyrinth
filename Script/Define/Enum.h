@@ -23,7 +23,7 @@ typedef enum{
 	Laby_Stairs,
 	Laby_Door,
 	Laby_Key,
-	Laby_BreakWall,
+	Laby_Block,
 
 	Laby_Nore,
 }e_LabyGimmick;
