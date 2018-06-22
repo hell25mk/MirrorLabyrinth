@@ -13,7 +13,7 @@ C_Mirror::C_Mirror(C_Player *player):C_BaseCharacter(){
 	this->player = player;
 	pos.x = player->GetPosition().x;
 	pos.y = (Reflect_Space - (player->GetPosition().y / Block_Size)) * Block_Size;
-	dire = Dire_Down * Image_X_Num;
+	dire = Dire_Down * Image_Width;
 	flashTime = 0;
 	flashFlag = true;
 	int animeOrder[4] = { 0,1,0,2 };
@@ -49,7 +49,7 @@ void C_Mirror::Move(){
 	pos.y = (Reflect_Space - (player->GetPosition().y / Block_Size)) * Block_Size;
 
 	int arrDire[4]{ Dire_Up ,Dire_Right ,Dire_Left ,Dire_Down };
-	dire = arrDire[player->GetDirection() / Image_X_Num] * Image_X_Num;
+	dire = arrDire[player->GetDirection() / Image_Width] * Image_Width;
 
 }
 

@@ -11,8 +11,8 @@ public:
 	virtual void Draw() = 0;
 
 protected:
-	static const int Image_X_Num;
-	static const int Image_Y_Num;
+	static const int Image_Width;
+	static const int Image_Height;
 
 	static int *image;
 

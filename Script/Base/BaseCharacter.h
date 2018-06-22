@@ -15,8 +15,8 @@ public:
 
 protected:
 	static const int Image_Size;
-	static const int Image_X_Num;
-	static const int Image_Y_Num;
+	static const int Image_Width;
+	static const int Image_Height;
 	static const int AnimeChange_Time;
 	/*typedef enum{
 		Dire_Up,

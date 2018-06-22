@@ -12,7 +12,7 @@ C_Player::C_Player(C_Position<int> argPos):C_BaseCharacter(argPos){
 
 	pos.x = argPos.x * Block_Size;
 	pos.y = argPos.y * Block_Size;
-	dire = Dire_Up * Image_X_Num;
+	dire = Dire_Up * Image_Width;
 	mirror = new C_Mirror(this);
 	imageNumber = 0;
 	int animeOrder[4] = { 0,1,0,2 };
@@ -51,7 +51,7 @@ void C_Player::Move(int argMoveDire){
 
 	pos.y += vy[argMoveDire];
 	pos.x += vx[argMoveDire];
-	dire = argMoveDire * Image_X_Num;
+	dire = argMoveDire * Image_Width;
 	mirror->Move();
 
 }
