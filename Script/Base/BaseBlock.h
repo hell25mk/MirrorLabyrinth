@@ -5,7 +5,7 @@
 class C_BaseBlock : public C_BaseObject{
 
 public:
-	C_BaseBlock(C_Position argPos);
+	C_BaseBlock(C_Position<int> argPos);
 	virtual ~C_BaseBlock();
 	virtual void Update() = 0;
 	virtual void Draw() = 0;

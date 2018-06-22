@@ -7,7 +7,7 @@ const int C_BaseCharacter::AnimeChange_Time = 30;
 
 int* C_BaseCharacter::image;
 
-C_BaseCharacter::C_BaseCharacter(C_Position argPos) : C_BaseObject(pos){
+C_BaseCharacter::C_BaseCharacter(C_Position<int> argPos) : C_BaseObject(pos){
 
 	if(image == NULL){
 		image = new int[Image_X_Num * Image_Y_Num];

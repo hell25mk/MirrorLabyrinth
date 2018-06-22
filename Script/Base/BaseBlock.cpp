@@ -5,7 +5,7 @@ const int C_BaseBlock::Image_Y_Num = 3;
 
 int* C_BaseBlock::image;
 
-C_BaseBlock::C_BaseBlock(C_Position argPos):C_BaseObject(argPos){
+C_BaseBlock::C_BaseBlock(C_Position<int> argPos):C_BaseObject(argPos){
 
 	if(image == NULL){
 		image = new int[Image_X_Num * Image_Y_Num];

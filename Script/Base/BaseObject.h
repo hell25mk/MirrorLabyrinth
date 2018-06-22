@@ -7,7 +7,7 @@ class C_BaseObject{
 
 public:
 	C_BaseObject();
-	C_BaseObject(C_Position argPos);
+	C_BaseObject(C_Position<int> argPos);
 	virtual ~C_BaseObject();
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
@@ -15,7 +15,8 @@ public:
 protected:
 	static const int Block_Size;
 
-	C_Position pos;
+protected:
+	C_Position<int> pos;
 
 };
 

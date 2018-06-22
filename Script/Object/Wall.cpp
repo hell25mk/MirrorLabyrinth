@@ -1,6 +1,6 @@
 #include "Wall.h"
 
-C_Wall::C_Wall(C_Position argPos):C_BaseBlock(argPos){
+C_Wall::C_Wall(C_Position<int> argPos):C_BaseBlock(argPos){
 }
 
 C_Wall::~C_Wall(){

@@ -8,7 +8,7 @@
 
 const int AnimeChange_Time = 30;
 
-C_Player::C_Player(C_Position argPos):C_BaseCharacter(argPos){
+C_Player::C_Player(C_Position<int> argPos):C_BaseCharacter(argPos){
 
 	pos.x = argPos.x * Block_Size;
 	pos.y = argPos.y * Block_Size;
@@ -62,12 +62,12 @@ void C_Player::Move(int argMoveDire){
 	}
 
 	nowDire = (e_Direction)(argMoveDire * Image_X_Num);
-
 	animation->Change();
+	mirror->Move();
 
 }
 
-C_Position C_Player::GetPosition(){
+C_Position<int> C_Player::GetPosition(){
 
 	return pos;
 }

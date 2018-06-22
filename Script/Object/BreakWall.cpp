@@ -5,7 +5,7 @@
 
 const int Reflect_Space = 14;
 
-C_BreakWall::C_BreakWall(C_Position argPos):C_BaseBlock(argPos){
+C_BreakWall::C_BreakWall(C_Position<int> argPos):C_BaseBlock(argPos){
 
 	nowWallDamage = 0;
 	breakFlag = false;
@@ -27,7 +27,7 @@ void C_BreakWall::Draw(){
 
 }
 
-bool C_BreakWall::BWallPosCheck(C_Position const argPos){
+bool C_BreakWall::BWallPosCheck(C_Position<int> const argPos){
 
 	if(pos.x != argPos.x){
 		return false;

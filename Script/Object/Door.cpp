@@ -3,7 +3,7 @@
 #include "../System/Position.h"
 #include "../Define/Enum.h"
 
-C_Door::C_Door(C_Position argPos):C_BaseBlock(argPos){
+C_Door::C_Door(C_Position<int> argPos):C_BaseBlock(argPos){
 
 	doorOpenFlag = false;
 

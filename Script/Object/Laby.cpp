@@ -203,10 +203,10 @@ void C_Laby::Draw(){
 
 }
 
-bool C_Laby::MoveCheck(int argDire, C_Position argPos){
+bool C_Laby::MoveCheck(int argDire, C_Position<int> argPos){
 
 	bool checkFlag = false;
-	C_Position tempPos;
+	C_Position<int> tempPos;
 	int vectorPos;
 
 	tempPos.x = argPos.x / Block_Size;
@@ -296,9 +296,9 @@ bool C_Laby::MoveCheck(int argDire, C_Position argPos){
 	return checkFlag;
 }
 
-e_GameState C_Laby::GetGameState(C_Position const argPos){
+e_GameState C_Laby::GetGameState(C_Position<int> const argPos){
 
-	C_Position tempPos;
+	C_Position<int> tempPos;
 
 	tempPos.x = argPos.x / Block_Size;
 	tempPos.y = argPos.y / Block_Size;

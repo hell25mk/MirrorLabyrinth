@@ -2,7 +2,7 @@
 #include "../System/Position.h"
 
 
-C_Road::C_Road(C_Position argPos):C_BaseBlock(argPos){
+C_Road::C_Road(C_Position<int> argPos):C_BaseBlock(argPos){
 }
 
 

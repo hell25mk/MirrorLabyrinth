@@ -5,7 +5,7 @@
 class C_Door : public C_BaseBlock{
 
 public:
-	C_Door(C_Position argPos);
+	C_Door(C_Position<int> argPos);
 	virtual ~C_Door();
 	virtual void Update() override;
 	virtual void Draw() override;

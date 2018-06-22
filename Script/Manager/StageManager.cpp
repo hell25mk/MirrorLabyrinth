@@ -58,7 +58,7 @@ void C_StageManager::StageInit(){
 	nowGameState = State_GamePlay;
 	
 	//ê∂ê¨
-	C_Position pos;
+	C_Position<int> pos;
 	laby = new C_Laby(nowStageNum);
 	pos.x = 1;
 	pos.y = 13;

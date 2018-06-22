@@ -17,8 +17,8 @@ public:
 	~C_Laby();
 	void Update();
 	void Draw();
-	bool MoveCheck(int argDire, C_Position argPos);
-	e_GameState GetGameState(C_Position argPos);
+	bool MoveCheck(int argDire, C_Position<int> argPos);
+	e_GameState GetGameState(C_Position<int> argPos);
 	void StageCreate(int argNowStageNum);
 
 private:
@@ -27,7 +27,7 @@ private:
 	static const int Laby_Width;
 #pragma endregion
 
-	C_Position pos;
+	C_Position<int> pos;
 	std::vector<int> labyVector;
 
 	std::vector<C_Wall> wall;

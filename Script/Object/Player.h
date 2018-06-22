@@ -9,12 +9,12 @@ class C_Animation;
 class C_Player : public C_BaseCharacter{
 
 public:
-	C_Player(C_Position argPos);
+	C_Player(C_Position<int> argPos);
 	virtual ~C_Player();
 	virtual void Update() override;
 	virtual void Draw() override;
 	void Move(int argMoveDire);
-	C_Position GetPosition();
+	C_Position<int> GetPosition();
 	e_Direction GetDirection();
 
 private:

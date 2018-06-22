@@ -4,7 +4,7 @@
 #include "../System/SoundPlayer.h"
 #include <time.h>
 
-C_Key::C_Key(C_Position argPos):C_BaseBlock(argPos){
+C_Key::C_Key(C_Position<int> argPos):C_BaseBlock(argPos){
 
 	SRand((int)time(NULL));
 	int rand = GetRand(9);
@@ -32,7 +32,7 @@ void C_Key::Draw(){
 
 }
 
-bool C_Key::KeyPosCheck(C_Position const argPos){
+bool C_Key::KeyPosCheck(C_Position<int> argPos){
 
 	if(pos.x != argPos.x){
 		return false;
