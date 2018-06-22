@@ -19,8 +19,8 @@ void C_GameText::Draw(){
 
 	SetFontSize(36);
 
-	DrawString(685, 250, "GameLevel", Color_White);
-	DrawString(715, 300, strGameLevel, Color_White);
+	DrawString(720, 250, "Level", Color_White);
+	DrawString(730, 300, strGameLevel, Color_White);
 
 	SetFontSize(DEFAULT_FONT_SIZE);
 
