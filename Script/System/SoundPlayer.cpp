@@ -1,5 +1,4 @@
 #include "SoundPlayer.h"
-#include "SoundState.h"
 #include "DxLib.h"
 
 const int Sound_Volume = 70;

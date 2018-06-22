@@ -51,6 +51,7 @@ void WindowInit(){
 	SetWaitVSyncFlag(FALSE);									//垂直同期を取らない(FPS調整に必要)
 	SetMainWindowText(Game_Title);								//ウィンドウタイトルを設定
 	SetWindowIconID(25);										//ウィンドウアイコン用ID
+	CreateFontToHandle("Pixel Emulator",24,3,DX_FONTTYPE_NORMAL);
 
 }
 
