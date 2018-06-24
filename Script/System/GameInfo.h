@@ -18,10 +18,6 @@ public:
 	void ExpertGameLevel();
 	e_GameLevel GetGameLevel();
 
-	void UpImageType();
-	void DownImageType();
-	e_ImageType GetImageType();
-
 protected:
 	C_GameInfo(){}
 	virtual ~C_GameInfo(){}
@@ -29,6 +25,5 @@ protected:
 private:
 	std::map<std::string, int> info;
 	e_GameLevel gameLevel;
-	e_ImageType imageType;
 
 };

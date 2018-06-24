@@ -1,14 +1,6 @@
 #pragma once
 
 typedef enum{
-	Image_Type1,
-	Image_Type2,
-	Image_Type3,
-
-	ImageType_Num,
-}e_ImageType;
-
-typedef enum{
 	Dire_Down,
 	Dire_Right,
 	Dire_Left,

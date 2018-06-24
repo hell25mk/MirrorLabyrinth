@@ -3,7 +3,6 @@
 void C_GameInfo::Create(){
 
 	gameLevel = Level_Easy;
-	imageType = Image_Type1;
 
 }
 
@@ -52,29 +51,4 @@ void C_GameInfo::ExpertGameLevel(){
 e_GameLevel C_GameInfo::GetGameLevel(){ 
 
 	return gameLevel;
-}
-
-void C_GameInfo::UpImageType(){
-
-	if(imageType == Image_Type3){
-		return;
-	}
-
-	imageType = (e_ImageType)(imageType + 1);
-
-}
-
-void C_GameInfo::DownImageType(){
-
-	if(imageType == Image_Type1){
-		return;
-	}
-
-	imageType = (e_ImageType)(imageType - 1);
-
-}
-
-e_ImageType C_GameInfo::GetImageType(){ 
-
-	return imageType;
 }
