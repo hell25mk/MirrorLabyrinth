@@ -44,6 +44,12 @@ void C_Player::Draw(){
 
 }
 
+void C_Player::HitAction(){
+
+
+
+}
+
 void C_Player::Move(int argMoveDire){
 
 	int vy[4] = { Block_Size,0,0,-Block_Size };		//yˆÚ“®—Ê

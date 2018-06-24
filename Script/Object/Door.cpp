@@ -20,12 +20,19 @@ void C_Door::Update(){
 
 void C_Door::Draw(){
 
+	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[0], TRUE);
 	if(doorOpenFlag){
 		DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[Door_Open], TRUE);
 	} else{
 		DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[Door_Close], TRUE);
 	}
 	
+}
+
+void C_Door::HitAction(){
+
+
+
 }
 
 void C_Door::SetMaxKeyNum(int argMaxKeyNum){

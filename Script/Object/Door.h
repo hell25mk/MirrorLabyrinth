@@ -9,6 +9,7 @@ public:
 	virtual ~C_Door();
 	virtual void Update() override;
 	virtual void Draw() override;
+	virtual void HitAction() override;
 	void SetMaxKeyNum(int argMaxKeyNum);
 	void CheckDoorOpenFlag(int argNowKeyNum);
 	bool GetDoorOpenFlag();

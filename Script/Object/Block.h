@@ -9,6 +9,7 @@ public:
 	virtual ~C_Block();
 	virtual void Update() override;
 	virtual void Draw() override;
+	virtual void HitAction() override;
 	bool BlockPosCheck(C_Position<int> argPos);
 	void SetWallDamage();
 	bool GetBreakFlag();

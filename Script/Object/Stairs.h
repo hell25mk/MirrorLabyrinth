@@ -9,6 +9,7 @@ public:
 	virtual ~C_Stairs();
 	virtual void Update() override;
 	virtual void Draw() override;
+	virtual void HitAction() override;
 
 };
 

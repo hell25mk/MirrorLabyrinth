@@ -9,6 +9,7 @@ public:
 	virtual ~C_Key();
 	virtual void Update() override;
 	virtual void Draw() override;
+	virtual void HitAction() override;
 	bool KeyPosCheck(C_Position<int> argPos);
 
 private:

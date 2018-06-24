@@ -40,7 +40,6 @@ private:
 	std::list<C_Block*> breakWallList;
 
 	e_GameState gameState;
-	int *blockMaterialImage;
 
 };
 

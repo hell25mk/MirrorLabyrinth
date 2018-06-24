@@ -15,5 +15,12 @@ void C_Wall::Update(){
 void C_Wall::Draw(){
 
 	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[0], TRUE);
+	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[1], TRUE);
+
+}
+
+void C_Wall::HitAction(){
+
+
 
 }

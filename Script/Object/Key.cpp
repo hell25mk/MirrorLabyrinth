@@ -26,7 +26,14 @@ void C_Key::Update(){
 
 void C_Key::Draw(){
 
+	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[0], TRUE);
 	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[keyImageKind], TRUE);
+
+}
+
+void C_Key::HitAction(){
+
+
 
 }
 

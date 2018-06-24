@@ -20,3 +20,9 @@ void C_Road::Draw(){
 	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[0], TRUE);
 
 }
+
+void C_Road::HitAction(){
+
+
+
+}

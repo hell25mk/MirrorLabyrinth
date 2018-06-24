@@ -43,6 +43,12 @@ void C_Mirror::Draw(){
 
 }
 
+void C_Mirror::HitAction(){
+
+
+
+}
+
 void C_Mirror::Move(){
 
 	pos.x = player->GetPosition().x;

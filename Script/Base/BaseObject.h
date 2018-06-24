@@ -11,6 +11,7 @@ public:
 	virtual ~C_BaseObject();
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
+	virtual void HitAction() = 0;
 
 protected:
 	static const int Block_Size;
