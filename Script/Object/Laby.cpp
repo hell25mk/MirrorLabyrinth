@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include "../Manager/FileManager.h"
 #include "../System/Position.h"
+#include "../Base/BaseBlock.h"
 #include "Door.h"
 #include "Key.h"
 #include "Block.h"
@@ -38,7 +39,7 @@ C_Laby::C_Laby(int argNowStageNum){
 	LoadDivGraph("Image/Object/LabyBlockMaterial.png", Image_Width * Image_Height, Image_Width, Image_Height, Block_Size, Block_Size, blockMaterialImage);
 
 	labyVector.resize(Laby_Height * Laby_Width);
-	//wall.resize(0);
+	blockVector.resize(Laby_Height * Laby_Width);
 
 	gameState = State_GamePlay;
 	getKeyNum = 0;
@@ -64,6 +65,7 @@ void C_Laby::StageCreate(int argNowStageNum){
 
 	int fp;
 	char inputc;
+	int keyNum = 0;
 	pos.x = 0;
 	pos.y = 0;
 
@@ -96,22 +98,32 @@ void C_Laby::StageCreate(int argNowStageNum){
 			break;
 		}
 
-		//ドアと鍵を生成する
 		labyVector[pos.y * Laby_Width + pos.x] = atoi(&inputc);
-
 		switch(labyVector[pos.y * Laby_Width + pos.x]){
-			case Laby_Wall:
-				//wall.push_back(C_Wall(pos));
+			/*case Laby_Road:
+				blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Road(pos));
 				break;
+			case Laby_Wall:
+				blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Wall(pos));
+				break;
+			case Laby_Stairs:
+				blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Stairs(pos));
+				break;*/
 			case Laby_Door:
 				door = new C_Door(pos);
+				blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Door(pos));
 				break;
 			case Laby_Key:
 				keyList.push_back(new C_Key(pos));
+				blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Key(pos));
+				keyNum++;
 				break;
 			case Laby_Block:
 				breakWallList.push_back(new C_Block(pos));
+				blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Block(pos));
 				break;
+			default:
+				blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Block(pos));
 		}
 
 		pos.x++;
@@ -124,7 +136,7 @@ void C_Laby::StageCreate(int argNowStageNum){
 
 	//扉が存在するなら鍵の最大数をセット
 	if(door != NULL){
-		door->SetMaxKeyNum(keyList.size());
+		door->SetMaxKeyNum(keyNum);
 	}
 
 	C_FileManager::GetInstance().FileClose();
@@ -138,7 +150,7 @@ void C_Laby::Update(){
 }
 
 void C_Laby::Draw(){
-
+	/*
 	for(pos.y = 0; pos.y < Laby_Height; pos.y++){
 		for(pos.x = 0; pos.x < Laby_Width; pos.x++){
 
@@ -197,6 +209,20 @@ void C_Laby::Draw(){
 	}
 
 	for(auto itr = breakWallList.begin(); itr != breakWallList.end();){
+
+		(*itr)->Draw();
+		itr++;
+
+	}
+	*/
+
+	/*for(int i = 0; i < blockVector.size(); i++){
+
+		blockVector[i]->Draw();
+
+	}*/
+
+	for(auto itr = blockVector.begin(); itr != blockVector.end();){
 
 		(*itr)->Draw();
 		itr++;

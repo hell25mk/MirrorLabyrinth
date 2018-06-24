@@ -2,9 +2,11 @@
 
 #include "../Define/Enum.h"
 #include "../System/Position.h"
+#include <memory>
 #include <vector>
 #include <list>
 
+class C_BaseBlock;
 class C_Wall;
 class C_Door;
 class C_Key;
@@ -29,6 +31,7 @@ private:
 
 	C_Position<int> pos;
 	std::vector<int> labyVector;
+	std::vector<std::shared_ptr<C_BaseBlock>> blockVector;
 
 	std::vector<C_Wall> wall;
 	C_Door *door;
