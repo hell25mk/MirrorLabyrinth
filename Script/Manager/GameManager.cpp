@@ -41,7 +41,10 @@ bool C_GameManager::Update(){
 void C_GameManager::Draw(){
 
 	sceneManager->Draw();
+
+#ifdef _DEBUG
 	C_FPSManager::GetInstance().Draw();
+#endif // FPS•\Ž¦
 	C_FPSManager::GetInstance().Wait();
 
 }

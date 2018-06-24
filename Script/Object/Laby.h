@@ -32,9 +32,9 @@ private:
 
 	std::vector<C_Wall> wall;
 	C_Door *door;
-	std::list<C_Key> keyList;
+	std::list<C_Key*> keyList;
 	int getKeyNum;
-	std::list<C_Block> breakWallList;
+	std::list<C_Block*> breakWallList;
 
 	e_GameState gameState;
 	int *blockMaterialImage;

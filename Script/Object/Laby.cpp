@@ -1,5 +1,6 @@
 #include "Laby.h"
 #include "DxLib.h"
+#include "../Manager/FileManager.h"
 #include "../System/Position.h"
 #include "Door.h"
 #include "Key.h"
@@ -66,7 +67,8 @@ void C_Laby::StageCreate(int argNowStageNum){
 	pos.x = 0;
 	pos.y = 0;
 
-	fp = FileRead_open(fileName);
+	//fp = FileRead_open(fileName);
+	fp = C_FileManager::GetInstance().FileOpen(fileName);
 
 	if(fp == NULL){
 		labyVector = LabySampleVector;
@@ -105,10 +107,10 @@ void C_Laby::StageCreate(int argNowStageNum){
 				door = new C_Door(pos);
 				break;
 			case Laby_Key:
-				keyList.push_back(C_Key(pos));
+				keyList.push_back(new C_Key(pos));
 				break;
 			case Laby_Block:
-				breakWallList.push_back(C_Block(pos));
+				breakWallList.push_back(new C_Block(pos));
 				break;
 		}
 
@@ -125,7 +127,7 @@ void C_Laby::StageCreate(int argNowStageNum){
 		door->SetMaxKeyNum(keyList.size());
 	}
 
-	FileRead_close(fp);
+	C_FileManager::GetInstance().FileClose();
 
 }
 
@@ -185,7 +187,7 @@ void C_Laby::Draw(){
 
 	for(auto itr = keyList.begin(); itr != keyList.end();){
 
-		itr->Draw();
+		(*itr)->Draw();
 		itr++;
 
 	}
@@ -196,7 +198,7 @@ void C_Laby::Draw(){
 
 	for(auto itr = breakWallList.begin(); itr != breakWallList.end();){
 
-		itr->Draw();
+		(*itr)->Draw();
 		itr++;
 
 	}
@@ -261,7 +263,7 @@ bool C_Laby::MoveCheck(int argDire, C_Position<int> argPos){
 	if(labyVector[vectorPos] == Laby_Key){
 		for(auto itr = keyList.begin(); itr != keyList.end();){
 
-			if(itr->KeyPosCheck(tempPos)){
+			if((*itr)->KeyPosCheck(tempPos)){
 				getKeyNum++;
 				itr = keyList.erase(itr);
 				continue;
@@ -278,9 +280,9 @@ bool C_Laby::MoveCheck(int argDire, C_Position<int> argPos){
 	if(labyVector[vectorPos] == Laby_Block){
 		for(auto itr = breakWallList.begin(); itr != breakWallList.end();){
 
-			if(itr->BlockPosCheck(tempPos)){
-				itr->SetWallDamage();
-				if(itr->GetBreakFlag()){
+			if((*itr)->BlockPosCheck(tempPos)){
+				(*itr)->SetWallDamage();
+				if((*itr)->GetBreakFlag()){
 					itr = breakWallList.erase(itr);
 					continue;
 				} else{
