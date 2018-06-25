@@ -18,6 +18,7 @@ protected:
 
 protected:
 	C_Position<int> pos;
+	bool alivaFlag;
 
 };
 

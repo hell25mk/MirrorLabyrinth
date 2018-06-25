@@ -15,11 +15,6 @@ public:
 	bool GetDoorOpenFlag();
 
 private:
-	typedef enum{
-		Door_Close = 5,
-		Door_Open,
-	}e_DoorKind;
-
 	int maxKeyNum;
 	bool doorOpenFlag;
 

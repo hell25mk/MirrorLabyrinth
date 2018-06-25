@@ -12,13 +12,5 @@ public:
 	virtual void HitAction() override;
 	bool KeyPosCheck(C_Position<int> argPos);
 
-private:
-	typedef enum{
-		Key_Ruby = 7,
-		Key_Diamond,
-	}e_KeyKind;
-
-	int keyImageKind;
-
 };
 

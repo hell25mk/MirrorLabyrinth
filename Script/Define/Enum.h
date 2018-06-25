@@ -13,12 +13,16 @@ typedef enum{
 	Laby_Road,
 	Laby_Wall,
 	Laby_Stairs,
-	Laby_Door,
-	Laby_Key,
+	Laby_Nore1,
+	Laby_Nore2,
+	Laby_CloseDoor,
+	Laby_OpenDoor,
+	Laby_RubyKey,
+	Laby_DiaKey,
+	Laby_Nore3,
 	Laby_Block,
-
-	Laby_Nore,
-}e_LabyGimmick;
+	Laby_Nore4 = 14,
+}e_BlockKind;
 
 typedef enum{
 	State_ModeSelect,

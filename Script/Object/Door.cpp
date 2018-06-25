@@ -5,6 +5,7 @@
 
 C_Door::C_Door(C_Position<int> argPos):C_BaseBlock(argPos){
 
+	imageKind = Laby_CloseDoor;
 	doorOpenFlag = false;
 
 }
@@ -20,12 +21,8 @@ void C_Door::Update(){
 
 void C_Door::Draw(){
 
-	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[0], TRUE);
-	if(doorOpenFlag){
-		DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[Door_Open], TRUE);
-	} else{
-		DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[Door_Close], TRUE);
-	}
+	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[Laby_Road], TRUE);
+	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[imageKind], TRUE);
 	
 }
 
@@ -45,6 +42,7 @@ void C_Door::CheckDoorOpenFlag(int argNowKeyNum){
 
 	if(maxKeyNum == argNowKeyNum){
 		doorOpenFlag = true;
+		imageKind = Laby_OpenDoor;
 	}
 
 }

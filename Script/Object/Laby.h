@@ -24,11 +24,20 @@ public:
 	void StageCreate(int argNowStageNum);
 
 private:
-#pragma region íËêî
 	static const int Laby_Height;
 	static const int Laby_Width;
-#pragma endregion
+	typedef enum{
+		Laby_Road,
+		Laby_Wall,
+		Laby_Stairs,
+		Laby_Door,
+		Laby_Key,
+		Laby_Block,
 
+		Laby_Nore,
+	}e_BlockKind;
+
+private:
 	C_Position<int> pos;
 	std::vector<int> labyVector;
 	std::vector<std::shared_ptr<C_BaseBlock>> blockVector;

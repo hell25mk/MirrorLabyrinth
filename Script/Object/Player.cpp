@@ -5,6 +5,7 @@
 #include "../Manager/KeyboardManager.h"
 #include "../System/GameInfo.h"
 #include "../System/Animation.h"
+#include "../Define/Enum.h"
 
 const int AnimeChange_Time = 30;
 

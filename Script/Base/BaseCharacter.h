@@ -18,15 +18,8 @@ protected:
 	static const int Image_Width;
 	static const int Image_Height;
 	static const int AnimeChange_Time;
-	/*typedef enum{
-		Dire_Up,
-		Dire_Down,
-		Dire_Left,
-		Dire_Right,
 
-		Dire_Nore,
-	}e_Direction;*/
-
+protected:
 	static int *image;
 	int dire;
 	int imageNumber;

@@ -2,15 +2,16 @@
 #include "DxLib.h"
 #include "../System/Position.h"
 #include "../System/SoundPlayer.h"
+#include "../Define/Enum.h"
 
 C_Key::C_Key(C_Position<int> argPos):C_BaseBlock(argPos){
 
 	int rand = GetRand(9);
 
 	if(rand % 2){
-		keyImageKind = Key_Ruby;
+		imageKind = Laby_RubyKey;
 	} else{
-		keyImageKind = Key_Diamond;
+		imageKind = Laby_DiaKey;
 	}
 
 }
@@ -26,8 +27,8 @@ void C_Key::Update(){
 
 void C_Key::Draw(){
 
-	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[0], TRUE);
-	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[keyImageKind], TRUE);
+	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[Laby_Road], TRUE);
+	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[imageKind], TRUE);
 
 }
 

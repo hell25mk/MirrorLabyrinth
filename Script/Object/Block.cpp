@@ -2,11 +2,13 @@
 #include "DxLib.h"
 #include "../System/Position.h"
 #include "../System/SoundPlayer.h"
+#include "../Define/Enum.h"
 
 const int Reflect_Space = 14;
 
 C_Block::C_Block(C_Position<int> argPos):C_BaseBlock(argPos){
 
+	imageKind = Laby_Block;
 	nowWallDamage = 0;
 	breakFlag = false;
 
@@ -23,8 +25,8 @@ void C_Block::Update(){
 
 void C_Block::Draw(){
 
-	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[0], TRUE);
-	DrawGraph((pos.x * Block_Size), ((Reflect_Space - pos.y) * Block_Size), image[Block_Image + nowWallDamage], TRUE);
+	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[Laby_Road], TRUE);
+	DrawGraph((pos.x * Block_Size), ((Reflect_Space - pos.y) * Block_Size), image[imageKind + nowWallDamage], TRUE);
 
 }
 

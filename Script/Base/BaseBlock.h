@@ -15,7 +15,9 @@ protected:
 	static const int Image_Width;
 	static const int Image_Height;
 
+protected:
 	static int *image;
+	int imageKind;
 
 };
 
