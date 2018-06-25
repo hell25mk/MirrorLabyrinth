@@ -12,6 +12,8 @@ C_BaseBlock::C_BaseBlock(){
 		LoadDivGraph("Image/Object/LabyBlockMaterial.png", Image_Width * Image_Height, Image_Width, Image_Height, Block_Size, Block_Size, image);
 	}
 
+	passFlag = true;
+
 }
 
 C_BaseBlock::C_BaseBlock(C_Position<int> argPos):C_BaseObject(argPos){
@@ -21,10 +23,15 @@ C_BaseBlock::C_BaseBlock(C_Position<int> argPos):C_BaseObject(argPos){
 		LoadDivGraph("Image/Object/LabyBlockMaterial.png", Image_Width * Image_Height, Image_Width, Image_Height, Block_Size, Block_Size, image);
 	}
 
+	passFlag = true;
+
 }
 
 C_BaseBlock::~C_BaseBlock(){
 
-	image = NULL;
+	if(image != NULL){
+		delete image;
+		image = NULL;
+	}
 
 }

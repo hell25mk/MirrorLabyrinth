@@ -44,10 +44,9 @@ void C_Mirror::Draw(){
 
 }
 
-void C_Mirror::HitAction(){
+bool C_Mirror::HitAction(){
 
-
-
+	return true;
 }
 
 void C_Mirror::Move(){

@@ -12,7 +12,7 @@ public:
 	virtual ~C_Mirror();
 	virtual void Update() override;
 	virtual void Draw() override;
-	virtual void HitAction() override;
+	virtual bool HitAction() override;
 	void Move();
 	void Fhashing();
 

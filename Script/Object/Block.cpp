@@ -8,9 +8,9 @@ const int Reflect_Space = 14;
 
 C_Block::C_Block(C_Position<int> argPos):C_BaseBlock(argPos){
 
-	imageKind = Laby_Block;
-	nowWallDamage = 0;
-	breakFlag = false;
+	imageKind = Laby_Block1;
+	damage = 0;
+	passFlag = false;
 
 }
 
@@ -26,44 +26,21 @@ void C_Block::Update(){
 void C_Block::Draw(){
 
 	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[Laby_Road], TRUE);
-	DrawGraph((pos.x * Block_Size), ((Reflect_Space - pos.y) * Block_Size), image[imageKind + nowWallDamage], TRUE);
+	DrawGraph((pos.x * Block_Size), ((Reflect_Space - pos.y) * Block_Size), image[imageKind + damage], TRUE);
 
 }
 
-void C_Block::HitAction(){
+bool C_Block::HitAction(){
 
-
-
-}
-
-bool C_Block::BlockPosCheck(C_Position<int> const argPos){
-
-	if(pos.x != argPos.x){
-		return false;
-	}
-
-	if(pos.y != argPos.y){
-		return false;
-	}
-
-	return true;
-}
-
-void C_Block::SetWallDamage(){
-
-	nowWallDamage++;
+	damage++;
 
 	C_SoundPlayer::GetInstance().PlaySE("Block1");
 
-	breakFlag = nowWallDamage > 3;
+	passFlag = damage > (Laby_Block4 - Laby_Block1);
 
-	if(breakFlag){
+	if(passFlag){
 		C_SoundPlayer::GetInstance().PlaySE("Block2");
 	}
 
-}
-
-bool C_Block::GetBreakFlag(){
-
-	return breakFlag;
+	return passFlag;
 }

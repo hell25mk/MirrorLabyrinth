@@ -296,8 +296,6 @@ void C_StageManager::GamePlayUpdate(){
 		nowGameState = State_GameOver;
 	}
 
-	//gameText->Update();
-
 }
 
 void C_StageManager::GamePlayDraw(){

@@ -45,10 +45,10 @@ void C_Player::Draw(){
 
 }
 
-void C_Player::HitAction(){
+bool C_Player::HitAction(){
 
 
-
+	return true;
 }
 
 void C_Player::Move(int argMoveDire){

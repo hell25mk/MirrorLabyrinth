@@ -14,6 +14,8 @@ C_BaseCharacter::C_BaseCharacter(){
 		LoadDivGraph("Image/Object/PlayerMaterial.png", Image_Width * Image_Height, Image_Width, Image_Height, Image_Size, Image_Size, image);
 	}
 
+	alivaFlag = true;
+
 }
 
 C_BaseCharacter::C_BaseCharacter(C_Position<int> argPos):C_BaseObject(pos){
@@ -23,10 +25,15 @@ C_BaseCharacter::C_BaseCharacter(C_Position<int> argPos):C_BaseObject(pos){
 		LoadDivGraph("Image/Object/PlayerMaterial.png", Image_Width * Image_Height, Image_Width, Image_Height, Image_Size, Image_Size, image);
 	}
 
+	alivaFlag = true;
+
 }
 
 C_BaseCharacter::~C_BaseCharacter(){
 
-	image = NULL;
+	if(image != NULL){
+		delete image;
+		image = NULL;
+	}
 
 }

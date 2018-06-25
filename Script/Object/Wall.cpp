@@ -4,6 +4,7 @@
 C_Wall::C_Wall(C_Position<int> argPos):C_BaseBlock(argPos){
 
 	imageKind = Laby_Wall;
+	passFlag = false;
 
 }
 
@@ -23,8 +24,7 @@ void C_Wall::Draw(){
 
 }
 
-void C_Wall::HitAction(){
+bool C_Wall::HitAction(){
 
-
-
+	return passFlag;
 }

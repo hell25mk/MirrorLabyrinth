@@ -4,7 +4,7 @@
 
 C_Road::C_Road(C_Position<int> argPos):C_BaseBlock(argPos){
 
-	imageKind = Laby_Wall;
+	imageKind = Laby_Road;
 
 }
 
@@ -23,8 +23,7 @@ void C_Road::Draw(){
 
 }
 
-void C_Road::HitAction(){
+bool C_Road::HitAction(){
 
-
-
+	return passFlag;
 }

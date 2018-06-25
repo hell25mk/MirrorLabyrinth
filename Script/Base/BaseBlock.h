@@ -16,6 +16,7 @@ protected:
 	static const int Image_Height;
 
 protected:
+	bool passFlag;
 	static int *image;
 	int imageKind;
 

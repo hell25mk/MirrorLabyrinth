@@ -24,8 +24,7 @@ void C_Stairs::Draw(){
 
 }
 
-void C_Stairs::HitAction(){
+bool C_Stairs::HitAction(){
 
-
-
+	return passFlag;
 }

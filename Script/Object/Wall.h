@@ -9,7 +9,7 @@ public:
 	virtual ~C_Wall();
 	virtual void Update() override;
 	virtual void Draw() override;
-	virtual void HitAction() override;
+	virtual bool HitAction() override;
 
 };
 

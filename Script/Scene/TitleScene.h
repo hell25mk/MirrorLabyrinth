@@ -20,6 +20,7 @@ private:
 		TitleMenu_Num,
 	}e_TitleMenu;
 
+private:
 	e_TitleMenu selectMenu;
 	int backGroundImage;
 	int titleImage;

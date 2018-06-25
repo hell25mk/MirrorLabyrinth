@@ -14,6 +14,8 @@ C_Key::C_Key(C_Position<int> argPos):C_BaseBlock(argPos){
 		imageKind = Laby_DiaKey;
 	}
 
+	getFlag = false;
+
 }
 
 C_Key::~C_Key(){
@@ -28,14 +30,19 @@ void C_Key::Update(){
 void C_Key::Draw(){
 
 	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[Laby_Road], TRUE);
-	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[imageKind], TRUE);
+	if(!getFlag){
+		DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[imageKind], TRUE);
+	}
 
 }
 
-void C_Key::HitAction(){
+bool C_Key::HitAction(){
 
+	C_SoundPlayer::GetInstance().PlaySE("Key");
 
+	getFlag = true;
 
+	return passFlag;
 }
 
 bool C_Key::KeyPosCheck(C_Position<int> argPos){

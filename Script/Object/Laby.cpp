@@ -138,7 +138,12 @@ void C_Laby::StageCreate(int argNowStageNum){
 
 void C_Laby::Update(){
 
+	for(auto itr = blockVector.begin(); itr != blockVector.end();){
 
+		(*itr)->Update();
+		itr++;
+
+	}
 
 }
 
@@ -209,12 +214,6 @@ void C_Laby::Draw(){
 	}
 	*/
 
-	/*for(int i = 0; i < blockVector.size(); i++){
-
-		blockVector[i]->Draw();
-
-	}*/
-
 	for(auto itr = blockVector.begin(); itr != blockVector.end();){
 
 		(*itr)->Draw();
@@ -228,7 +227,6 @@ bool C_Laby::MoveCheck(int argDire, C_Position<int> argPos){
 
 	bool checkFlag = false;
 	C_Position<int> tempPos;
-	int vectorPos;
 	int vy[4] = { 1,0,0,-1 };		//yˆÚ“®—Ê
 	int vx[4] = { 0,1,-1,0 };		//xˆÚ“®—Ê
 	//int test[4] = { Laby_Height - 1,Laby_Width - 1,0,0 };		//ˆÚ“®‰Â”\”ÍˆÍ
@@ -251,7 +249,13 @@ bool C_Laby::MoveCheck(int argDire, C_Position<int> argPos){
 	}
 #pragma endregion
 
-	vectorPos = tempPos.y * Laby_Width + tempPos.x;
+	if(!blockVector[tempPos.y * Laby_Width + tempPos.x]->HitAction()){
+		return false;
+	}
+
+	checkFlag = true;
+
+	/*vectorPos = tempPos.y * Laby_Width + tempPos.x;
 
 	if(labyVector[vectorPos] == Laby_Wall){
 		checkFlag = false;
@@ -300,7 +304,7 @@ bool C_Laby::MoveCheck(int argDire, C_Position<int> argPos){
 			itr++;
 
 		}
-	}
+	}*/
 
 	return checkFlag;
 }

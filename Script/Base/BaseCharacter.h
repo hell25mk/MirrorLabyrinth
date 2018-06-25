@@ -20,6 +20,7 @@ protected:
 	static const int AnimeChange_Time;
 
 protected:
+	bool alivaFlag;
 	static int *image;
 	int dire;
 	int imageNumber;

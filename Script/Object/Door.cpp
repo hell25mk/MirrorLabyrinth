@@ -6,7 +6,7 @@
 C_Door::C_Door(C_Position<int> argPos):C_BaseBlock(argPos){
 
 	imageKind = Laby_CloseDoor;
-	doorOpenFlag = false;
+	passFlag = false;
 
 }
 
@@ -26,10 +26,16 @@ void C_Door::Draw(){
 	
 }
 
-void C_Door::HitAction(){
+bool C_Door::HitAction(){
 
+	/*if(maxKeyNum == argNowKeyNum){
+		passFlag = true;
+		imageKind = Laby_OpenDoor;
+	}*/
+	imageKind = Laby_OpenDoor;
+	passFlag = true;
 
-
+	return passFlag;
 }
 
 void C_Door::SetMaxKeyNum(int argMaxKeyNum){
@@ -41,7 +47,7 @@ void C_Door::SetMaxKeyNum(int argMaxKeyNum){
 void C_Door::CheckDoorOpenFlag(int argNowKeyNum){
 
 	if(maxKeyNum == argNowKeyNum){
-		doorOpenFlag = true;
+		passFlag = true;
 		imageKind = Laby_OpenDoor;
 	}
 
@@ -49,5 +55,5 @@ void C_Door::CheckDoorOpenFlag(int argNowKeyNum){
 
 bool C_Door::GetDoorOpenFlag(){
 
-	return doorOpenFlag;
+	return passFlag;
 }

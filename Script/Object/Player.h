@@ -13,7 +13,7 @@ public:
 	virtual ~C_Player();
 	virtual void Update() override;
 	virtual void Draw() override;
-	virtual void HitAction() override;
+	virtual bool HitAction() override;
 	void Move(int argMoveDire);
 	C_Position<int> GetPosition();
 	int GetDirection();

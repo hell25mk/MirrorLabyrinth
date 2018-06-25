@@ -8,7 +8,7 @@ class C_BaseScene{
 
 public:
 	C_BaseScene(C_SceneChanger *argSceneChanger);
-	virtual ~C_BaseScene(){};
+	virtual ~C_BaseScene();
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
 

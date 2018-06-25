@@ -3,7 +3,6 @@
 C_GameScene::C_GameScene(C_SceneChanger *argSceneChanger) : C_BaseScene(argSceneChanger){
 
 	stageManager = new C_StageManager();
-
 	gameState = stageManager->GetGameState();
 
 }

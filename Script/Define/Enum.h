@@ -20,9 +20,12 @@ typedef enum{
 	Laby_RubyKey,
 	Laby_DiaKey,
 	Laby_Nore3,
-	Laby_Block,
-	Laby_Nore4 = 14,
-}e_BlockKind;
+	Laby_Block1,
+	Laby_Block2,
+	Laby_Block3,
+	Laby_Block4,
+	Laby_Nore4,
+}e_BlockImageKind;
 
 typedef enum{
 	State_ModeSelect,

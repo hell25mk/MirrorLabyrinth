@@ -6,7 +6,6 @@ C_ResultScene::C_ResultScene(C_SceneChanger *argSceneChanger) : C_BaseScene(argS
 
 	resultImage = LoadGraph("Image/Result/Result.png");
 	pleaseKeyImage = LoadGraph("Image/Result/PleaseSpaseKey.png");
-
 	flashCount = 0;
 	flashFlag = true;
 
