@@ -36,6 +36,10 @@ C_Laby::C_Laby(int argNowStageNum){
 	blockVector.resize(Laby_Height * Laby_Width);
 	gameState = State_GamePlay;
 	StageCreate(argNowStageNum);
+	pos.x = 0;
+	pos.y = 0;
+	maxKeyNum = 0;
+	getKeyNum = 0;
 
 }
 
@@ -45,78 +49,35 @@ C_Laby::~C_Laby(){
 
 }
 
-void C_Laby::StageCreate(int argNowStageNum){
+void C_Laby::PushBlockObject(int argBlockKind){
 
-	char fileName[64];
-	sprintf_s(fileName, sizeof(fileName), "Stage/Stage%d.csv", argNowStageNum);
-
-	int fp;
-	char inputc;
-	maxKeyNum = 0;
-	getKeyNum = 0;
-	pos.x = 0;
-	pos.y = 0;
-
-	fp = C_FileManager::GetInstance().FileOpen(fileName);
-
-	if(fp == NULL){
-		labyVector = LabySampleVector;
-		return;
-	}
-
-	while(1){
-
-		//一文字取得
-		inputc = FileRead_getc(fp);
-
-		//スラッシュはコメントなので読み飛ばす
-		if(inputc == '/'){
-			while(FileRead_getc(fp) != '\n');
-			continue;
-		}
-
-		//区切りを飛ばす
-		if(inputc == ',' || inputc == '\n' || inputc == '\r'){
-			continue;
-		}
-
-		//ファイル末尾に来た場合ループフラグを変更する
-		if(inputc == EOF){
+	switch(argBlockKind){
+		case Laby_Road:
+			blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Road(pos));
 			break;
-		}
-
-		labyVector[pos.y * Laby_Width + pos.x] = atoi(&inputc);
-		switch(labyVector[pos.y * Laby_Width + pos.x]){
-			case Laby_Road:
-				blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Road(pos));
-				break;
-			case Laby_Wall:
-				blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Wall(pos));
-				break;
-			case Laby_Stairs:
-				blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Stairs(pos));
-				break;
-			case Laby_Door:
-				blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Door(pos, &maxKeyNum, &getKeyNum));
-				break;
-			case Laby_Key:
-				blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Key(pos,&getKeyNum));
-				maxKeyNum++;
-				break;
-			case Laby_Block:
-				blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Block(pos));
-				break;
-		}
-
-		pos.x++;
-		if(pos.x % Laby_Width == 0){
-			pos.y++;
-			pos.x = 0;
-		}
-
+		case Laby_Wall:
+			blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Wall(pos));
+			break;
+		case Laby_Stairs:
+			blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Stairs(pos));
+			break;
+		case Laby_Door:
+			blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Door(pos, &maxKeyNum, &getKeyNum));
+			break;
+		case Laby_Key:
+			blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Key(pos, &getKeyNum));
+			maxKeyNum++;
+			break;
+		case Laby_Block:
+			blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Block(pos));
+			break;
 	}
 
-	C_FileManager::GetInstance().FileClose();
+	pos.x++;
+	if(pos.x % Laby_Width == 0){
+		pos.y++;
+		pos.x = 0;
+	}
 
 }
 

@@ -19,9 +19,9 @@ public:
 	~C_Laby();
 	void Update();
 	void Draw();
+	void PushBlockObject(int argBlockKind);
 	bool MoveCheck(int argDire, C_Position<int> argPos);
 	e_GameState GetGameState(C_Position<int> argPos);
-	void StageCreate(int argNowStageNum);
 
 private:
 	static const int Laby_Height;
