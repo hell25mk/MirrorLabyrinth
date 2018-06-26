@@ -62,7 +62,6 @@ void C_Laby::StageCreate(int argNowStageNum){
 	pos.x = 0;
 	pos.y = 0;
 
-	//fp = FileRead_open(fileName);
 	fp = C_FileManager::GetInstance().FileOpen(fileName);
 
 	if(fp == NULL){
@@ -115,8 +114,6 @@ void C_Laby::StageCreate(int argNowStageNum){
 				breakWallList.push_back(new C_Block(pos));
 				blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Block(pos));
 				break;
-			default:
-				blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Block(pos));
 		}
 
 		pos.x++;
