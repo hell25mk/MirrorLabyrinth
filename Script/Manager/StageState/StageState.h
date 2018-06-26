@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../StageManager.h"
+#include "../../Manager/KeyboardManager.h"
 
 class C_StageState{
 

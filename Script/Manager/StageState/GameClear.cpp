@@ -1,5 +1,5 @@
 #include "GameClear.h"
-
+#include "DxLib.h"
 
 
 C_GameClear::C_GameClear(C_StageManager *argStageManager):C_StageState(argStageManager){

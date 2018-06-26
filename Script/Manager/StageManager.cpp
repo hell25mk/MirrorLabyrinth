@@ -3,6 +3,7 @@
 #include "KeyboardManager.h"
 #include "../Object/Laby.h"
 #include "../Object/Player.h"
+#include "../Object/Mirror.h"
 #include "../UI/Timer.h"
 #include "../UI/GameText.h"
 #include "../System/Position.h"
@@ -43,6 +44,7 @@ C_StageManager::~C_StageManager(){
 	C_SoundPlayer::GetInstance().StopBGM();
 	delete laby;
 	delete player;
+	delete mirror;
 	delete timer;
 	delete gameText;
 
@@ -63,6 +65,7 @@ void C_StageManager::StageInit(){
 	pos.x = 1;
 	pos.y = 13;
 	player = new C_Player(pos);
+	mirror = new C_Mirror(player);
 	timer = new C_Timer();
 	gameText = new C_GameText();
 
@@ -136,6 +139,11 @@ void C_StageManager::StageCreate(){
 
 }
 
+int C_StageManager::GetStageNum(){
+
+	return nowStageNum;
+}
+
 #pragma region ModeSelect
 void C_StageManager::ModeSelectUpdate(){
 
@@ -172,12 +180,6 @@ void C_StageManager::ModeSelectUpdate(){
 				C_SoundPlayer::GetInstance().PlayBGM("Stage");
 			}
 			break;
-		/*case Mode_ExtraStage:
-			if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
-				//nowStageNum = 99;
-				nowGameState = State_GameStart;
-			}
-			break;*/
 		case Mode_Exit:
 			if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
 				nowGameState = State_Nore;
@@ -203,9 +205,6 @@ void C_StageManager::ModeSelectDraw(){
 		case Mode_SelectStage:
 			selectStageAlpha = 255;
 			break;
-		/*case Mode_ExtraStage:
-			extraStageAlpha = 255;
-			break;*/
 		case Mode_Exit:
 			exitAlpha = 255;
 			break;
@@ -222,8 +221,6 @@ void C_StageManager::ModeSelectDraw(){
 		DrawRotaGraph(400, 230, 0.7, 0.0, numberImage[nowStageNum / 10], TRUE);		//2Œ…–Ú
 		DrawRotaGraph(460, 230, 0.7, 0.0, numberImage[nowStageNum % 10], TRUE);		//1Œ…–Ú
 	}
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, extraStageAlpha);
-	//DrawGraph(0, 0, extraStageImage, TRUE);
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, exitAlpha);
 	DrawGraph(0, 0, backImage, TRUE);
 
@@ -282,13 +279,13 @@ void C_StageManager::GamePlayUpdate(){
 	if(keyInput != Dire_Nore){
 		if(laby->MoveCheck(keyInput, player->GetPosition())){
 			player->Move(keyInput);
+			mirror->Move();
 		}
 	}
 
 	player->Update();
-
+	mirror->Update();
 	nowGameState = laby->GetGameState(player->GetPosition());
-
 	timer->Update();
 
 	bool timeOverFlag = timer->GetGameTimer() <= 0;
@@ -302,6 +299,7 @@ void C_StageManager::GamePlayDraw(){
 
 	laby->Draw();
 	player->Draw();
+	mirror->Draw();
 	timer->Draw();
 	gameText->Draw();
 

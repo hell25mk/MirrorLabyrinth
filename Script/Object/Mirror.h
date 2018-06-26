@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../Define/Enum.h"
 #include "../Base/BaseCharacter.h"
 
 class C_Player;

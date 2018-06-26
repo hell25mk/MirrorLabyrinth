@@ -5,17 +5,15 @@
 class C_Door : public C_BaseBlock{
 
 public:
-	C_Door(C_Position<int> argPos);
+	C_Door(C_Position<int> argPos, const int *maxKeyNum, int *getKeyNum);
 	virtual ~C_Door();
 	virtual void Update() override;
 	virtual void Draw() override;
 	virtual bool HitAction() override;
-	void SetMaxKeyNum(int argMaxKeyNum);
-	void CheckDoorOpenFlag(int argNowKeyNum);
-	bool GetDoorOpenFlag();
 
 private:
-	int maxKeyNum;
+	const int *maxKeyNum;
+	int *getKeyNum;
 
 };
 

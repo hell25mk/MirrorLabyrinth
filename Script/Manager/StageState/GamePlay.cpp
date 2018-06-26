@@ -1,5 +1,5 @@
 #include "GamePlay.h"
-
+#include "DxLib.h"
 
 
 C_GamePlay::C_GamePlay(C_StageManager *argStageManager):C_StageState(argStageManager){

@@ -4,8 +4,9 @@
 #include "../System/SoundPlayer.h"
 #include "../Define/Enum.h"
 
-C_Key::C_Key(C_Position<int> argPos):C_BaseBlock(argPos){
+C_Key::C_Key(C_Position<int> argPos, int *getKeyNum):C_BaseBlock(argPos){
 
+	this->getKeyNum = getKeyNum;
 	int rand = GetRand(9);
 
 	if(rand % 2){
@@ -38,24 +39,14 @@ void C_Key::Draw(){
 
 bool C_Key::HitAction(){
 
+	if(getFlag){
+		return passFlag;
+	}
+
+	*getKeyNum += 1;
 	C_SoundPlayer::GetInstance().PlaySE("Key");
 
 	getFlag = true;
 
 	return passFlag;
-}
-
-bool C_Key::KeyPosCheck(C_Position<int> argPos){
-
-	if(pos.x != argPos.x){
-		return false;
-	}
-
-	if(pos.y != argPos.y){
-		return false;
-	}
-
-	C_SoundPlayer::GetInstance().PlaySE("Key");
-
-	return true;
 }

@@ -38,17 +38,12 @@ private:
 	}e_BlockKind;
 
 private:
+	e_GameState gameState;
 	C_Position<int> pos;
 	std::vector<int> labyVector;
 	std::vector<std::shared_ptr<C_BaseBlock>> blockVector;
-
-	std::vector<C_Wall> wall;
-	C_Door *door;
-	std::list<C_Key*> keyList;
+	int maxKeyNum;
 	int getKeyNum;
-	std::list<C_Block*> breakWallList;
-
-	e_GameState gameState;
-
+	
 };
 

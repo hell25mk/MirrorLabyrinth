@@ -5,6 +5,7 @@
 
 class C_Laby;
 class C_Player;
+class C_Mirror;
 class C_Timer;
 class C_GameText;
 
@@ -16,6 +17,7 @@ public:
 
 	void StageInit();
 	void StageCreate();
+	int GetStageNum();
 
 	void ModeSelectUpdate();
 	void ModeSelectDraw();
@@ -45,23 +47,20 @@ private:
 	typedef enum{
 		Mode_NormalPlay,
 		Mode_SelectStage,
-		//Mode_ExtraStage,
 		Mode_Exit,
 
 		Mode_Num,
 	}e_ModeSelect;
 #pragma endregion
 
-	/*std::vector<int> labyVector;
-	std::vector<C_BaseObject> labyObject;*/
+private:
 	C_Laby *laby;
 	C_Player *player;
+	C_Mirror *mirror;
 	C_Timer *timer;
 	C_GameText *gameText;
-
 	e_GameState nowGameState;
 	int nowStageNum;
-
 	e_ModeSelect nowSelectMode;
 
 #pragma region Material

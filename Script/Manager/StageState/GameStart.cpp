@@ -1,5 +1,5 @@
 #include "GameStart.h"
-
+#include "DxLib.h"
 
 
 C_GameStart::C_GameStart(C_StageManager *argStageManager):C_StageState(argStageManager){

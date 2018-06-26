@@ -1,5 +1,5 @@
 #include "StageClear.h"
-
+#include "DxLib.h"
 
 
 C_StageClear::C_StageClear(C_StageManager *argStageManager):C_StageState(argStageManager){

@@ -1,9 +1,7 @@
 #pragma once
 
-#include "../Define/Enum.h"
 #include "../Base/BaseCharacter.h"
 
-class C_Mirror;
 class C_Animation;
 
 class C_Player : public C_BaseCharacter{
@@ -20,7 +18,6 @@ public:
 
 private:
 	bool moveFlag;
-	C_Mirror *mirror;
 	C_Animation *animation;
 
 };

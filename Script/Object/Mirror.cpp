@@ -3,7 +3,6 @@
 #include "../System/Position.h"
 #include "../System/Animation.h"
 #include "Player.h"
-#include "../Define/Enum.h"
 
 const int Reflect_Space = 14;
 const int FlashLoopTime = 180;

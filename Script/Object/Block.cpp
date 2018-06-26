@@ -32,6 +32,10 @@ void C_Block::Draw(){
 
 bool C_Block::HitAction(){
 
+	if(passFlag){
+		return passFlag;
+	}
+
 	damage++;
 
 	C_SoundPlayer::GetInstance().PlaySE("Block1");

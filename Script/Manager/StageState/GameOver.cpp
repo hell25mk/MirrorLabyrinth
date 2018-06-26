@@ -1,5 +1,5 @@
 #include "GameOver.h"
-
+#include "DxLib.h"
 
 
 C_GameOver::C_GameOver(C_StageManager *argStageManager):C_StageState(argStageManager){
