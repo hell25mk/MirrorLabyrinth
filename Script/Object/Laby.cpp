@@ -34,7 +34,6 @@ C_Laby::C_Laby(){
 
 	labyVector.resize(Laby_Height * Laby_Width);
 	blockVector.resize(Laby_Height * Laby_Width);
-	gameState = State_GamePlay;
 	maxKeyNum = 0;
 	getKeyNum = 0;
 

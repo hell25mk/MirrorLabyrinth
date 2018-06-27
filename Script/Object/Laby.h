@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../Define/Enum.h"
 #include "../System/Position.h"
 #include <memory>
 #include <vector>
@@ -33,7 +32,6 @@ private:
 	}e_BlockKind;
 
 private:
-	e_GameState gameState;
 	C_Position<int> pos;
 	std::vector<int> labyVector;
 	std::vector<std::shared_ptr<C_BaseBlock>> blockVector;

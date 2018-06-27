@@ -3,19 +3,11 @@
 #include "../System/Position.h"
 #include "../System/Animation.h"
 #include "Player.h"
+#include "../Define/Enum.h"
 
 const int Reflect_Space = 14;
 const int FlashLoopTime = 180;
 const int AnimeChange_Time = 30;
-
-enum{
-	Dire_Down,
-	Dire_Right,
-	Dire_Left,
-	Dire_Up,
-
-	Dire_Nore,
-};
 
 C_Mirror::C_Mirror(C_Player *player):C_BaseCharacter(){
 
