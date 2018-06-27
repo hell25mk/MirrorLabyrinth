@@ -6,7 +6,7 @@ const int Color_White = GetColor(255, 255, 255);
 
 C_GameText::C_GameText(){
 
-	const char *levelName[4] = { "Easy","Normal","Hard","Expert" };
+	const char *levelName[3] = { "Easy","Normal","Hard" };
 
 	strcpy_s(strGameLevel, sizeof(strGameLevel), levelName[C_GameInfo::GetInstance().GetGameLevel()]);
 

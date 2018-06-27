@@ -12,8 +12,8 @@ public:
 
 private:
 	typedef enum{
-		Mode_NormalPlay,
-		Mode_SelectStage,
+		Mode_Play,
+		Mode_Select,
 		Mode_Exit,
 
 		Mode_Num,
@@ -24,9 +24,7 @@ private:
 	int nowStageNum;
 	int numberImage[10];
 	int backGroundImage;
-	int	normalPlayImage;
-	int	selectStageImage;
-	int	backImage;
+	int *menuImage;
 
 };
 

@@ -12,20 +12,18 @@ public:
 
 private:
 	typedef enum{
-		TitleMenu_Start,
-		TitleMenu_Config,
-		TitleMenu_Exit,
+		Title_Start,
+		Title_Config,
+		Title_Exit,
 
-		TitleMenu_Num,
+		Title_Num,
 	}e_TitleMenu;
 
 private:
 	e_TitleMenu selectMenu;
 	int backGroundImage;
 	int titleImage;
-	int startImage;
-	int configImage;
-	int exitImage;
+	int *menuImage;
 
 };
 

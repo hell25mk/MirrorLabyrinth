@@ -33,10 +33,5 @@ void C_Door::Draw(){
 
 bool C_Door::HitAction(){
 
-#ifdef _DEBUG
-	/*imageKind = Laby_OpenDoor;
-	passFlag = true;*/
-#endif // ƒeƒXƒg
-
 	return passFlag;
 }

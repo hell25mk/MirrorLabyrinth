@@ -42,12 +42,6 @@ void C_GameInfo::DownGameLevel(){
 
 }
 
-void C_GameInfo::ExpertGameLevel(){
-
-	gameLevel = Level_Expert;
-
-}
-
 e_GameLevel C_GameInfo::GetGameLevel(){ 
 
 	return gameLevel;

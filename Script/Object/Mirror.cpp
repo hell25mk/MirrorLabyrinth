@@ -44,11 +44,6 @@ void C_Mirror::Draw(){
 
 }
 
-bool C_Mirror::HitAction(){
-
-	return true;
-}
-
 void C_Mirror::Move(){
 
 	pos.x = player->GetPosition().x;
@@ -62,9 +57,7 @@ void C_Mirror::Move(){
 void C_Mirror::Fhashing(){
 
 	flashTime++;
-
 	flashFlag = flashTime < FlashLoopTime / 3;
-
 	flashTime = flashTime % FlashLoopTime;
 
 #ifdef _DEBUG

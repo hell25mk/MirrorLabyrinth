@@ -32,7 +32,7 @@ C_BaseCharacter::C_BaseCharacter(C_Position<int> argPos):C_BaseObject(pos){
 C_BaseCharacter::~C_BaseCharacter(){
 
 	if(image != NULL){
-		delete image;
+		delete[] image;
 		image = NULL;
 	}
 

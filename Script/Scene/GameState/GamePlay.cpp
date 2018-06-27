@@ -89,6 +89,12 @@ void C_GamePlay::StageCreate(){
 	pos.y = 0;
 
 	fp = C_FileManager::GetInstance().FileOpen(fileName);
+	if(fp == NULL){
+		printfDx("ƒtƒ@ƒCƒ‹‚ð“Ç‚Ýž‚ß‚Ü‚¹‚ñ‚Å‚µ‚½");
+		gameScene->NextScene(Scene_Title);
+		return;
+	}
+
 	laby = new C_Laby();
 
 	while(1){
@@ -134,7 +140,7 @@ void C_GamePlay::StageCreate(){
 	mirror = new C_Mirror(player);
 	timer = new C_Timer();
 	gameText = new C_GameText();
-	C_FileManager::GetInstance().FileClose();
 
+	C_FileManager::GetInstance().FileClose();
 
 }

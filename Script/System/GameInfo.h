@@ -8,7 +8,6 @@ enum e_GameLevel{
 	Level_Easy,
 	Level_Normal,
 	Level_Hard,
-	Level_Expert,
 
 	Level_Num,
 };
@@ -24,7 +23,6 @@ public:
 	virtual void Create() override;
 	void UpGameLevel();
 	void DownGameLevel();
-	void ExpertGameLevel();
 	e_GameLevel GetGameLevel();
 
 protected:

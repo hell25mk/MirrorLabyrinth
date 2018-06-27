@@ -11,7 +11,6 @@ C_ResultScene::C_ResultScene(C_SceneChanger *argSceneChanger) : C_BaseScene(argS
 
 }
 
-
 C_ResultScene::~C_ResultScene(){
 }
 

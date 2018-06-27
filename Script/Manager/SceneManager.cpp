@@ -6,9 +6,7 @@
 C_SceneManager::C_SceneManager(){
 
 	nextScene = Scene_Nore;
-
 	nowScene = (C_BaseScene*)new C_TitleScene(this);
-
 	//stackName.push(new C_TitleScene(this,keyManager));
 
 }
@@ -26,16 +24,16 @@ void C_SceneManager::Update(){
 
 		switch(nextScene){
 			case Scene_Title:
-				nowScene = (C_BaseScene*)new C_TitleScene(this);
+				nowScene = new C_TitleScene(this);
 				break;
 			case Scene_Game:
-				nowScene = (C_BaseScene*)new C_GameScene(this);
+				nowScene = new C_GameScene(this);
 				break;
 			case Scene_Config:
-				nowScene = (C_BaseScene*)new C_ConfigScene(this);
+				nowScene = new C_ConfigScene(this);
 				break;
 			case Scene_Result:
-				nowScene = (C_BaseScene*)new C_ResultScene(this);
+				nowScene = new C_ResultScene(this);
 				break;
 			case Scene_End:
 				return;

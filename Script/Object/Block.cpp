@@ -37,11 +37,9 @@ bool C_Block::HitAction(){
 	}
 
 	damage++;
-
 	C_SoundPlayer::GetInstance().PlaySE("Block1");
 
 	passFlag = damage > (Laby_Block4 - Laby_Block1);
-
 	if(passFlag){
 		C_SoundPlayer::GetInstance().PlaySE("Block2");
 	}

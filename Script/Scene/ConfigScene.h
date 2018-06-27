@@ -9,25 +9,23 @@ public:
 	virtual ~C_ConfigScene();
 	void Update() override;
 	void Draw() override;
+	void Menu();
+	void GameLevel();
 
 private:
 	typedef enum{
-		ConfigMenu_GameLevel,
-		ConfigMenu_Exit,
+		Config_GameLevel,
+		Config_Exit,
 
-		ConfigMenu_Num,
+		Config_Num,
 	}e_ConfigMenu;
 
+private:
 	e_ConfigMenu selectMenu;
 	int backGroundImage;
-	int gameLevelImage;
-	int easyImage;
-	int easyContentImage;
-	int normalImage;
-	int normalContentImage;
-	int hardImage;
-	int hardContentImage;
-	int backImage;
+	int *menuImage;
+	int *levelImage;
+	int *contentImage;
 
 };
 

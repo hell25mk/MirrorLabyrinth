@@ -7,15 +7,20 @@ C_TitleScene::C_TitleScene(C_SceneChanger *argSceneChanger):C_BaseScene(argScene
 
 	backGroundImage = LoadGraph("Image/Share/BackGround.png");
 	titleImage = LoadGraph("Image/Title/Title.png");
-	startImage = LoadGraph("Image/Title/TitleMenuStart.png");
-	configImage = LoadGraph("Image/Title/TitleMenuConfig.png");
-	exitImage = LoadGraph("Image/Title/TitleMenuExit.png");
 
-	selectMenu = TitleMenu_Start;
+	menuImage = new int[Title_Num];
+	menuImage[Title_Start] = LoadGraph("Image/Title/TitleMenuStart.png");
+	menuImage[Title_Config] = LoadGraph("Image/Title/TitleMenuConfig.png");
+	menuImage[Title_Exit] = LoadGraph("Image/Title/TitleMenuExit.png");
+
+	selectMenu = Title_Start;
 
 }
 
 C_TitleScene::~C_TitleScene(){
+
+	delete[] menuImage;
+
 }
 
 void C_TitleScene::Update(){
@@ -31,23 +36,22 @@ void C_TitleScene::Update(){
 #endif // DEBUG
 
 	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_DOWN) == 1){
-		selectMenu = (e_TitleMenu)((selectMenu + 1) % TitleMenu_Num);
+		selectMenu = (e_TitleMenu)((selectMenu + 1) % Title_Num);
 	}
 
 	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_UP) == 1){
-		selectMenu = (e_TitleMenu)((selectMenu + (TitleMenu_Num - 1)) % TitleMenu_Num);
+		selectMenu = (e_TitleMenu)((selectMenu + (Title_Num - 1)) % Title_Num);
 	}
 
 	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
 		switch(selectMenu){
-			case TitleMenu_Start:
-				C_SoundPlayer::GetInstance().StopBGM();
+			case Title_Start:
 				sceneChanger->SceneChange(Scene_Game);
 				break;
-			case TitleMenu_Config:
+			case Title_Config:
 				sceneChanger->SceneChange(Scene_Config);
 				break;
-			case TitleMenu_Exit:
+			case Title_Exit:
 				sceneChanger->SceneChange(Scene_End);
 				break;
 		}
@@ -57,33 +61,21 @@ void C_TitleScene::Update(){
 
 void C_TitleScene::Draw(){
 
+	//”wŒi
 	DrawGraph(0, 0, backGroundImage, TRUE);
-	
 	//ƒ^ƒCƒgƒ‹
 	DrawGraph(0, 0, titleImage,TRUE);
 
-	int startAlpha(128);
-	int configAlpha(128);
-	int exitAlpha(128);
+	int drawAlpha[Title_Num] = { 128,128,128 };
 
-	switch(selectMenu){
-		case TitleMenu_Start:
-			startAlpha = 255;
-			break;
-		case TitleMenu_Config:
-			configAlpha = 255;
-			break;
-		case TitleMenu_Exit:
-			exitAlpha = 255;
-			break;
-	}
+	drawAlpha[selectMenu] = 255;
 
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, startAlpha);
-	DrawGraph(0, 0, startImage, TRUE);
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, configAlpha);
-	DrawGraph(0, 0, configImage, TRUE);
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, exitAlpha);
-	DrawGraph(0, 0, exitImage, TRUE);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, drawAlpha[Title_Start]);
+	DrawGraph(0, 0, menuImage[Title_Start], TRUE);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, drawAlpha[Title_Config]);
+	DrawGraph(0, 0, menuImage[Title_Config], TRUE);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, drawAlpha[Title_Exit]);
+	DrawGraph(0, 0, menuImage[Title_Exit], TRUE);
 
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 

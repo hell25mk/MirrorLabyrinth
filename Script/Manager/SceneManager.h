@@ -15,8 +15,6 @@ public:
 	void SceneChange(e_Scene argNextScene) override;
 	int GetNextScene();
 
-	void MusicInit();
-
 private:
 	C_BaseScene *nowScene;
 	e_Scene nextScene;
