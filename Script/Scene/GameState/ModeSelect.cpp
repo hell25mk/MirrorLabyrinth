@@ -18,46 +18,43 @@ C_ModeSelect::~C_ModeSelect(){
 void C_ModeSelect::Update(){
 
 	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_DOWN) == 1){
-		nowSelectMode = (e_ModeSelect)((nowSelectMode + 1) % Mode_Num);
+		nowSelectMode = (nowSelectMode + 1) % Mode_Num;
 	}
 
 	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_UP) == 1){
-		nowSelectMode = (e_ModeSelect)((nowSelectMode + (Mode_Num - 1)) % Mode_Num);
+		nowSelectMode = (nowSelectMode + (Mode_Num - 1)) % Mode_Num;
 	}
 
-	switch(nowSelectMode){
-		case Mode_NormalPlay:
-			if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
-				gameScene->SetStageNum(1);
-				gameScene->SetGameState(gameScene->State_GameStart);
-				
-			}
-			break;
-		case Mode_SelectStage:
-			if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_LEFT) == 1){
-				if(nowStageNum > 1){
-					nowStageNum--;
-				}
-			}
-			if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_RIGHT) == 1){
-				if(nowStageNum < gameScene->Max_Stage_Num){
-					nowStageNum++;
-				}
-			}
+	if(nowSelectMode == Mode_SelectStage){
+		if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_LEFT) == 1){
+			nowStageNum--;
+		}
+		if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_RIGHT) == 1){
+			nowStageNum++;
+		}
+	}
 
-			if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
-				//nowGameState = State_GameStart;
-			}
-			break;
-		case Mode_Exit:
-			if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
-				gameScene->NextScene();
-			}
-			break;
+	if(nowStageNum < 1){
+		nowStageNum = 1;
+	}
+	if(nowStageNum > gameScene->Max_Stage_Num){
+		nowStageNum = gameScene->Max_Stage_Num;
 	}
 
 	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
-
+		switch(nowSelectMode){
+			case Mode_NormalPlay:
+				gameScene->SetStageNum(1);
+				gameScene->SetGameState(gameScene->State_GameStart);
+				break;
+			case Mode_SelectStage:
+				gameScene->SetStageNum(nowStageNum);
+				gameScene->SetGameState(gameScene->State_GameStart);
+				break;
+			case Mode_Exit:
+				gameScene->NextScene();
+				break;
+		}
 	}
 
 }
@@ -88,7 +85,7 @@ void C_ModeSelect::Draw(){
 	DrawGraph(0, 0, selectStageImage, TRUE);
 	
 	//ƒtƒƒA”•\Ž¦
-	if(gameScene->GetStageNum() < 10){
+	if(nowStageNum < 10){
 		DrawRotaGraph(450, 230, 0.7, 0.0, numberImage[nowStageNum], TRUE);
 	} else{
 		DrawRotaGraph(400, 230, 0.7, 0.0, numberImage[nowStageNum / 10], TRUE);		//2Œ…–Ú
