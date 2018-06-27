@@ -7,7 +7,6 @@ class C_ConfigScene : public C_BaseScene{
 public:
 	C_ConfigScene(C_SceneChanger *argSceneChanger);
 	virtual ~C_ConfigScene();
-
 	void Update() override;
 	void Draw() override;
 

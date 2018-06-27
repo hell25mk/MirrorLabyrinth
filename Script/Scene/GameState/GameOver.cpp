@@ -1,8 +1,8 @@
 #include "GameOver.h"
 #include "DxLib.h"
+#include "../../System/SoundPlayer.h"
 
-
-C_GameOver::C_GameOver(C_StageManager *argStageManager):C_StageState(argStageManager){
+C_GameOver::C_GameOver(C_GameScene *argGameScene):C_GameState(argGameScene){
 }
 
 
@@ -14,13 +14,13 @@ void C_GameOver::Update(){
 	C_SoundPlayer::GetInstance().StopBGM();
 
 	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
-		nowGameState = State_Result;
+		gameScene->NextScene();
 	}
 
 }
 
 void C_GameOver::Draw(){
 
-	DrawGraph(0, 0, gameOverImage, TRUE);
+	//DrawGraph(0, 0, gameOverImage, TRUE);
 
 }

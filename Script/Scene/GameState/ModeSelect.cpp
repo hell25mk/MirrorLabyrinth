@@ -1,10 +1,16 @@
 #include "ModeSelect.h"
 #include "DxLib.h"
 
+C_ModeSelect::C_ModeSelect(C_GameScene *argGameScene):C_GameState(argGameScene){
 
-C_ModeSelect::C_ModeSelect(C_StageManager *argStageManager):C_StageState(argStageManager){
+	nowStageNum = 1;
+	LoadDivGraph("Image/Share/Number.png", 10, 10, 1, 96, 96, numberImage);
+	backGroundImage = LoadGraph("Image/Share/BackGround.png");
+	normalPlayImage = LoadGraph("Image/Game/ModeSelectNormalPlay.png");
+	selectStageImage = LoadGraph("Image/Game/ModeSelectSelectStage.png");
+	backImage = LoadGraph("Image/Game/ModeSelecBack.png");
+
 }
-
 
 C_ModeSelect::~C_ModeSelect(){
 }
@@ -22,9 +28,9 @@ void C_ModeSelect::Update(){
 	switch(nowSelectMode){
 		case Mode_NormalPlay:
 			if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
-				nowStageNum = 1;
-				nowGameState = State_GameStart;
-				C_SoundPlayer::GetInstance().PlayBGM("Stage");
+				gameScene->SetStageNum(1);
+				gameScene->SetGameState(gameScene->State_GameStart);
+				
 			}
 			break;
 		case Mode_SelectStage:
@@ -34,21 +40,24 @@ void C_ModeSelect::Update(){
 				}
 			}
 			if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_RIGHT) == 1){
-				if(nowStageNum < Max_Stage_Num){
+				if(nowStageNum < gameScene->Max_Stage_Num){
 					nowStageNum++;
 				}
 			}
 
 			if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
-				nowGameState = State_GameStart;
-				C_SoundPlayer::GetInstance().PlayBGM("Stage");
+				//nowGameState = State_GameStart;
 			}
 			break;
 		case Mode_Exit:
 			if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
-				nowGameState = State_Nore;
+				gameScene->NextScene();
 			}
 			break;
+	}
+
+	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
+
 	}
 
 }
@@ -57,7 +66,6 @@ void C_ModeSelect::Draw(){
 
 	int normalPlayAlpha(128);
 	int selectStageAlpha(128);
-	int extraStageAlpha(128);
 	int exitAlpha(128);
 
 	DrawGraph(0, 0, backGroundImage, TRUE);
@@ -78,13 +86,15 @@ void C_ModeSelect::Draw(){
 	DrawGraph(0, 0, normalPlayImage, TRUE);
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, selectStageAlpha);
 	DrawGraph(0, 0, selectStageImage, TRUE);
+	
 	//ÉtÉçÉAêîï\é¶
-	if(nowStageNum < 10){
+	if(gameScene->GetStageNum() < 10){
 		DrawRotaGraph(450, 230, 0.7, 0.0, numberImage[nowStageNum], TRUE);
 	} else{
 		DrawRotaGraph(400, 230, 0.7, 0.0, numberImage[nowStageNum / 10], TRUE);		//2åÖñ⁄
 		DrawRotaGraph(460, 230, 0.7, 0.0, numberImage[nowStageNum % 10], TRUE);		//1åÖñ⁄
 	}
+
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, exitAlpha);
 	DrawGraph(0, 0, backImage, TRUE);
 

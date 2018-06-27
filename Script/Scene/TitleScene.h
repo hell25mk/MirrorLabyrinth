@@ -7,7 +7,6 @@ class C_TitleScene : public C_BaseScene{
 public:
 	C_TitleScene(C_SceneChanger *argSceneChanger);
 	virtual ~C_TitleScene();
-
 	void Update() override;
 	void Draw() override;
 

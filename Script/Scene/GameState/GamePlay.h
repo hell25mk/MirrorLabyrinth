@@ -1,6 +1,6 @@
 #pragma once
 
-#include "StageState.h"
+#include "GameState.h"
 
 class C_Laby;
 class C_Player;
@@ -8,10 +8,10 @@ class C_Mirror;
 class C_Timer;
 class C_GameText;
 
-class C_GamePlay : public C_StageState{
+class C_GamePlay : public C_GameState{
 
 public:
-	C_GamePlay(C_StageManager *argStageManager);
+	C_GamePlay(C_GameScene *argGameScene);
 	virtual ~C_GamePlay();
 	virtual void Update() override;
 	virtual void Draw() override;

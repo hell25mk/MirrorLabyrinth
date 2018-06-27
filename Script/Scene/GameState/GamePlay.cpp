@@ -10,7 +10,7 @@
 
 const int Player_Object = 10;
 
-C_GamePlay::C_GamePlay(C_StageManager *argStageManager):C_StageState(argStageManager){
+C_GamePlay::C_GamePlay(C_GameScene *argGameScene):C_GameState(argGameScene){
 }
 
 
@@ -53,12 +53,12 @@ void C_GamePlay::Update(){
 
 	player->Update();
 	mirror->Update();
-	stageManager->SetGameState(laby->GetGameState(player->GetPosition()));
+	gameScene->SetGameState(laby->GetGameState(player->GetPosition()));
 	timer->Update();
 
 	bool timeOverFlag = timer->GetGameTimer() <= 0;
 	if(timeOverFlag){
-		stageManager->SetGameState(State_GameOver);
+		gameScene->SetGameState(State_GameOver);
 	}
 
 }
@@ -76,7 +76,7 @@ void C_GamePlay::Draw(){
 void C_GamePlay::StageCreate(){
 
 	char fileName[64];
-	sprintf_s(fileName, sizeof(fileName), "Stage/Stage%d.csv", stageManager->GetStageNum());
+	sprintf_s(fileName, sizeof(fileName), "Stage/Stage%d.csv", gameScene->GetStageNum());
 
 	int fp;
 	char inputc;
@@ -116,7 +116,7 @@ void C_GamePlay::StageCreate(){
 		}
 
 		pos.x++;
-		if(pos.x % stageManager->Laby_Width == 0){
+		if(pos.x % gameScene->Laby_Width == 0){
 			pos.y++;
 			pos.x = 0;
 		}
