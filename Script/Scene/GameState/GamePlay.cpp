@@ -8,7 +8,7 @@
 #include "../../Manager/FileManager.h"
 #include "../../System/SoundPlayer.h"
 
-const int Player_Object = 0;
+const int Player_Object = 100;
 
 C_GamePlay::C_GamePlay(C_GameScene *argGameScene):C_GameState(argGameScene){
 
