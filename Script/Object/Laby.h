@@ -4,24 +4,19 @@
 #include "../System/Position.h"
 #include <memory>
 #include <vector>
-#include <list>
 
 class C_BaseBlock;
-class C_Wall;
-class C_Door;
-class C_Key;
-class C_Block;
 
 class C_Laby{
 
 public:
-	C_Laby(int argNowStageNum);
+	C_Laby();
 	~C_Laby();
 	void Update();
 	void Draw();
-	void PushBlockObject(int argBlockKind);
+	void PushBlockObject(int argBlockKind, C_Position<int> argPos);
 	bool MoveCheck(int argDire, C_Position<int> argPos);
-	e_GameState GetGameState(C_Position<int> argPos);
+	bool ClearCheck(C_Position<int> argPos);
 
 private:
 	static const int Laby_Height;

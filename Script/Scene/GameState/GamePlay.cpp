@@ -8,11 +8,13 @@
 #include "../../Manager/FileManager.h"
 #include "../../System/SoundPlayer.h"
 
-const int Player_Object = 10;
+const int Player_Object = 100;
 
 C_GamePlay::C_GamePlay(C_GameScene *argGameScene):C_GameState(argGameScene){
-}
 
+	StageCreate();
+
+}
 
 C_GamePlay::~C_GamePlay(){
 
@@ -53,9 +55,11 @@ void C_GamePlay::Update(){
 
 	player->Update();
 	mirror->Update();
-	gameScene->SetGameState(laby->GetGameState(player->GetPosition()));
-	timer->Update();
+	if(laby->ClearCheck(player->GetPosition())){
+		gameScene->SetGameState(gameScene->State_GameClear);
+	}
 
+	timer->Update();
 	bool timeOverFlag = timer->GetGameTimer() <= 0;
 	if(timeOverFlag){
 		gameScene->SetGameState(State_GameOver);
@@ -85,6 +89,7 @@ void C_GamePlay::StageCreate(){
 	pos.y = 0;
 
 	fp = C_FileManager::GetInstance().FileOpen(fileName);
+	laby = new C_Laby();
 
 	while(1){
 
@@ -110,9 +115,9 @@ void C_GamePlay::StageCreate(){
 		int createObj = atoi(&inputc);
 
 		if(createObj == Player_Object){
-			player = new C_Player(pos);
+			//player = new C_Player(pos);
 		} else{
-			laby->PushBlockObject(createObj);
+			laby->PushBlockObject(createObj, pos);
 		}
 
 		pos.x++;
@@ -129,7 +134,6 @@ void C_GamePlay::StageCreate(){
 	mirror = new C_Mirror(player);
 	timer = new C_Timer();
 	gameText = new C_GameText();
-
 	C_FileManager::GetInstance().FileClose();
 
 

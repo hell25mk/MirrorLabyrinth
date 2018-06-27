@@ -22,7 +22,6 @@ C_GameScene::C_GameScene(C_SceneChanger *argSceneChanger) : C_BaseScene(argScene
 
 }
 
-
 C_GameScene::~C_GameScene(){
 
 	delete gameState;

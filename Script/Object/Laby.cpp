@@ -30,13 +30,11 @@ std::vector<int> LabySampleVector{
 	 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 };
 
-C_Laby::C_Laby(int argNowStageNum){
+C_Laby::C_Laby(){
 
 	labyVector.resize(Laby_Height * Laby_Width);
 	blockVector.resize(Laby_Height * Laby_Width);
 	gameState = State_GamePlay;
-	pos.x = 0;
-	pos.y = 0;
 	maxKeyNum = 0;
 	getKeyNum = 0;
 
@@ -48,34 +46,30 @@ C_Laby::~C_Laby(){
 
 }
 
-void C_Laby::PushBlockObject(int argBlockKind){
+void C_Laby::PushBlockObject(int argBlockKind, C_Position<int> argPos){
+
+	labyVector[argPos.y * Laby_Width + argPos.x] = argBlockKind;
 
 	switch(argBlockKind){
 		case Laby_Road:
-			blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Road(pos));
+			blockVector[argPos.y * Laby_Width + argPos.x] = std::shared_ptr<C_BaseBlock>(new C_Road(argPos));
 			break;
 		case Laby_Wall:
-			blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Wall(pos));
+			blockVector[argPos.y * Laby_Width + argPos.x] = std::shared_ptr<C_BaseBlock>(new C_Wall(argPos));
 			break;
 		case Laby_Stairs:
-			blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Stairs(pos));
+			blockVector[argPos.y * Laby_Width + argPos.x] = std::shared_ptr<C_BaseBlock>(new C_Stairs(argPos));
 			break;
 		case Laby_Door:
-			blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Door(pos, &maxKeyNum, &getKeyNum));
+			blockVector[argPos.y * Laby_Width + argPos.x] = std::shared_ptr<C_BaseBlock>(new C_Door(argPos, &maxKeyNum, &getKeyNum));
 			break;
 		case Laby_Key:
-			blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Key(pos, &getKeyNum));
+			blockVector[argPos.y * Laby_Width + argPos.x] = std::shared_ptr<C_BaseBlock>(new C_Key(argPos, &getKeyNum));
 			maxKeyNum++;
 			break;
 		case Laby_Block:
-			blockVector[pos.y * Laby_Width + pos.x] = std::shared_ptr<C_BaseBlock>(new C_Block(pos));
+			blockVector[argPos.y * Laby_Width + argPos.x] = std::shared_ptr<C_BaseBlock>(new C_Block(argPos));
 			break;
-	}
-
-	pos.x++;
-	if(pos.x % Laby_Width == 0){
-		pos.y++;
-		pos.x = 0;
 	}
 
 }
@@ -137,18 +131,18 @@ bool C_Laby::MoveCheck(int argDire, C_Position<int> argPos){
 	return checkFlag;
 }
 
-e_GameState C_Laby::GetGameState(C_Position<int> const argPos){
+bool C_Laby::ClearCheck(C_Position<int> const argPos){
 
 	C_Position<int> tempPos;
 
 	tempPos.x = argPos.x / Block_Size;
 	tempPos.y = argPos.y / Block_Size;
 
-	if(labyVector[tempPos.y * Laby_Width + tempPos.x] != Laby_Stairs){
-		return gameState;
+	int test = tempPos.y * Laby_Width + tempPos.x;
+
+	if(labyVector[test] != Laby_Stairs){
+		return false;
 	}
 
-	gameState = State_StageClear;
-
-	return gameState;
+	return true;
 }

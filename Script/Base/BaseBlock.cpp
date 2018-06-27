@@ -30,7 +30,7 @@ C_BaseBlock::C_BaseBlock(C_Position<int> argPos):C_BaseObject(argPos){
 C_BaseBlock::~C_BaseBlock(){
 
 	if(image != NULL){
-		delete image;
+		delete[] image;
 		image = NULL;
 	}
 

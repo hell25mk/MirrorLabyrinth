@@ -15,7 +15,6 @@ private:
 	static const int BasisTime;
 	int nowGameTime;
 	int startTime;
-
 	int second;
 	int minute;
 
