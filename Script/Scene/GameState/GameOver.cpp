@@ -3,6 +3,9 @@
 #include "../../System/SoundPlayer.h"
 
 C_GameOver::C_GameOver(C_GameScene *argGameScene):C_GameState(argGameScene){
+
+	gameOverImage = LoadGraph("Image/Game/GameOver.png");
+
 }
 
 
@@ -21,6 +24,6 @@ void C_GameOver::Update(){
 
 void C_GameOver::Draw(){
 
-	//DrawGraph(0, 0, gameOverImage, TRUE);
+	DrawGraph(0, 0, gameOverImage, TRUE);
 
 }

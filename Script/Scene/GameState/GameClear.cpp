@@ -2,8 +2,10 @@
 #include "DxLib.h"
 #include "../../System/SoundPlayer.h"
 
-
 C_GameClear::C_GameClear(C_GameScene *argGameScene):C_GameState(argGameScene){
+
+	gameClearImage = LoadGraph("Image/Game/GameClear.png");
+
 }
 
 
@@ -22,6 +24,6 @@ void C_GameClear::Update(){
 
 void C_GameClear::Draw(){
 
-	//DrawGraph(0, 0, gameClearImage, TRUE);
+	DrawGraph(0, 0, gameClearImage, TRUE);
 
 }
