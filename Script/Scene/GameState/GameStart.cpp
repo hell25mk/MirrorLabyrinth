@@ -8,8 +8,10 @@ C_GameStart::C_GameStart(C_GameScene *argGameScene):C_GameState(argGameScene){
 	C_SoundPlayer::GetInstance().StopBGM();
 	C_SoundPlayer::GetInstance().PlayBGM("Stage");
 
-}
+	LoadDivGraph("Image/Share/Number.png", 10, 10, 1, 96, 96, numberImage);
+	floorImage = LoadGraph("Image/Game/Floor.png");
 
+}
 
 C_GameStart::~C_GameStart(){
 }
@@ -24,7 +26,7 @@ void C_GameStart::Update(){
 
 void C_GameStart::Draw(){
 
-	/*bool drawStageNumFlag = nowStageNum < 10;
+	bool drawStageNumFlag = nowStageNum < 10;
 	if(drawStageNumFlag){
 		DrawRotaGraph(400, 150, 1.2, 0.0, numberImage[nowStageNum], TRUE);
 	} else{
@@ -32,6 +34,6 @@ void C_GameStart::Draw(){
 		DrawRotaGraph(420, 150, 1.2, 0.0, numberImage[nowStageNum % 10], TRUE);		//1Œ…–Ú
 	}
 
-	DrawGraph(0, 0, floorImage, TRUE);*/
+	DrawGraph(0, 0, floorImage, TRUE);
 
 }

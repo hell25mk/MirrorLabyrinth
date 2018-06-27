@@ -12,6 +12,8 @@ public:
 
 private:
 	int nowStageNum;
+	int numberImage[10];
+	int floorImage;
 
 };
 
