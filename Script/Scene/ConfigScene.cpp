@@ -1,10 +1,10 @@
 #include "ConfigScene.h"
 #include "../System/GameInfo.h"
 #include <iostream>
+
 C_ConfigScene::C_ConfigScene(C_SceneChanger *argSceneChanger): C_BaseScene(argSceneChanger){
 	
 	backGroundImage = LoadGraph("Image/Share/BackGround.png");
-
 	gameLevelImage = LoadGraph("Image/Config/ConfigMenuGameLevel.png");
 	easyImage = LoadGraph("Image/Config/EasyLevel.png");
 	easyContentImage = LoadGraph("Image/Config/EasyLevelContent.png");
@@ -55,7 +55,6 @@ void C_ConfigScene::Update(){
 			break;
 	}
 	
-
 }
 
 void C_ConfigScene::Draw(){

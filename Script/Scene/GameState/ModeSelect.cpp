@@ -52,7 +52,7 @@ void C_ModeSelect::Update(){
 				gameScene->SetGameState(gameScene->State_GameStart);
 				break;
 			case Mode_Exit:
-				gameScene->NextScene();
+				gameScene->NextScene(Scene_Title);
 				break;
 		}
 	}

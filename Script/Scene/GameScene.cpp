@@ -10,15 +10,6 @@ C_GameScene::C_GameScene(C_SceneChanger *argSceneChanger) : C_BaseScene(argScene
 
 	gameState = new C_ModeSelect(this);
 	nowStageNum = 1;
-	/*backGroundImage = LoadGraph("Image/Share/BackGround.png");
-	LoadDivGraph("Image/Share/Number.png", 10, 10, 1, 96, 96, numberImage);
-	floorImage = LoadGraph("Image/Game/Floor.png");
-	stageClearImage = LoadGraph("Image/Game/StageClear.png");
-	gameClearImage = LoadGraph("Image/Game/GameClear.png");
-	gameOverImage = LoadGraph("Image/Game/GameOver.png");
-	normalPlayImage = LoadGraph("Image/Game/ModeSelectNormalPlay.png");
-	selectStageImage = LoadGraph("Image/Game/ModeSelectSelectStage.png");
-	backImage = LoadGraph("Image/Game/ModeSelecBack.png");*/
 
 }
 
@@ -69,9 +60,16 @@ void C_GameScene::SetGameState(int argGameState){
 
 }
 
-void C_GameScene::NextScene(){
+void C_GameScene::NextScene(int argNextScene){
 
-	sceneChanger->SceneChange(Scene_Result);
+	switch(argNextScene){
+		case Scene_Title:
+			sceneChanger->SceneChange(Scene_Title);
+		break;
+		case Scene_Result:
+			sceneChanger->SceneChange(Scene_Result);
+			break;
+	}
 
 }
 

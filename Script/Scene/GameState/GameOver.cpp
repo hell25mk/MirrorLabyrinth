@@ -17,7 +17,7 @@ void C_GameOver::Update(){
 	C_SoundPlayer::GetInstance().StopBGM();
 
 	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
-		gameScene->NextScene();
+		gameScene->NextScene(Scene_Result);
 	}
 
 }

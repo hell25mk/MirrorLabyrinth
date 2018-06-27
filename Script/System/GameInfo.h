@@ -4,6 +4,15 @@
 #include "../Define/Enum.h"
 #include <map>
 
+enum e_GameLevel{
+	Level_Easy,
+	Level_Normal,
+	Level_Hard,
+	Level_Expert,
+
+	Level_Num,
+};
+
 class C_GameInfo : public C_Singleton<C_GameInfo>{
 
 public:

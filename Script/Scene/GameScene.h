@@ -12,7 +12,7 @@ public:
 	void Update() override;
 	void Draw() override;
 	void SetGameState(int argGameState);
-	void NextScene();
+	void NextScene(int argNextScene);
 	void SetStageNum(int argStageNum);
 	int GetStageNum();
 

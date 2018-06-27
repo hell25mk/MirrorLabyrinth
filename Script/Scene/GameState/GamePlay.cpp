@@ -62,7 +62,7 @@ void C_GamePlay::Update(){
 	timer->Update();
 	bool timeOverFlag = timer->GetGameTimer() <= 0;
 	if(timeOverFlag){
-		gameScene->SetGameState(State_GameOver);
+		gameScene->SetGameState(gameScene->State_GameOver);
 	}
 
 }
