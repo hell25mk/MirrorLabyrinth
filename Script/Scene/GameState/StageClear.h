@@ -10,5 +10,10 @@ public:
 	virtual void Update() override;
 	virtual void Draw() override;
 
+private:
+	int nowStageNum;
+	int numberImage[10];
+	int stageClearImage;
+
 };
 

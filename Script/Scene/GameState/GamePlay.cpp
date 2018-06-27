@@ -56,7 +56,7 @@ void C_GamePlay::Update(){
 	player->Update();
 	mirror->Update();
 	if(laby->ClearCheck(player->GetPosition())){
-		gameScene->SetGameState(gameScene->State_GameClear);
+		gameScene->SetGameState(gameScene->State_StageClear);
 	}
 
 	timer->Update();
