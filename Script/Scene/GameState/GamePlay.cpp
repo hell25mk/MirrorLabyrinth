@@ -8,7 +8,7 @@
 #include "../../Manager/FileManager.h"
 #include "../../System/SoundPlayer.h"
 
-const int Player_Object = 100;
+const int Player_Object = 0;
 
 C_GamePlay::C_GamePlay(C_GameScene *argGameScene):C_GameState(argGameScene){
 
@@ -121,7 +121,7 @@ void C_GamePlay::StageCreate(){
 		int createObj = atoi(&inputc);
 
 		if(createObj == Player_Object){
-			//player = new C_Player(pos);
+			player = new C_Player(pos);
 		} else{
 			laby->PushBlockObject(createObj, pos);
 		}

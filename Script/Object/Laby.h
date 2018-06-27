@@ -30,6 +30,16 @@ private:
 
 		Laby_Nore,
 	}e_BlockKind;
+	/*typedef enum{
+		Laby_Wall = 1,
+		Laby_Road,
+		Laby_Stairs,
+		Laby_Door,
+		Laby_Key,
+		Laby_Block,
+
+		Laby_Nore,
+	}e_BlockKind;*/
 
 private:
 	C_Position<int> pos;

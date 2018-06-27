@@ -50,11 +50,11 @@ void C_Laby::PushBlockObject(int argBlockKind, C_Position<int> argPos){
 	labyVector[argPos.y * Laby_Width + argPos.x] = argBlockKind;
 
 	switch(argBlockKind){
-		case Laby_Road:
-			blockVector[argPos.y * Laby_Width + argPos.x] = std::shared_ptr<C_BaseBlock>(new C_Road(argPos));
-			break;
 		case Laby_Wall:
 			blockVector[argPos.y * Laby_Width + argPos.x] = std::shared_ptr<C_BaseBlock>(new C_Wall(argPos));
+			break;
+		case Laby_Road:
+			blockVector[argPos.y * Laby_Width + argPos.x] = std::shared_ptr<C_BaseBlock>(new C_Road(argPos));
 			break;
 		case Laby_Stairs:
 			blockVector[argPos.y * Laby_Width + argPos.x] = std::shared_ptr<C_BaseBlock>(new C_Stairs(argPos));
