@@ -3,15 +3,14 @@
 template <class Type> class C_Position{
 
 public:
-	Type x;
-	Type y;
+	C_Position(){
 
-	//DrawŒnŠÖ”—p
-	int dx;
-	int dy;
-
-public:
-	C_Position(){}
+		x = 0;
+		y = 0;
+		dx = 0;
+		dy = 0;
+	
+	}
 	C_Position(Type x, Type y){
 
 		this->x = x;
@@ -21,6 +20,7 @@ public:
 
 	}
 	~C_Position(){}
+	//setter
 	void SetPosition(Type x, Type y){
 
 		this->x = x;
@@ -29,6 +29,17 @@ public:
 		dy = (int)y;
 
 	}
+	void SetX(Type x){
+
+		this->x = x;
+
+	}
+	void SetY(Type y){
+
+		this->y = y;
+
+	}
+	//getter
 	Type GetX(){
 
 		return x;
@@ -37,5 +48,24 @@ public:
 
 		return y;
 	}
+	Type GetDx(){
+
+		dx = (int)x;
+
+		return dx;
+	}
+	Type GetDy(){
+
+		dy = (int)y;
+
+		return dy;
+	}
+
+private:
+	Type x;
+	Type y;
+	//DrawŒnŠÖ”—p
+	int dx;
+	int dy;
 
 };

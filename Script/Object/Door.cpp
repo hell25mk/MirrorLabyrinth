@@ -26,8 +26,8 @@ void C_Door::Update(){
 
 void C_Door::Draw(){
 
-	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[Laby_Road], TRUE);
-	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[imageKind], TRUE);
+	DrawGraph((pos.GetDx() * Block_Size), (pos.GetDy() * Block_Size), image[Laby_Road], TRUE);
+	DrawGraph((pos.GetDx() * Block_Size), (pos.GetDy() * Block_Size), image[imageKind], TRUE);
 	
 }
 

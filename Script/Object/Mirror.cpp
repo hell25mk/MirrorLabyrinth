@@ -12,8 +12,7 @@ const int AnimeChange_Time = 30;
 C_Mirror::C_Mirror(C_Player *player):C_BaseCharacter(){
 
 	this->player = player;
-	pos.x = player->GetPosition().x;
-	pos.y = (Reflect_Space - (player->GetPosition().y / Block_Size)) * Block_Size;
+	pos.SetPosition(player->GetPosition().GetX(), (Reflect_Space - (player->GetPosition().GetY() / Block_Size)) * Block_Size);
 	dire = Dire_Down * Image_Width;
 	flashTime = 0;
 	flashFlag = true;
@@ -39,15 +38,14 @@ void C_Mirror::Update(){
 void C_Mirror::Draw(){
 
 	if(flashFlag){
-		DrawRotaGraph((pos.x + 16), (pos.y + 16), (Block_Size / (double)Image_Size), 0.0, image[dire + imageNumber], TRUE);
+		DrawRotaGraph((pos.GetDx() + 16), (pos.GetDy() + 16), (Block_Size / (double)Image_Size), 0.0, image[dire + imageNumber], TRUE);
 	}
 
 }
 
 void C_Mirror::Move(){
 
-	pos.x = player->GetPosition().x;
-	pos.y = (Reflect_Space - (player->GetPosition().y / Block_Size)) * Block_Size;
+	pos.SetPosition(player->GetPosition().GetX(), (Reflect_Space - (player->GetPosition().GetY() / Block_Size)) * Block_Size);
 
 }
 

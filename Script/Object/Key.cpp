@@ -30,9 +30,9 @@ void C_Key::Update(){
 
 void C_Key::Draw(){
 
-	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[Laby_Road], TRUE);
+	DrawGraph((pos.GetDx() * Block_Size), (pos.GetDy() * Block_Size), image[Laby_Road], TRUE);
 	if(!getFlag){
-		DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[imageKind], TRUE);
+		DrawGraph((pos.GetDx() * Block_Size), (pos.GetDy() * Block_Size), image[imageKind], TRUE);
 	}
 
 }

@@ -9,8 +9,7 @@ const int AnimeChange_Time = 30;
 
 C_Player::C_Player(C_Position<int> argPos):C_BaseCharacter(argPos){
 
-	pos.x = argPos.x * Block_Size;
-	pos.y = argPos.y * Block_Size;
+	pos.SetPosition(argPos.GetX() * Block_Size, argPos.GetY() * Block_Size);
 	dire = Dire_Up * Image_Width;
 	imageNumber = 0;
 	int animeOrder[4] = { 0,1,0,2 };
@@ -33,7 +32,7 @@ void C_Player::Update(){
 
 void C_Player::Draw(){
 	
-	DrawRotaGraph(pos.x + 16, pos.y + 16, (Block_Size / (double)Image_Size), 0.0, image[dire + imageNumber], TRUE);
+	DrawRotaGraph(pos.GetDx() + 16, pos.GetDy() + 16, (Block_Size / (double)Image_Size), 0.0, image[dire + imageNumber], TRUE);
 
 }
 
@@ -42,8 +41,7 @@ void C_Player::Move(int argMoveDire){
 	int vy[4] = { Block_Size,0,0,-Block_Size };		//yˆÚ“®—Ê
 	int vx[4] = { 0,Block_Size,-Block_Size,0 };		//xˆÚ“®—Ê
 
-	pos.y += vy[argMoveDire];
-	pos.x += vx[argMoveDire];
+	pos.SetPosition(pos.GetX() + vx[argMoveDire], pos.GetY() + vy[argMoveDire]);
 
 }
 

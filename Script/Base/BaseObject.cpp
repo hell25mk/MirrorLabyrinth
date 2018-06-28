@@ -7,7 +7,7 @@ C_BaseObject::C_BaseObject(){
 
 C_BaseObject::C_BaseObject(C_Position<int> const argPos){
 
-	pos = C_Position<int>(argPos.x, argPos.y);
+	pos = argPos;
 
 }
 

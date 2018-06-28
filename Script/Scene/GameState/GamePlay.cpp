@@ -87,7 +87,9 @@ void C_GamePlay::StageCreate(){
 
 	int fp;
 	char inputc;
-	C_Position<int> pos(0,0);
+	C_Position<int> pos;
+	int x = 0;
+	int y = 0;
 
 	fp = C_FileManager::GetInstance().FileOpen(fileName);
 	if(fp == NULL){
@@ -127,11 +129,13 @@ void C_GamePlay::StageCreate(){
 		
 		laby->PushBlockObject(createObj, pos);
 
-		pos.x++;
-		if(pos.x % gameScene->Laby_Width == 0){
-			pos.y++;
-			pos.x = 0;
+		x++;
+		if(x % gameScene->Laby_Width == 0){
+			y++;
+			x = 0;
 		}
+
+		pos.SetPosition(x, y);
 
 	}
 

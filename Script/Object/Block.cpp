@@ -25,8 +25,8 @@ void C_Block::Update(){
 
 void C_Block::Draw(){
 
-	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[Laby_Road], TRUE);
-	DrawGraph((pos.x * Block_Size), ((Reflect_Space - pos.y) * Block_Size), image[imageKind + damage], TRUE);
+	DrawGraph((pos.GetDx() * Block_Size), (pos.GetDy() * Block_Size), image[Laby_Road], TRUE);
+	DrawGraph((pos.GetDx() * Block_Size), ((Reflect_Space - pos.GetDy()) * Block_Size), image[imageKind + damage], TRUE);
 
 }
 

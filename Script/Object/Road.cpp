@@ -19,7 +19,7 @@ void C_Road::Update(){
 
 void C_Road::Draw(){
 
-	DrawGraph((pos.x * Block_Size), (pos.y * Block_Size), image[imageKind], TRUE);
+	DrawGraph((pos.GetDx() * Block_Size), (pos.GetDy() * Block_Size), image[imageKind], TRUE);
 
 }
 
