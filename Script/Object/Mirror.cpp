@@ -63,7 +63,7 @@ void C_Mirror::Fhashing(){
 	flashTime = flashTime % FlashLoopTime;
 
 #ifdef _DEBUG
-	flashFlag = true;
+	//flashFlag = true;
 #endif //“_–Å–³‚µ
 
 }
