@@ -10,10 +10,11 @@ void C_SoundPlayer::Create(){
 	sound["Stage"] = LoadSoundMem("Music/BGM_GameSnece.ogg");
 
 	//SE Load
+	sound["Menu"] = LoadSoundMem("Music/SE_Menu.ogg");
 	sound["WallCollide"] = LoadSoundMem("Music/SE_WallCollide.ogg");
 	sound["Stairs"] = LoadSoundMem("Music/SE_Stairs.ogg");
-	sound["Block1"] = LoadSoundMem("Music/SE_BreakWallCollide.ogg");
-	sound["Block2"] = LoadSoundMem("Music/SE_BreakWallBreak.ogg");
+	sound["Block1"] = LoadSoundMem("Music/SE_Block1.ogg");
+	sound["Block2"] = LoadSoundMem("Music/SE_Block2.ogg");
 	sound["Key"] = LoadSoundMem("Music/SE_KeyGet.ogg");
 
 	//std::map<std::string, int>::iterator itr;		Å¶autoÇ≈ë„óp
