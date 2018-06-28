@@ -36,14 +36,17 @@ void C_TitleScene::Update(){
 #endif // DEBUG
 
 	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_DOWN) == 1){
+		C_SoundPlayer::GetInstance().PlaySE("Menu1");
 		selectMenu = (e_TitleMenu)((selectMenu + 1) % Title_Num);
 	}
 
 	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_UP) == 1){
+		C_SoundPlayer::GetInstance().PlaySE("Menu1");
 		selectMenu = (e_TitleMenu)((selectMenu + (Title_Num - 1)) % Title_Num);
 	}
 
 	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
+		C_SoundPlayer::GetInstance().PlaySE("Menu2");
 		switch(selectMenu){
 			case Title_Start:
 				sceneChanger->SceneChange(Scene_Game);

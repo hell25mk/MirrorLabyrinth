@@ -1,6 +1,7 @@
 #include "GameScene.h"
 #include "GameState/GameState.h"
 #include "GameState/GameStateList.h"
+#include "../System/SoundPlayer.h"
 
 const int C_GameScene::Max_Stage_Num = 25;
 const int C_GameScene::Laby_Height = 15;
@@ -22,6 +23,7 @@ C_GameScene::~C_GameScene(){
 void C_GameScene::Update(){
 
 	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_ESCAPE) == 1){
+		C_SoundPlayer::GetInstance().StopBGM();
 		sceneChanger->SceneChange(Scene_Title);
 	}
 

@@ -1,6 +1,6 @@
 #include "ConfigScene.h"
 #include "../System/GameInfo.h"
-#include <iostream>
+#include "../System/SoundPlayer.h"
 
 C_ConfigScene::C_ConfigScene(C_SceneChanger *argSceneChanger): C_BaseScene(argSceneChanger){
 	
@@ -39,15 +39,18 @@ void C_ConfigScene::Update(){
 #endif // _DEBUG
 
 	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_DOWN) == 1){
+		C_SoundPlayer::GetInstance().PlaySE("Menu1");
 		selectMenu = (e_ConfigMenu)((selectMenu + 1) % Config_Num);
 	}
 
 	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_UP) == 1){
+		C_SoundPlayer::GetInstance().PlaySE("Menu1");
 		selectMenu = (e_ConfigMenu)((selectMenu + (Config_Num - 1)) % Config_Num);
 	}
 
 	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
 		if(selectMenu == Config_Exit){
+			C_SoundPlayer::GetInstance().PlaySE("Menu2");
 			sceneChanger->SceneChange(Scene_Title);
 		}
 	}
@@ -55,9 +58,11 @@ void C_ConfigScene::Update(){
 	switch(selectMenu){
 		case Config_GameLevel:
 			if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_LEFT) == 1){
+				C_SoundPlayer::GetInstance().PlaySE("Menu1");
 				C_GameInfo::GetInstance().DownGameLevel();
 			}
 			if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_RIGHT) == 1){
+				C_SoundPlayer::GetInstance().PlaySE("Menu1");
 				C_GameInfo::GetInstance().UpGameLevel();
 			}
 			break;

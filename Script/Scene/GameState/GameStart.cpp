@@ -5,7 +5,6 @@
 C_GameStart::C_GameStart(C_GameScene *argGameScene):C_GameState(argGameScene){
 
 	nowStageNum = gameScene->GetStageNum();
-	C_SoundPlayer::GetInstance().StopBGM();
 	C_SoundPlayer::GetInstance().PlayBGM("Stage");
 
 	LoadDivGraph("Image/Share/Number.png", 10, 10, 1, 96, 96, numberImage);

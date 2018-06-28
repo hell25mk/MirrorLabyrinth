@@ -1,7 +1,7 @@
 #include "SoundPlayer.h"
 #include "DxLib.h"
 
-const int Sound_Volume = 70;
+const int Sound_Volume = 50;
 
 void C_SoundPlayer::Create(){
 
@@ -10,7 +10,8 @@ void C_SoundPlayer::Create(){
 	sound["Stage"] = LoadSoundMem("Music/BGM_GameSnece.ogg");
 
 	//SE Load
-	sound["Menu"] = LoadSoundMem("Music/SE_Menu.ogg");
+	sound["Menu1"] = LoadSoundMem("Music/SE_MenuArror.ogg");
+	sound["Menu2"] = LoadSoundMem("Music/SE_MenuSpace.ogg");
 	sound["WallCollide"] = LoadSoundMem("Music/SE_WallCollide.ogg");
 	sound["Stairs"] = LoadSoundMem("Music/SE_Stairs.ogg");
 	sound["Block1"] = LoadSoundMem("Music/SE_Block1.ogg");
@@ -33,7 +34,7 @@ void C_SoundPlayer::PlayBGM(std::string argKey){
 		return;
 	}*/
 
-	if(!(sound.find(argKey) == sound.end())){
+	if(sound.find(argKey) == sound.end()){
 		return;
 	}
 
