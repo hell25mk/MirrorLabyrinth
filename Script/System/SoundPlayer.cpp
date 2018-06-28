@@ -28,11 +28,15 @@ void C_SoundPlayer::Create(){
 
 void C_SoundPlayer::PlayBGM(std::string argKey){
 
-	if(sound.count(argKey) == 0){
+	/*if(!sound.count(argKey)){
+		return;
+	}*/
+
+	if(!(sound.find(argKey) == sound.end())){
 		return;
 	}
 
-	if(CheckSoundMem(sound[argKey]) == 1){
+	if(CheckSoundMem(sound[argKey])){
 		return;
 	}
 

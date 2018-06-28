@@ -7,16 +7,12 @@ public:
 
 		x = 0;
 		y = 0;
-		dx = 0;
-		dy = 0;
 	
 	}
 	C_Position(Type x, Type y){
 
 		this->x = x;
 		this->y = y;
-		dx = (int)x;
-		dy = (int)y;
 
 	}
 	~C_Position(){}
@@ -25,8 +21,6 @@ public:
 
 		this->x = x;
 		this->y = y;
-		dx = (int)x;
-		dy = (int)y;
 
 	}
 	void SetX(Type x){
@@ -48,24 +42,20 @@ public:
 
 		return y;
 	}
-	Type GetDx(){
 
-		dx = (int)x;
+	//描画関数用(DxLibのDraw系)
+	//x,yをintにキャストした値を返す
+	int GetDx(){
 
-		return dx;
+		return (int)x;
 	}
-	Type GetDy(){
+	int GetDy(){
 
-		dy = (int)y;
-
-		return dy;
+		return (int)y;
 	}
 
 private:
 	Type x;
 	Type y;
-	//Draw系関数用
-	int dx;
-	int dy;
 
 };
