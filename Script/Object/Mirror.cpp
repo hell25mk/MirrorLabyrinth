@@ -49,6 +49,10 @@ void C_Mirror::Move(){
 	pos.x = player->GetPosition().x;
 	pos.y = (Reflect_Space - (player->GetPosition().y / Block_Size)) * Block_Size;
 
+}
+
+void C_Mirror::Direction(){
+
 	int arrDire[4]{ Dire_Up ,Dire_Right ,Dire_Left ,Dire_Down };
 	dire = arrDire[player->GetDirection() / Image_Width] * Image_Width;
 

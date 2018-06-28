@@ -44,6 +44,11 @@ void C_Player::Move(int argMoveDire){
 
 	pos.y += vy[argMoveDire];
 	pos.x += vx[argMoveDire];
+
+}
+
+void C_Player::Direction(int argMoveDire){
+
 	dire = argMoveDire * Image_Width;
 
 }

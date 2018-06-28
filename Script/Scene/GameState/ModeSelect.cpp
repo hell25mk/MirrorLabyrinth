@@ -37,10 +37,10 @@ void C_ModeSelect::Update(){
 	}
 
 	if(nowStageNum < 1){
-		nowStageNum = 1;
+		nowStageNum = gameScene->Max_Stage_Num;
 	}
 	if(nowStageNum > gameScene->Max_Stage_Num){
-		nowStageNum = gameScene->Max_Stage_Num;
+		nowStageNum = 1;
 	}
 
 	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){

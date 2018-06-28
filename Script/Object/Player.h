@@ -12,6 +12,7 @@ public:
 	virtual void Update() override;
 	virtual void Draw() override;
 	void Move(int argMoveDire);
+	void Direction(int argMoveDire);
 	C_Position<int> GetPosition();
 	int GetDirection();
 

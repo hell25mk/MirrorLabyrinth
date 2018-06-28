@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 #include "GameState/GameStateList.h"
 
-const int C_GameScene::Max_Stage_Num = 20;
+const int C_GameScene::Max_Stage_Num = 22;
 const int C_GameScene::Laby_Height = 15;
 const int C_GameScene::Laby_Width = 20;
 

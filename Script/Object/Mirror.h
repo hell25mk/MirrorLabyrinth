@@ -12,6 +12,7 @@ public:
 	virtual void Update() override;
 	virtual void Draw() override;
 	void Move();
+	void Direction();
 	void Fhashing();
 
 private:

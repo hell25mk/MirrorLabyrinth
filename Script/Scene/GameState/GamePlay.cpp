@@ -47,6 +47,9 @@ void C_GamePlay::Update(){
 	}
 
 	if(keyInput != Dire_Nore){
+		player->Direction(keyInput);
+		mirror->Direction();
+
 		if(laby->MoveCheck(keyInput, player->GetPosition())){
 			player->Move(keyInput);
 			mirror->Move();
