@@ -29,5 +29,13 @@ public:
 		dy = (int)y;
 
 	}
+	Type GetX(){
+
+		return x;
+	}
+	Type GetY(){
+
+		return y;
+	}
 
 };

@@ -6,7 +6,7 @@ const int C_GameScene::Max_Stage_Num = 25;
 const int C_GameScene::Laby_Height = 15;
 const int C_GameScene::Laby_Width = 20;
 
-C_GameScene::C_GameScene(C_SceneChanger *argSceneChanger) : C_BaseScene(argSceneChanger){
+C_GameScene::C_GameScene(C_SceneChanger *argSceneChanger):C_BaseScene(argSceneChanger){
 
 	gameState = new C_ModeSelect(this);
 	nowStageNum = 1;

@@ -87,9 +87,7 @@ void C_GamePlay::StageCreate(){
 
 	int fp;
 	char inputc;
-	C_Position<int> pos;
-	pos.x = 0;
-	pos.y = 0;
+	C_Position<int> pos(0,0);
 
 	fp = C_FileManager::GetInstance().FileOpen(fileName);
 	if(fp == NULL){
