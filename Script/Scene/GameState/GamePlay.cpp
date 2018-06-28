@@ -8,7 +8,7 @@
 #include "../../Manager/FileManager.h"
 #include "../../System/SoundPlayer.h"
 
-const int Player_Object = 100;
+const int Player_Object = 0;
 
 C_GamePlay::C_GamePlay(C_GameScene *argGameScene):C_GameState(argGameScene){
 
@@ -122,9 +122,9 @@ void C_GamePlay::StageCreate(){
 
 		if(createObj == Player_Object){
 			player = new C_Player(pos);
-		} else{
-			laby->PushBlockObject(createObj, pos);
 		}
+		
+		laby->PushBlockObject(createObj, pos);
 
 		pos.x++;
 		if(pos.x % gameScene->Laby_Width == 0){
@@ -134,9 +134,6 @@ void C_GamePlay::StageCreate(){
 
 	}
 
-	pos.x = 1;
-	pos.y = 13;
-	player = new C_Player(pos);
 	mirror = new C_Mirror(player);
 	timer = new C_Timer();
 	gameText = new C_GameText();

@@ -3,7 +3,7 @@
 #include "../Manager/FileManager.h"
 #include "../System/Position.h"
 #include "../Base/BaseBlock.h"
-#include "BlockList.h"
+#include "ObjectList.h"
 
 const int C_Laby::Laby_Height = 15;
 const int C_Laby::Laby_Width = 20;
@@ -50,6 +50,9 @@ void C_Laby::PushBlockObject(int argBlockKind, C_Position<int> argPos){
 	labyVector[argPos.y * Laby_Width + argPos.x] = argBlockKind;
 
 	switch(argBlockKind){
+		case Laby_Player:
+			blockVector[argPos.y * Laby_Width + argPos.x] = std::shared_ptr<C_BaseBlock>(new C_Road(argPos));
+			break;
 		case Laby_Wall:
 			blockVector[argPos.y * Laby_Width + argPos.x] = std::shared_ptr<C_BaseBlock>(new C_Wall(argPos));
 			break;
