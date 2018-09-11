@@ -9,7 +9,7 @@ const int C_Timer::BasisTime = 60;
 C_Timer::C_Timer(){
 
 	startTime = 0;
-	nowGameTime = BasisTime  / (C_GameInfo::GetInstance().GetGameLevel() + 1);
+	nowGameTime = BasisTime  / (C_GameInfo::GetInstance().GetGameLevel() + 1);		//ƒQ[ƒ€“ïˆÕ“x‚É‚æ‚Á‚Ä§ŒÀŽžŠÔ‚Ì•ÏX
 
 }
 
@@ -22,12 +22,14 @@ void C_Timer::Update(){
 		startTime = GetNowCount();
 	}
 
+	//1•b‚ðŒv‘ª
 	bool oneSecondFlag = GetNowCount() - startTime >= 1000;
 	if(oneSecondFlag){
 		nowGameTime = nowGameTime - 1;
 		startTime = GetNowCount();
 	}
 
+	//•ª‚Æ•b‚É•ÏŠ·
 	minute = nowGameTime / 60;
 	second = nowGameTime % 60;
 

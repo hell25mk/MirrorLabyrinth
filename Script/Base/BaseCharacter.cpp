@@ -9,6 +9,7 @@ int* C_BaseCharacter::image;
 
 C_BaseCharacter::C_BaseCharacter(){
 
+	//NULL‚È‚çƒƒ‚ƒŠŠm•Û
 	if(image == NULL){
 		image = new int[Image_Width * Image_Height];
 		LoadDivGraph("Image/Object/PlayerMaterial.png", Image_Width * Image_Height, Image_Width, Image_Height, Image_Size, Image_Size, image);
@@ -20,6 +21,7 @@ C_BaseCharacter::C_BaseCharacter(){
 
 C_BaseCharacter::C_BaseCharacter(C_Position<int> argPos):C_BaseObject(pos){
 
+	//NULL‚È‚çƒƒ‚ƒŠŠm•Û
 	if(image == NULL){
 		image = new int[Image_Width * Image_Height];
 		LoadDivGraph("Image/Object/PlayerMaterial.png", Image_Width * Image_Height, Image_Width, Image_Height, Image_Size, Image_Size, image);
@@ -31,6 +33,7 @@ C_BaseCharacter::C_BaseCharacter(C_Position<int> argPos):C_BaseObject(pos){
 
 C_BaseCharacter::~C_BaseCharacter(){
 
+	//Šm•Û‚µ‚½ƒƒ‚ƒŠ‚ğ‰ğ•ú‚·‚é
 	if(image != NULL){
 		delete[] image;
 		image = NULL;

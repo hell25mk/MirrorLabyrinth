@@ -1,3 +1,9 @@
+/*****************************************************************************************************
+-----ファイル概要-----
+BaseObjectを継承
+各ブロックの基底クラス
+******************************************************************************************************/
+
 #pragma once
 
 #include "BaseObject.h"
@@ -35,9 +41,9 @@ protected:
 	static const int Image_Height;
 
 protected:
-	bool passFlag;
-	static int *image;
-	int imageKind;
+	bool passFlag;					//通れるかどうか
+	static int *image;				//画像ポインタ
+	int imageKind;					//画像の種類
 
 };
 

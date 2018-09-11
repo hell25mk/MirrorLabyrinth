@@ -7,6 +7,7 @@
 
 void C_GameManager::Create(){
 
+	//ゲームのシステム部分の生成
 	C_KeyboardManager::GetInstance().Create();
 	C_SoundPlayer::GetInstance().Create();
 	C_GameInfo::GetInstance().Create();
@@ -17,6 +18,7 @@ void C_GameManager::Create(){
 
 void C_GameManager::Destroy(){
 
+	//メモリの解放
 	delete sceneManager;
 	C_FPSManager::GetInstance().Destroy();
 	C_GameInfo::GetInstance().Destroy();

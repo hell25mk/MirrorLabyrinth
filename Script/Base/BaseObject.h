@@ -1,3 +1,8 @@
+/*****************************************************************************************************
+-----ファイル概要-----
+オブジェクトの基底クラス
+******************************************************************************************************/
+
 #pragma once
 
 #include "DxLib.h"
@@ -13,10 +18,10 @@ public:
 	virtual void Draw() = 0;
 
 protected:
-	static const int Block_Size;
+	static const int Block_Size;		//1マスのサイズ
 
 protected:
-	C_Position<int> pos;
+	C_Position<int> pos;				//オブジェクトの座標
 
 };
 

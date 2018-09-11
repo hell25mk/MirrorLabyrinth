@@ -47,6 +47,7 @@ C_Laby::~C_Laby(){
 
 void C_Laby::PushBlockObject(int argBlockKind, C_Position<int> argPos){
 
+	//ブロックを登録
 	labyVector[argPos.GetY() * Laby_Width + argPos.GetX()] = argBlockKind;
 
 	switch(argBlockKind){
@@ -101,7 +102,7 @@ void C_Laby::Draw(){
 bool C_Laby::MoveCheck(int argDire, C_Position<int> argPos){
 
 	bool checkFlag = false;
-	C_Position<int> tempPos;
+	C_Position<int> tempPos;		//仮座標
 	int vy[4] = { 1,0,0,-1 };		//y移動量
 	int vx[4] = { 0,1,-1,0 };		//x移動量
 	//int test[4] = { Laby_Height - 1,Laby_Width - 1,0,0 };		//移動可能範囲

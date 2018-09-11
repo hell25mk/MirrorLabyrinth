@@ -7,6 +7,7 @@ int* C_BaseBlock::image;
 
 C_BaseBlock::C_BaseBlock(){
 
+	//NULL‚È‚çƒƒ‚ƒŠŠm•Û
 	if(image == NULL){
 		image = new int[Image_Width * Image_Height];
 		LoadDivGraph("Image/Object/LabyBlockMaterial.png", Image_Width * Image_Height, Image_Width, Image_Height, Block_Size, Block_Size, image);
@@ -18,6 +19,7 @@ C_BaseBlock::C_BaseBlock(){
 
 C_BaseBlock::C_BaseBlock(C_Position<int> argPos):C_BaseObject(argPos){
 
+	//NULL‚È‚çƒƒ‚ƒŠŠm•Û
 	if(image == NULL){
 		image = new int[Image_Width * Image_Height];
 		LoadDivGraph("Image/Object/LabyBlockMaterial.png", Image_Width * Image_Height, Image_Width, Image_Height, Block_Size, Block_Size, image);
@@ -29,6 +31,7 @@ C_BaseBlock::C_BaseBlock(C_Position<int> argPos):C_BaseObject(argPos){
 
 C_BaseBlock::~C_BaseBlock(){
 
+	//Šm•Û‚µ‚½ƒƒ‚ƒŠ‚ğ‰ğ•ú‚·‚é
 	if(image != NULL){
 		delete[] image;
 		image = NULL;

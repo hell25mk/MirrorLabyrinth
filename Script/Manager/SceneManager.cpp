@@ -19,6 +19,7 @@ C_SceneManager::~C_SceneManager(){
 
 void C_SceneManager::Update(){
 
+	//ŠÖ”•ª‚¯‚µ‚½‚Ù‚¤‚ª‚¢‚¢
 	if(nextScene != Scene_Nore){
 		delete nowScene;
 
