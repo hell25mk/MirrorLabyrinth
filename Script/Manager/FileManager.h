@@ -7,18 +7,18 @@
 
 #include "../System/Singleton.h"
 
-class C_FileManager : public C_Singleton<C_FileManager>{
+class FileManager : public Singleton<FileManager>{
 
 public:
-	friend class C_Singleton<C_FileManager>;
+	friend class Singleton<FileManager>;
 	virtual void Create() override;
 	virtual void Destroy() override;
-	int FileOpen(char *fileDirectory);
+	int FileOpen(char* fileDirectory);
 	void FileClose();
 	
 protected:
-	C_FileManager(){ }
-	virtual ~C_FileManager(){ }
+	FileManager(){ }
+	virtual ~FileManager(){ }
 
 private:
 	int filePoint;

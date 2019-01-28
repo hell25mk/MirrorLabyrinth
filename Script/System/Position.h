@@ -5,22 +5,22 @@
 
 #pragma once
 
-template <class Type> class C_Position{
+template <class Type> class Position{
 
 public:
-	C_Position(){
+	Position(){
 
 		x = 0;
 		y = 0;
 	
 	}
-	C_Position(Type x, Type y){
+	Position(Type x, Type y){
 
 		this->x = x;
 		this->y = y;
 
 	}
-	~C_Position(){}
+	~Position(){}
 	//setter
 	void SetPosition(Type x, Type y){
 

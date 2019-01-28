@@ -8,12 +8,12 @@
 #include "DxLib.h"
 #include "../System/Position.h"
 
-class C_BaseObject{
+class BaseObject{
 
 public:
-	C_BaseObject();
-	C_BaseObject(C_Position<int> argPos);
-	virtual ~C_BaseObject();
+	BaseObject();
+	BaseObject(Position<int> argPos);
+	virtual ~BaseObject();
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
 
@@ -21,7 +21,7 @@ protected:
 	static const int Block_Size;		//1マスのサイズ
 
 protected:
-	C_Position<int> pos;				//オブジェクトの座標
+	Position<int> pos;				//オブジェクトの座標
 
 };
 

@@ -4,19 +4,19 @@
 
 const int Color_White = GetColor(255, 255, 255);
 const int Color_Red = GetColor(255, 0, 0);
-const int C_Timer::BasisTime = 60;
+const int Timer::BasisTime = 60;
 
-C_Timer::C_Timer(){
+Timer::Timer(){
 
 	startTime = 0;
-	nowGameTime = BasisTime  / (C_GameInfo::GetInstance().GetGameLevel() + 1);		//ゲーム難易度によって制限時間の変更
+	nowGameTime = BasisTime  / (GameInfo::GetInstance().GetGameLevel() + 1);		//ゲーム難易度によって制限時間の変更
 
 }
 
-C_Timer::~C_Timer(){
+Timer::~Timer(){
 }
 
-void C_Timer::Update(){
+void Timer::Update(){
 
 	if(startTime == 0){
 		startTime = GetNowCount();
@@ -35,7 +35,7 @@ void C_Timer::Update(){
 
 }
 
-void C_Timer::Draw(){
+void Timer::Draw(){
 
 	SetFontSize(36);
 
@@ -52,7 +52,7 @@ void C_Timer::Draw(){
 
 }
 
-int C_Timer::GetGameTimer(){
+int Timer::GetGameTimer(){
 
 	return nowGameTime;
 }

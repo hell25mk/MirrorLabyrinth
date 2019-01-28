@@ -8,30 +8,32 @@ BaseObjectを継承
 
 #include "BaseObject.h"
 
-typedef enum{
-	Laby_Road,
-	Laby_Wall,
-	Laby_Stairs,
-	Laby_Nore1,
-	Laby_Nore2,
-	Laby_CloseDoor,
-	Laby_OpenDoor,
-	Laby_RubyKey,
-	Laby_DiaKey,
-	Laby_Nore3,
-	Laby_Block1,
-	Laby_Block2,
-	Laby_Block3,
-	Laby_Block4,
-	Laby_Nore4,
-}e_BlockImageKind;
+namespace{
+	typedef enum{
+		Laby_Road,
+		Laby_Wall,
+		Laby_Stairs,
+		Laby_Nore1,
+		Laby_Nore2,
+		Laby_CloseDoor,
+		Laby_OpenDoor,
+		Laby_RubyKey,
+		Laby_DiaKey,
+		Laby_Nore3,
+		Laby_Block1,
+		Laby_Block2,
+		Laby_Block3,
+		Laby_Block4,
+		Laby_Nore4,
+	}e_BlockImageKind;
+}
 
-class C_BaseBlock : public C_BaseObject{
+class BaseBlock : public BaseObject{
 
 public:
-	C_BaseBlock();
-	C_BaseBlock(C_Position<int> argPos);
-	virtual ~C_BaseBlock();
+	BaseBlock();
+	BaseBlock(Position<int> argPos);
+	virtual ~BaseBlock();
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
 	virtual bool HitAction() = 0;
@@ -42,7 +44,7 @@ protected:
 
 protected:
 	bool passFlag;					//通れるかどうか
-	static int *image;				//画像ポインタ
+	static int* image;				//画像ポインタ
 	int imageKind;					//画像の種類
 
 };

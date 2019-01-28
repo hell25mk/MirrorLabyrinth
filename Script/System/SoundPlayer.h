@@ -8,10 +8,10 @@ Sound‚ğŠÇ—‚·‚éƒNƒ‰ƒX
 #include "Singleton.h"
 #include <map>
 
-class C_SoundPlayer : public C_Singleton<C_SoundPlayer>{
+class SoundPlayer : public Singleton<SoundPlayer>{
 
 public:
-	friend class C_Singleton<C_SoundPlayer>;
+	friend class Singleton<SoundPlayer>;
 
 	virtual void Create() override;
 	void PlayBGM(std::string argKey);
@@ -19,8 +19,8 @@ public:
 	void PlaySE(std::string argKey);
 
 protected:
-	C_SoundPlayer(){}
-	virtual ~C_SoundPlayer(){}
+	SoundPlayer(){}
+	virtual ~SoundPlayer(){}
 
 private:
 	std::map<std::string, int> sound;

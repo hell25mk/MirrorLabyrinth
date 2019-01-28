@@ -5,8 +5,8 @@
 #include "../Base/BaseBlock.h"
 #include "ObjectList.h"
 
-const int C_Laby::Laby_Height = 15;
-const int C_Laby::Laby_Width = 20;
+const int Laby::Laby_Height = 15;
+const int Laby::Laby_Width = 20;
 const int Image_Width = 5;
 const int Image_Height = 3;
 const int Block_Size = 32;
@@ -30,7 +30,7 @@ std::vector<int> LabySampleVector{
 	 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 };
 
-C_Laby::C_Laby(){
+Laby::Laby(){
 
 	labyVector.resize(Laby_Height * Laby_Width);
 	blockVector.resize(Laby_Height * Laby_Width);
@@ -39,45 +39,45 @@ C_Laby::C_Laby(){
 
 }
 
-C_Laby::~C_Laby(){
+Laby::~Laby(){
 	
 	std::vector<int>().swap(labyVector);
 
 }
 
-void C_Laby::PushBlockObject(int argBlockKind, C_Position<int> argPos){
+void Laby::PushBlockObject(int argBlockKind, Position<int> argPos){
 
 	//ブロックを登録
 	labyVector[argPos.GetY() * Laby_Width + argPos.GetX()] = argBlockKind;
 
 	switch(argBlockKind){
 		case Laby_Player:
-			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<C_BaseBlock>(new C_Road(argPos));
+			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<BaseBlock>(new Road(argPos));
 			break;
 		case Laby_Wall:
-			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<C_BaseBlock>(new C_Wall(argPos));
+			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<BaseBlock>(new Wall(argPos));
 			break;
 		case Laby_Road:
-			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<C_BaseBlock>(new C_Road(argPos));
+			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<BaseBlock>(new Road(argPos));
 			break;
 		case Laby_Stairs:
-			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<C_BaseBlock>(new C_Stairs(argPos));
+			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<BaseBlock>(new Stairs(argPos));
 			break;
 		case Laby_Door:
-			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<C_BaseBlock>(new C_Door(argPos, &maxKeyNum, &getKeyNum));
+			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<BaseBlock>(new Door(argPos, &maxKeyNum, &getKeyNum));
 			break;
 		case Laby_Key:
-			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<C_BaseBlock>(new C_Key(argPos, &getKeyNum));
+			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<BaseBlock>(new Key(argPos, &getKeyNum));
 			maxKeyNum++;
 			break;
 		case Laby_Block:
-			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<C_BaseBlock>(new C_Block(argPos));
+			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<BaseBlock>(new Block(argPos));
 			break;
 	}
 
 }
 
-void C_Laby::Update(){
+void Laby::Update(){
 
 	for(auto itr = blockVector.begin(); itr != blockVector.end();){
 
@@ -88,7 +88,7 @@ void C_Laby::Update(){
 
 }
 
-void C_Laby::Draw(){
+void Laby::Draw(){
 
 	for(auto itr = blockVector.begin(); itr != blockVector.end();){
 
@@ -99,10 +99,10 @@ void C_Laby::Draw(){
 
 }
 
-bool C_Laby::MoveCheck(int argDire, C_Position<int> argPos){
+bool Laby::MoveCheck(int argDire, Position<int> argPos){
 
 	bool checkFlag = false;
-	C_Position<int> tempPos;		//仮座標
+	Position<int> tempPos;		//仮座標
 	int vy[4] = { 1,0,0,-1 };		//y移動量
 	int vx[4] = { 0,1,-1,0 };		//x移動量
 	//int test[4] = { Laby_Height - 1,Laby_Width - 1,0,0 };		//移動可能範囲
@@ -134,9 +134,9 @@ bool C_Laby::MoveCheck(int argDire, C_Position<int> argPos){
 	return checkFlag;
 }
 
-bool C_Laby::ClearCheck(C_Position<int> const argPos){
+bool Laby::ClearCheck(Position<int> const argPos){
 
-	C_Position<int> tempPos;
+	Position<int> tempPos;
 
 	tempPos = argPos;
 

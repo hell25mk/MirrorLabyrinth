@@ -8,11 +8,11 @@
 
 #include "../Base/BaseScene.h"
 
-class C_ConfigScene : public C_BaseScene{
+class ConfigScene : public BaseScene{
 
 public:
-	C_ConfigScene(C_SceneChanger *argSceneChanger);
-	virtual ~C_ConfigScene();
+	ConfigScene(SceneChanger* argSceneChanger);
+	virtual ~ConfigScene();
 	void Update() override;
 	void Draw() override;
 	void Menu();
@@ -29,9 +29,9 @@ private:
 private:
 	e_ConfigMenu selectMenu;
 	int backGroundImage;
-	int *menuImage;
-	int *levelImage;
-	int *contentImage;
+	int* menuImage;
+	int* levelImage;
+	int* contentImage;
 
 };
 

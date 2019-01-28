@@ -6,20 +6,20 @@
 
 #pragma once
 
-class C_Animation{
+class Animation{
 
 public:
-	C_Animation(int animeOrder[],int orderSize,int animeChangeTime,int *imageNumber);
-	~C_Animation();
+	Animation(int animeOrder[],int orderSize,int animeChangeTime,int* imageNumber);
+	~Animation();
 	void Update();
 
 private:
-	int *animeOrder;
+	int* animeOrder;
 	int animeOrderSize;
 	int animeChangeTime;
 	int animeCount;
 	int animeNumber;
-	int *imageNumber;
+	int* imageNumber;
 
 };
 

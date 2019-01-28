@@ -8,11 +8,11 @@ GameStateÇåpè≥
 
 #include "GameState.h"
 
-class C_ModeSelect : public C_GameState{
+class ModeSelect : public GameState{
 
 public:
-	C_ModeSelect(C_GameScene *argGameScene);
-	virtual ~C_ModeSelect();
+	ModeSelect(GameScene* argGameScene);
+	virtual ~ModeSelect();
 	virtual void Update() override;
 	virtual void Draw() override;
 
@@ -30,7 +30,7 @@ private:
 	int nowStageNum;
 	int numberImage[10];
 	int backGroundImage;
-	int *menuImage;
+	int* menuImage;
 
 };
 

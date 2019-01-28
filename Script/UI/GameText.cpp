@@ -4,18 +4,18 @@
 
 const int Color_White = GetColor(255, 255, 255);
 
-C_GameText::C_GameText(){
+GameText::GameText(){
 
-	const char *levelName[3] = { "Easy","Normal","Hard" };
+	const char* levelName[3] = { "Easy","Normal","Hard" };
 
-	strcpy_s(strGameLevel, sizeof(strGameLevel), levelName[C_GameInfo::GetInstance().GetGameLevel()]);
+	strcpy_s(strGameLevel, sizeof(strGameLevel), levelName[GameInfo::GetInstance().GetGameLevel()]);
 
 }
 
-C_GameText::~C_GameText(){
+GameText::~GameText(){
 }
 
-void C_GameText::Draw(){
+void GameText::Draw(){
 
 	SetFontSize(36);
 

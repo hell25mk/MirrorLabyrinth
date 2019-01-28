@@ -4,23 +4,23 @@
 const int Laby_Height = 15;
 const int Laby_Width = 20;
 
-C_Wall::C_Wall(C_Position<int> argPos):C_BaseBlock(argPos){
+Wall::Wall(Position<int> argPos):BaseBlock(argPos){
 
 	imageKind = Laby_Wall;
 	passFlag = false;
 
 }
 
-C_Wall::~C_Wall(){
+Wall::~Wall(){
 }
 
-void C_Wall::Update(){
+void Wall::Update(){
 
 
 
 }
 
-void C_Wall::Draw(){
+void Wall::Draw(){
 
 	DrawGraph((pos.GetDx() * Block_Size), (pos.GetDy() * Block_Size), image[Laby_Road], TRUE);
 
@@ -40,7 +40,7 @@ void C_Wall::Draw(){
 
 }
 
-bool C_Wall::HitAction(){
+bool Wall::HitAction(){
 
 	return passFlag;
 }

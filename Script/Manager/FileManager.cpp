@@ -1,19 +1,19 @@
 #include "FileManager.h"
 #include "DxLib.h"
 
-void C_FileManager::Create(){
+void FileManager::Create(){
 
 
 
 }
 
-void C_FileManager::Destroy(){
+void FileManager::Destroy(){
 
 
 
 }
 
-int C_FileManager::FileOpen(char *fileDirectory){
+int FileManager::FileOpen(char* fileDirectory){
 
 	//ファイルを開く
 	filePoint = FileRead_open(fileDirectory);
@@ -27,7 +27,7 @@ int C_FileManager::FileOpen(char *fileDirectory){
 }
 
 
-void C_FileManager::FileClose(){
+void FileManager::FileClose(){
 
 	FileRead_close(filePoint);
 

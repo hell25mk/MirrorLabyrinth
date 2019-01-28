@@ -2,10 +2,10 @@
 #include "DxLib.h"
 
 const int Color_White = GetColor(255, 255, 255);
-const int C_FPSManager::Average_Sample = 60;
-const int C_FPSManager::Basis_FPS = 60;
+const int FPSManager::Average_Sample = 60;
+const int FPSManager::Basis_FPS = 60;
 
-void C_FPSManager::Create(){
+void FPSManager::Create(){
 
 	startTime = 0;
 	timeCount = 0;
@@ -13,10 +13,10 @@ void C_FPSManager::Create(){
 
 }
 
-void C_FPSManager::Destroy(){
+void FPSManager::Destroy(){
 }
 
-bool C_FPSManager::Update(){
+bool FPSManager::Update(){
 
 	//1ƒtƒŒ[ƒ€–Ú‚È‚ç‚ğ‹L‰¯
 	if(timeCount == 0){
@@ -36,13 +36,13 @@ bool C_FPSManager::Update(){
 	return true;
 }
 
-void C_FPSManager::Draw(){
+void FPSManager::Draw(){
 
 	DrawFormatString(800, 455, Color_White, "%4.1ffps", fps);
 
 }
 
-void C_FPSManager::Wait(){
+void FPSManager::Wait(){
 
 	int tookTime = GetNowCount() - startTime;					//‚©‚©‚Á‚½ŠÔ
 	int waitTime = timeCount * 1000 / Basis_FPS - tookTime;		//‘Ò‚Â‚×‚«ŠÔ

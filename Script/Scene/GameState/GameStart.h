@@ -8,11 +8,11 @@ GameStateÇåpè≥
 
 #include "GameState.h"
 
-class C_GameStart : public C_GameState{
+class GameStart : public GameState{
 
 public:
-	C_GameStart(C_GameScene *argGameScene);
-	virtual ~C_GameStart();
+	GameStart(GameScene* argGameScene);
+	virtual ~GameStart();
 	virtual void Update() override;
 	virtual void Draw() override;
 

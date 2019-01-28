@@ -8,23 +8,23 @@ Main‚Å‚Í‚±‚ÌƒNƒ‰ƒX‚Ì‚İ‚ğ¶¬‚·‚é
 
 #include "../System/Singleton.h"
 
-class C_SceneManager;
+class SceneManager;
 
-class C_GameManager : public C_Singleton<C_GameManager>{
+class GameManager : public Singleton<GameManager>{
 
 public:
-	friend class C_Singleton<C_GameManager>;
+	friend class Singleton<GameManager>;
 	virtual void Create() override;
 	virtual void Destroy() override;
 	bool Update();
 	void Draw();
 
 protected:
-	C_GameManager(){ }
-	virtual ~C_GameManager(){ }
+	GameManager(){ }
+	virtual ~GameManager(){ }
 
 private:
-	C_SceneManager *sceneManager;
+	SceneManager* sceneManager;
 
 };
 

@@ -4,22 +4,22 @@
 
 const int Laby_Height = 15;
 
-C_Stairs::C_Stairs(C_Position<int> argPos):C_BaseBlock(argPos){
+Stairs::Stairs(Position<int> argPos):BaseBlock(argPos){
 
 	imageKind = Laby_Stairs;
 
 }
 
-C_Stairs::~C_Stairs(){
+Stairs::~Stairs(){
 }
 
-void C_Stairs::Update(){
+void Stairs::Update(){
 
 
 
 }
 
-void C_Stairs::Draw(){
+void Stairs::Draw(){
 
 	DrawGraph((pos.GetDx() * Block_Size), (pos.GetDy() * Block_Size), image[Laby_Road], TRUE);
 
@@ -28,7 +28,7 @@ void C_Stairs::Draw(){
 
 }
 
-bool C_Stairs::HitAction(){
+bool Stairs::HitAction(){
 
 	return passFlag;
 }

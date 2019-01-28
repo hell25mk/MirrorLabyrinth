@@ -1,21 +1,21 @@
 #include "KeyboardManager.h"
 #include "DxLib.h"
 
-const int C_KeyboardManager::Key_Type_Num = 256;
+const int KeyboardManager::Key_Type_Num = 256;
 
-void C_KeyboardManager::Create(){
+void KeyboardManager::Create(){
 
 	arrKeyFrame = new int[Key_Type_Num];
 
 }
 
-void C_KeyboardManager::Destroy(){
+void KeyboardManager::Destroy(){
 
 	delete[] arrKeyFrame;
 
 }
 
-void C_KeyboardManager::Update(){
+void KeyboardManager::Update(){
 
 	char tmpKey[256];
 
@@ -33,7 +33,7 @@ void C_KeyboardManager::Update(){
 
 }
 
-int C_KeyboardManager::Input(int argKeyCode){
+int KeyboardManager::Input(int argKeyCode){
 
 	return arrKeyFrame[argKeyCode];
 }

@@ -9,16 +9,16 @@
 #include "../Manager/SceneChanger.h"
 #include "../Manager/KeyboardManager.h"
 
-class C_BaseScene{
+class BaseScene{
 
 public:
-	C_BaseScene(C_SceneChanger *argSceneChanger);
-	virtual ~C_BaseScene();
+	BaseScene(SceneChanger *argSceneChanger);
+	virtual ~BaseScene();
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
 
 protected:
-	C_SceneChanger *sceneChanger;			//シーン切り替え用ポインタ
+	SceneChanger* sceneChanger;			//シーン切り替え用ポインタ
 
 };
 

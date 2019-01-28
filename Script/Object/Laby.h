@@ -10,20 +10,20 @@
 #include <memory>
 #include <vector>
 
-class C_BaseBlock;
-class C_Player;
-class C_Mirror;
+class BaseBlock;
+class Player;
+class Mirror;
 
-class C_Laby{
+class Laby{
 
 public:
-	C_Laby();
-	~C_Laby();
+	Laby();
+	~Laby();
 	void Update();
 	void Draw();
-	void PushBlockObject(int argBlockKind, C_Position<int> argPos);
-	bool MoveCheck(int argDire, C_Position<int> argPos);
-	bool ClearCheck(C_Position<int> argPos);
+	void PushBlockObject(int argBlockKind, Position<int> argPos);
+	bool MoveCheck(int argDire, Position<int> argPos);
+	bool ClearCheck(Position<int> argPos);
 
 private:
 	static const int Laby_Height;
@@ -41,11 +41,11 @@ private:
 	}e_ObjectKind;
 
 private:
-	C_Position<int> pos;
+	Position<int> pos;
 	std::vector<int> labyVector;
-	std::vector<std::shared_ptr<C_BaseBlock>> blockVector;
-	/*C_Player *player;
-	C_Mirror *mirror;*/
+	std::vector<std::shared_ptr<BaseBlock>> blockVector;
+	/*Player *player;
+	Mirror *mirror;*/
 	int maxKeyNum;
 	int getKeyNum;
 	

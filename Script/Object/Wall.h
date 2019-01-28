@@ -8,11 +8,11 @@
 
 #include "../Base/BaseBlock.h"
 
-class C_Wall : public C_BaseBlock{
+class Wall : public BaseBlock{
 
 public:
-	C_Wall(C_Position<int> argPos);
-	virtual ~C_Wall();
+	Wall(Position<int> argPos);
+	virtual ~Wall();
 	virtual void Update() override;
 	virtual void Draw() override;
 	virtual bool HitAction() override;

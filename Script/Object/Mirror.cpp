@@ -9,7 +9,7 @@ const int Reflect_Space = 14;
 const int FlashLoopTime = 180;
 const int AnimeChange_Time = 30;
 
-C_Mirror::C_Mirror(C_Player *player):C_BaseCharacter(){
+Mirror::Mirror(Player *player):BaseCharacter(){
 
 	this->player = player;
 	pos.SetPosition(player->GetPosition().GetX(), (Reflect_Space - (player->GetPosition().GetY() / Block_Size)) * Block_Size);
@@ -18,24 +18,24 @@ C_Mirror::C_Mirror(C_Player *player):C_BaseCharacter(){
 	flashFlag = true;
 	int animeOrder[4] = { 0,1,0,2 };
 	int orderSize = sizeof(animeOrder) / sizeof(animeOrder[0]);
-	animation = new C_Animation(animeOrder, orderSize, AnimeChange_Time, &imageNumber);
+	animation = new Animation(animeOrder, orderSize, AnimeChange_Time, &imageNumber);
 
 }
 
-C_Mirror::~C_Mirror(){
+Mirror::~Mirror(){
 
 	delete animation;
 
 }
 
-void C_Mirror::Update(){
+void Mirror::Update(){
 
 	animation->Update();
 	Fhashing();
 
 }
 
-void C_Mirror::Draw(){
+void Mirror::Draw(){
 
 	if(flashFlag){
 		DrawRotaGraph((pos.GetDx() + 16), (pos.GetDy() + 16), (Block_Size / (double)Image_Size), 0.0, image[dire + imageNumber], TRUE);
@@ -43,20 +43,20 @@ void C_Mirror::Draw(){
 
 }
 
-void C_Mirror::Move(){
+void Mirror::Move(){
 
 	pos.SetPosition(player->GetPosition().GetX(), (Reflect_Space - (player->GetPosition().GetY() / Block_Size)) * Block_Size);
 
 }
 
-void C_Mirror::Direction(){
+void Mirror::Direction(){
 
 	int arrDire[4]{ Dire_Up ,Dire_Right ,Dire_Left ,Dire_Down };
 	dire = arrDire[player->GetDirection() / Image_Width] * Image_Width;
 
 }
 
-void C_Mirror::Fhashing(){
+void Mirror::Fhashing(){
 
 	flashTime++;
 	flashFlag = flashTime < FlashLoopTime / 3;

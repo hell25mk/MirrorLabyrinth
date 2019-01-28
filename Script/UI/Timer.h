@@ -8,11 +8,11 @@
 
 #include "../Define/Enum.h"
 
-class C_Timer{
+class Timer{
 
 public:
-	C_Timer();
-	~C_Timer();
+	Timer();
+	~Timer();
 	void Update();
 	void Draw();
 	int GetGameTimer();

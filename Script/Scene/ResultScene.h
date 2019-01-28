@@ -7,11 +7,11 @@
 
 #include "../Base/BaseScene.h"
 
-class C_ResultScene : public C_BaseScene{
+class ResultScene : public BaseScene{
 
 public:
-	C_ResultScene(C_SceneChanger *argSceneChanger);
-	virtual ~C_ResultScene();
+	ResultScene(SceneChanger* argSceneChanger);
+	virtual ~ResultScene();
 	void Update() override;
 	void Draw() override;
 

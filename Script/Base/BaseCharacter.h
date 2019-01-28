@@ -1,5 +1,5 @@
 /*****************************************************************************************************
-クラス名　：C_BaseCharacter
+クラス名　：BaseCharacter
 ------------------------------------------------------------------------------------------------------
 クラス概要：キャラクターの基本要素を持つクラス
 ******************************************************************************************************/
@@ -14,14 +14,14 @@ BaseObjectを継承
 
 #include "BaseObject.h"
 
-class C_Animation;
+class Animation;
 
-class C_BaseCharacter : public C_BaseObject{
+class BaseCharacter : public BaseObject{
 
 public:
-	C_BaseCharacter();
-	C_BaseCharacter(C_Position<int> argPos);
-	virtual ~C_BaseCharacter();
+	BaseCharacter();
+	BaseCharacter(Position<int> argPos);
+	virtual ~BaseCharacter();
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
 
@@ -32,7 +32,7 @@ protected:
 	static const int AnimeChange_Time;			//アニメーションの変動時間
 
 protected:
-	C_Animation * animation;						//アニメーション用のポインタ
+	Animation * animation;						//アニメーション用のポインタ
 	bool alivaFlag;								//オブジェクトが生きているか
 	static int *image;							//画像ポインタ
 	int dire;									//オブジェクトの向いている方向

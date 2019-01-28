@@ -1,9 +1,9 @@
 #include "TitleScene.h"
 #include "../System/SoundPlayer.h"
 
-C_TitleScene::C_TitleScene(C_SceneChanger *argSceneChanger):C_BaseScene(argSceneChanger){
+TitleScene::TitleScene(SceneChanger *argSceneChanger):BaseScene(argSceneChanger){
 
-	C_SoundPlayer::GetInstance().PlayBGM("Title");
+	SoundPlayer::GetInstance().PlayBGM("Title");
 
 	backGroundImage = LoadGraph("Image/Share/BackGround.png");
 	titleImage = LoadGraph("Image/Title/Title.png");
@@ -17,36 +17,36 @@ C_TitleScene::C_TitleScene(C_SceneChanger *argSceneChanger):C_BaseScene(argScene
 
 }
 
-C_TitleScene::~C_TitleScene(){
+TitleScene::~TitleScene(){
 
 	delete[] menuImage;
 
 }
 
-void C_TitleScene::Update(){
+void TitleScene::Update(){
 
 #ifdef _DEBUG
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_ESCAPE) == 1){
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_ESCAPE) == 1){
 		sceneChanger->SceneChange(Scene_End);
 }
 
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_A) == 1){
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_A) == 1){
 		sceneChanger->SceneChange(Scene_Game);
 	}
 #endif // DEBUG
 
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_DOWN) == 1){
-		C_SoundPlayer::GetInstance().PlaySE("Menu1");
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_DOWN) == 1){
+		SoundPlayer::GetInstance().PlaySE("Menu1");
 		selectMenu = (e_TitleMenu)((selectMenu + 1) % Title_Num);
 	}
 
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_UP) == 1){
-		C_SoundPlayer::GetInstance().PlaySE("Menu1");
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_UP) == 1){
+		SoundPlayer::GetInstance().PlaySE("Menu1");
 		selectMenu = (e_TitleMenu)((selectMenu + (Title_Num - 1)) % Title_Num);
 	}
 
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
-		C_SoundPlayer::GetInstance().PlaySE("Menu2");
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
+		SoundPlayer::GetInstance().PlaySE("Menu2");
 		switch(selectMenu){
 			case Title_Start:
 				sceneChanger->SceneChange(Scene_Game);
@@ -62,7 +62,7 @@ void C_TitleScene::Update(){
 
 }
 
-void C_TitleScene::Draw(){
+void TitleScene::Draw(){
 
 	//îwåi
 	DrawGraph(0, 0, backGroundImage, TRUE);

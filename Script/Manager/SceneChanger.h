@@ -15,10 +15,10 @@ typedef enum{
 	Scene_Nore,		//–³‚µ
 }e_Scene;
 
-class C_SceneChanger{
+class SceneChanger{
 
 public:
-	virtual ~C_SceneChanger(){};
+	virtual ~SceneChanger(){};
 	virtual void SceneChange(e_Scene nextScene) = 0;
 
 };

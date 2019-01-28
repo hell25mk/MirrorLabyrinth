@@ -3,27 +3,27 @@
 #include "GameState/GameStateList.h"
 #include "../System/SoundPlayer.h"
 
-const int C_GameScene::Max_Stage_Num = 25;
-const int C_GameScene::Laby_Height = 15;
-const int C_GameScene::Laby_Width = 20;
+const int GameScene::Max_Stage_Num = 25;
+const int GameScene::Laby_Height = 15;
+const int GameScene::Laby_Width = 20;
 
-C_GameScene::C_GameScene(C_SceneChanger *argSceneChanger):C_BaseScene(argSceneChanger){
+GameScene::GameScene(SceneChanger *argSceneChanger):BaseScene(argSceneChanger){
 
-	gameState = new C_ModeSelect(this);
+	gameState = new ModeSelect(this);
 	nowStageNum = 1;
 
 }
 
-C_GameScene::~C_GameScene(){
+GameScene::~GameScene(){
 
 	delete gameState;
 
 }
 
-void C_GameScene::Update(){
+void GameScene::Update(){
 
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_ESCAPE) == 1){
-		C_SoundPlayer::GetInstance().StopBGM();
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_ESCAPE) == 1){
+		SoundPlayer::GetInstance().StopBGM();
 		sceneChanger->SceneChange(Scene_Title);
 	}
 
@@ -31,38 +31,38 @@ void C_GameScene::Update(){
 
 }
 
-void C_GameScene::Draw(){
+void GameScene::Draw(){
 
 	gameState->Draw();
 
 }
 
-void C_GameScene::SetGameState(int argGameState){
+void GameScene::SetGameState(int argGameState){
 
 	switch(argGameState){
 		case State_ModeSelect:
-			gameState = new C_ModeSelect(this);
+			gameState = new ModeSelect(this);
 			break;
 		case State_GameStart:
-			gameState = new C_GameStart(this);
+			gameState = new GameStart(this);
 			break;
 		case State_GamePlay:
-			gameState = new C_GamePlay(this);
+			gameState = new GamePlay(this);
 			break;
 		case State_StageClear:
-			gameState = new C_StageClear(this);
+			gameState = new StageClear(this);
 			break;
 		case State_GameClear:
-			gameState = new C_GameClear(this);
+			gameState = new GameClear(this);
 			break;
 		case State_GameOver:
-			gameState = new C_GameOver(this);
+			gameState = new GameOver(this);
 			break;
 	}
 
 }
 
-void C_GameScene::NextScene(int argNextScene){
+void GameScene::NextScene(int argNextScene){
 
 	switch(argNextScene){
 		case Scene_Title:
@@ -75,13 +75,13 @@ void C_GameScene::NextScene(int argNextScene){
 
 }
 
-void C_GameScene::SetStageNum(int argStageNum){
+void GameScene::SetStageNum(int argStageNum){
 
 	nowStageNum = argStageNum;
 
 }
 
-int C_GameScene::GetStageNum(){
+int GameScene::GetStageNum(){
 
 	return nowStageNum;
 }

@@ -9,11 +9,11 @@
 
 #include "../Base/BaseBlock.h"
 
-class C_Stairs : public C_BaseBlock{
+class Stairs : public BaseBlock{
 
 public:
-	C_Stairs(C_Position<int> argPos);
-	virtual ~C_Stairs();
+	Stairs(Position<int> argPos);
+	virtual ~Stairs();
 	virtual void Update() override;
 	virtual void Draw() override;
 	virtual bool HitAction() override;

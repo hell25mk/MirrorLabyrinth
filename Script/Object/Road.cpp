@@ -2,28 +2,28 @@
 #include "../System/Position.h"
 #include "../Define/Enum.h"
 
-C_Road::C_Road(C_Position<int> argPos):C_BaseBlock(argPos){
+Road::Road(Position<int> argPos):BaseBlock(argPos){
 
 	imageKind = Laby_Road;
 
 }
 
-C_Road::~C_Road(){
+Road::~Road(){
 }
 
-void C_Road::Update(){
+void Road::Update(){
 
 
 
 }
 
-void C_Road::Draw(){
+void Road::Draw(){
 
 	DrawGraph((pos.GetDx() * Block_Size), (pos.GetDy() * Block_Size), image[imageKind], TRUE);
 
 }
 
-bool C_Road::HitAction(){
+bool Road::HitAction(){
 
 	return passFlag;
 }

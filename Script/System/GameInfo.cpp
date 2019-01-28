@@ -1,18 +1,18 @@
 #include "GameInfo.h"
 
-void C_GameInfo::Create(){
+void GameInfo::Create(){
 
 	gameLevel = Level_Easy;
 
 }
 
-void C_GameInfo::SetInfo(std::string argKey, int argValue){
+void GameInfo::SetInfo(std::string argKey, int argValue){
 
 	info[argKey] = argValue;
 
 }
 
-int C_GameInfo::GetInfo(std::string argKey) const{
+int GameInfo::GetInfo(std::string argKey) const{
 
 	auto itr = info.find(argKey);
 	if(info.end() == itr){
@@ -22,7 +22,7 @@ int C_GameInfo::GetInfo(std::string argKey) const{
 	return itr->second;
 }
 
-void C_GameInfo::UpGameLevel(){
+void GameInfo::UpGameLevel(){
 
 	if(gameLevel == Level_Hard){
 		return;
@@ -32,7 +32,7 @@ void C_GameInfo::UpGameLevel(){
 
 }
 
-void C_GameInfo::DownGameLevel(){
+void GameInfo::DownGameLevel(){
 
 	if(gameLevel == Level_Easy){
 		return;
@@ -42,7 +42,7 @@ void C_GameInfo::DownGameLevel(){
 
 }
 
-e_GameLevel C_GameInfo::GetGameLevel(){ 
+e_GameLevel GameInfo::GetGameLevel(){ 
 
 	return gameLevel;
 }

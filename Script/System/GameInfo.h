@@ -18,10 +18,10 @@ enum e_GameLevel{
 	Level_Num,
 };
 
-class C_GameInfo : public C_Singleton<C_GameInfo>{
+class GameInfo : public Singleton<GameInfo>{
 
 public:
-	friend class C_Singleton<C_GameInfo>;
+	friend class Singleton<GameInfo>;
 	
 	void SetInfo(std::string argKey, int argValue);
 	int GetInfo(std::string argKey) const;
@@ -32,8 +32,8 @@ public:
 	e_GameLevel GetGameLevel();
 
 protected:
-	C_GameInfo(){}
-	virtual ~C_GameInfo(){}
+	GameInfo(){}
+	virtual ~GameInfo(){}
 
 private:
 	std::map<std::string, int> info;

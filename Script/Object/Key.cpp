@@ -4,7 +4,7 @@
 #include "../System/SoundPlayer.h"
 #include "../Define/Enum.h"
 
-C_Key::C_Key(C_Position<int> argPos, int *getKeyNum):C_BaseBlock(argPos){
+Key::Key(Position<int> argPos, int *getKeyNum):BaseBlock(argPos){
 
 	this->getKeyNum = getKeyNum;
 	int rand = GetRand(9);
@@ -19,16 +19,16 @@ C_Key::C_Key(C_Position<int> argPos, int *getKeyNum):C_BaseBlock(argPos){
 
 }
 
-C_Key::~C_Key(){
+Key::~Key(){
 }
 
-void C_Key::Update(){
+void Key::Update(){
 
 
 
 }
 
-void C_Key::Draw(){
+void Key::Draw(){
 
 	DrawGraph((pos.GetDx() * Block_Size), (pos.GetDy() * Block_Size), image[Laby_Road], TRUE);
 	if(!getFlag){
@@ -37,14 +37,14 @@ void C_Key::Draw(){
 
 }
 
-bool C_Key::HitAction(){
+bool Key::HitAction(){
 
 	if(getFlag){
 		return passFlag;
 	}
 
 	*getKeyNum += 1;
-	C_SoundPlayer::GetInstance().PlaySE("Key");
+	SoundPlayer::GetInstance().PlaySE("Key");
 
 	getFlag = true;
 

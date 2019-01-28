@@ -27,19 +27,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	}
 	SetDrawScreen(DX_SCREEN_BACK);
 
-	C_GameManager::GetInstance().Create();
+	GameManager::GetInstance().Create();
 
 	while(ProcessLoop()){
 
-		if(!(C_GameManager::GetInstance().Update())){
+		if(!(GameManager::GetInstance().Update())){
 			break;
 		}
 
-		C_GameManager::GetInstance().Draw();
+		GameManager::GetInstance().Draw();
 
 	}
 
-	C_GameManager::GetInstance().Destroy();
+	GameManager::GetInstance().Destroy();
 
 	DxLib_End();		//DxLibèIóπ
 

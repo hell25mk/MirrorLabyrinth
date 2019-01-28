@@ -2,28 +2,28 @@
 #include "DxLib.h"
 #include "../../System/SoundPlayer.h"
 
-C_GameStart::C_GameStart(C_GameScene *argGameScene):C_GameState(argGameScene){
+GameStart::GameStart(GameScene *argGameScene):GameState(argGameScene){
 
 	nowStageNum = gameScene->GetStageNum();
-	C_SoundPlayer::GetInstance().PlayBGM("Stage");
+	SoundPlayer::GetInstance().PlayBGM("Stage");
 
 	LoadDivGraph("Image/Share/Number.png", 10, 10, 1, 96, 96, numberImage);
 	floorImage = LoadGraph("Image/Game/Floor.png");
 
 }
 
-C_GameStart::~C_GameStart(){
+GameStart::~GameStart(){
 }
 
-void C_GameStart::Update(){
+void GameStart::Update(){
 
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
 		gameScene->SetGameState(gameScene->State_GamePlay);
 	}
 
 }
 
-void C_GameStart::Draw(){
+void GameStart::Draw(){
 
 	bool drawStageNumFlag = nowStageNum < 10;
 	if(drawStageNumFlag){

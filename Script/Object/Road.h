@@ -8,11 +8,11 @@
 
 #include "../Base/BaseBlock.h"
 
-class C_Road : public C_BaseBlock{
+class Road : public BaseBlock{
 
 public:
-	C_Road(C_Position<int> argPos);
-	~C_Road();
+	Road(Position<int> argPos);
+	~Road();
 	virtual void Update() override;
 	virtual void Draw() override;
 	virtual bool HitAction() override;

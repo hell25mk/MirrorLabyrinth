@@ -7,23 +7,23 @@
 
 #include "../Base/BaseCharacter.h"
 
-class C_Animation;
+class Animation;
 
-class C_Player : public C_BaseCharacter{
+class Player : public BaseCharacter{
 
 public:
-	C_Player(C_Position<int> argPos);
-	virtual ~C_Player();
+	Player(Position<int> argPos);
+	virtual ~Player();
 	virtual void Update() override;
 	virtual void Draw() override;
 	void Move(int argMoveDire);
 	void Direction(int argMoveDire);
-	C_Position<int> GetPosition();
+	Position<int> GetPosition();
 	int GetDirection();
 
 private:
 	bool moveFlag;
-	C_Animation *animation;
+	Animation *animation;
 
 };
 

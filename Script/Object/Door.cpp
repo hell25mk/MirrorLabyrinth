@@ -3,7 +3,7 @@
 #include "../System/Position.h"
 #include "../Define/Enum.h"
 
-C_Door::C_Door(C_Position<int> argPos, const int *maxKeyNum, int *getKeyNum):C_BaseBlock(argPos){
+Door::Door(Position<int> argPos, const int *maxKeyNum, int *getKeyNum):BaseBlock(argPos){
 
 	this->maxKeyNum = maxKeyNum;
 	this->getKeyNum = getKeyNum;
@@ -12,10 +12,10 @@ C_Door::C_Door(C_Position<int> argPos, const int *maxKeyNum, int *getKeyNum):C_B
 
 }
 
-C_Door::~C_Door(){
+Door::~Door(){
 }
 
-void C_Door::Update(){
+void Door::Update(){
 
 	if(*maxKeyNum == *getKeyNum){
 		passFlag = true;
@@ -24,14 +24,14 @@ void C_Door::Update(){
 
 }
 
-void C_Door::Draw(){
+void Door::Draw(){
 
 	DrawGraph((pos.GetDx() * Block_Size), (pos.GetDy() * Block_Size), image[Laby_Road], TRUE);
 	DrawGraph((pos.GetDx() * Block_Size), (pos.GetDy() * Block_Size), image[imageKind], TRUE);
 	
 }
 
-bool C_Door::HitAction(){
+bool Door::HitAction(){
 
 	return passFlag;
 }

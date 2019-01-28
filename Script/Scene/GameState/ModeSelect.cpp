@@ -2,7 +2,7 @@
 #include "DxLib.h"
 #include "../../System/SoundPlayer.h"
 
-C_ModeSelect::C_ModeSelect(C_GameScene *argGameScene):C_GameState(argGameScene){
+ModeSelect::ModeSelect(GameScene *argGameScene):GameState(argGameScene){
 
 	nowStageNum = 1;
 	LoadDivGraph("Image/Share/Number.png", 10, 10, 1, 96, 96, numberImage);
@@ -15,28 +15,28 @@ C_ModeSelect::C_ModeSelect(C_GameScene *argGameScene):C_GameState(argGameScene){
 
 }
 
-C_ModeSelect::~C_ModeSelect(){
+ModeSelect::~ModeSelect(){
 }
 
-void C_ModeSelect::Update(){
+void ModeSelect::Update(){
 
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_DOWN) == 1){
-		C_SoundPlayer::GetInstance().PlaySE("Menu1");
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_DOWN) == 1){
+		SoundPlayer::GetInstance().PlaySE("Menu1");
 		nowSelectMode = (nowSelectMode + 1) % Mode_Num;
 	}
 
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_UP) == 1){
-		C_SoundPlayer::GetInstance().PlaySE("Menu1");
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_UP) == 1){
+		SoundPlayer::GetInstance().PlaySE("Menu1");
 		nowSelectMode = (nowSelectMode + (Mode_Num - 1)) % Mode_Num;
 	}
 
 	if(nowSelectMode == Mode_Select){
-		if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_LEFT) == 1){
-			C_SoundPlayer::GetInstance().PlaySE("Menu1");
+		if(KeyboardManager::GetInstance().Input(KEY_INPUT_LEFT) == 1){
+			SoundPlayer::GetInstance().PlaySE("Menu1");
 			nowStageNum--;
 		}
-		if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_RIGHT) == 1){
-			C_SoundPlayer::GetInstance().PlaySE("Menu1");
+		if(KeyboardManager::GetInstance().Input(KEY_INPUT_RIGHT) == 1){
+			SoundPlayer::GetInstance().PlaySE("Menu1");
 			nowStageNum++;
 		}
 	}
@@ -48,20 +48,20 @@ void C_ModeSelect::Update(){
 		nowStageNum = 1;
 	}
 
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
 		switch(nowSelectMode){
 			case Mode_Play:
-				C_SoundPlayer::GetInstance().StopBGM();
+				SoundPlayer::GetInstance().StopBGM();
 				gameScene->SetStageNum(1);
 				gameScene->SetGameState(gameScene->State_GameStart);
 				break;
 			case Mode_Select:
-				C_SoundPlayer::GetInstance().StopBGM();
+				SoundPlayer::GetInstance().StopBGM();
 				gameScene->SetStageNum(nowStageNum);
 				gameScene->SetGameState(gameScene->State_GameStart);
 				break;
 			case Mode_Exit:
-				C_SoundPlayer::GetInstance().PlaySE("Menu2");
+				SoundPlayer::GetInstance().PlaySE("Menu2");
 				gameScene->NextScene(Scene_Title);
 				break;
 		}
@@ -69,7 +69,7 @@ void C_ModeSelect::Update(){
 
 }
 
-void C_ModeSelect::Draw(){
+void ModeSelect::Draw(){
 
 	int drawAlpha[Mode_Num] = { 128,128,128 };
 

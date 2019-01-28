@@ -3,21 +3,21 @@
 #include "../Base/BaseScene.h"
 #include "KeyboardManager.h"
 
-C_SceneManager::C_SceneManager(){
+SceneManager::SceneManager(){
 
 	nextScene = Scene_Nore;
-	nowScene = (C_BaseScene*)new C_TitleScene(this);
-	//stackName.push(new C_TitleScene(this,keyManager));
+	nowScene = (BaseScene*)new TitleScene(this);
+	//stackName.push(new TitleScene(this,keyManager));
 
 }
 
-C_SceneManager::~C_SceneManager(){
+SceneManager::~SceneManager(){
 
 	delete nowScene;
 
 }
 
-void C_SceneManager::Update(){
+void SceneManager::Update(){
 
 	//ŠÖ”•ª‚¯‚µ‚½‚Ù‚¤‚ª‚¢‚¢
 	if(nextScene != Scene_Nore){
@@ -25,16 +25,16 @@ void C_SceneManager::Update(){
 
 		switch(nextScene){
 			case Scene_Title:
-				nowScene = new C_TitleScene(this);
+				nowScene = new TitleScene(this);
 				break;
 			case Scene_Game:
-				nowScene = new C_GameScene(this);
+				nowScene = new GameScene(this);
 				break;
 			case Scene_Config:
-				nowScene = new C_ConfigScene(this);
+				nowScene = new ConfigScene(this);
 				break;
 			case Scene_Result:
-				nowScene = new C_ResultScene(this);
+				nowScene = new ResultScene(this);
 				break;
 			case Scene_End:
 				return;
@@ -49,20 +49,20 @@ void C_SceneManager::Update(){
 
 }
 
-void C_SceneManager::Draw(){
+void SceneManager::Draw(){
 
 	nowScene->Draw();
 	//stackName.top()->Draw();
 
 }
 
-void C_SceneManager::SceneChange(e_Scene argNextScene){
+void SceneManager::SceneChange(e_Scene argNextScene){
 
 	nextScene = argNextScene;
 
 }
 
-int C_SceneManager::GetNextScene(){
+int SceneManager::GetNextScene(){
 
 	return nextScene;
 }

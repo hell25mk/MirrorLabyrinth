@@ -10,15 +10,15 @@
 
 const int Player_Object = 0;
 
-C_GamePlay::C_GamePlay(C_GameScene *argGameScene):C_GameState(argGameScene){
+GamePlay::GamePlay(GameScene *argGameScene):GameState(argGameScene){
 
 	StageCreate();
 
 }
 
-C_GamePlay::~C_GamePlay(){
+GamePlay::~GamePlay(){
 
-	C_SoundPlayer::GetInstance().StopBGM();
+	SoundPlayer::GetInstance().StopBGM();
 	delete laby;
 	delete player;
 	delete mirror;
@@ -27,22 +27,22 @@ C_GamePlay::~C_GamePlay(){
 
 }
 
-void C_GamePlay::Update(){
+void GamePlay::Update(){
 
 	int keyInput = Dire_Nore;
 
 	laby->Update();
 
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_UP) == 1){
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_UP) == 1){
 		keyInput = Dire_Up;
 	}
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_DOWN) == 1){
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_DOWN) == 1){
 		keyInput = Dire_Down;
 	}
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_LEFT) == 1){
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_LEFT) == 1){
 		keyInput = Dire_Left;
 	}
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_RIGHT) == 1){
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_RIGHT) == 1){
 		keyInput = Dire_Right;
 	}
 
@@ -70,7 +70,7 @@ void C_GamePlay::Update(){
 
 }
 
-void C_GamePlay::Draw(){
+void GamePlay::Draw(){
 
 	laby->Draw();
 	player->Draw();
@@ -80,25 +80,25 @@ void C_GamePlay::Draw(){
 
 }
 
-void C_GamePlay::StageCreate(){
+void GamePlay::StageCreate(){
 
 	char fileName[64];
 	sprintf_s(fileName, sizeof(fileName), "Stage/Stage%d.csv", gameScene->GetStageNum());
 
 	int fp;
 	char inputc;
-	C_Position<int> pos;
+	Position<int> pos;
 	int x = 0;
 	int y = 0;
 
-	fp = C_FileManager::GetInstance().FileOpen(fileName);
+	fp = FileManager::GetInstance().FileOpen(fileName);
 	if(fp == NULL){
 		printfDx("ƒtƒ@ƒCƒ‹‚ð“Ç‚Ýž‚ß‚Ü‚¹‚ñ‚Å‚µ‚½");
 		gameScene->NextScene(Scene_Title);
 		return;
 	}
 
-	laby = new C_Laby();
+	laby = new Laby();
 
 	while(1){
 
@@ -124,7 +124,7 @@ void C_GamePlay::StageCreate(){
 		int createObj = atoi(&inputc);
 
 		if(createObj == Player_Object){
-			player = new C_Player(pos);
+			player = new Player(pos);
 		}
 		
 		laby->PushBlockObject(createObj, pos);
@@ -139,10 +139,10 @@ void C_GamePlay::StageCreate(){
 
 	}
 
-	mirror = new C_Mirror(player);
-	timer = new C_Timer();
-	gameText = new C_GameText();
+	mirror = new Mirror(player);
+	timer = new Timer();
+	gameText = new GameText();
 
-	C_FileManager::GetInstance().FileClose();
+	FileManager::GetInstance().FileClose();
 
 }

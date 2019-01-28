@@ -8,10 +8,10 @@ FPSを一定に保つクラス
 
 #include "../System/Singleton.h"
 
-class C_FPSManager : public C_Singleton<C_FPSManager>{
+class FPSManager : public Singleton<FPSManager>{
 
 public:
-	friend class C_Singleton<C_FPSManager>;
+	friend class Singleton<FPSManager>;
 	virtual void Create() override;
 	virtual void Destroy() override;
 	bool Update();
@@ -19,8 +19,8 @@ public:
 	void Wait();
 
 protected:
-	C_FPSManager(){ }
-	virtual ~C_FPSManager(){ }
+	FPSManager(){ }
+	virtual ~FPSManager(){ }
 
 private:
 	static const int Average_Sample;		//平均サンプル数

@@ -5,32 +5,32 @@
 #include "../System/SoundPlayer.h"
 #include "../System/GameInfo.h"
 
-void C_GameManager::Create(){
+void GameManager::Create(){
 
 	//ゲームのシステム部分の生成
-	C_KeyboardManager::GetInstance().Create();
-	C_SoundPlayer::GetInstance().Create();
-	C_GameInfo::GetInstance().Create();
-	C_FPSManager::GetInstance().Create();
-	sceneManager = new C_SceneManager();
+	KeyboardManager::GetInstance().Create();
+	SoundPlayer::GetInstance().Create();
+	GameInfo::GetInstance().Create();
+	FPSManager::GetInstance().Create();
+	sceneManager = new SceneManager();
 
 }
 
-void C_GameManager::Destroy(){
+void GameManager::Destroy(){
 
 	//メモリの解放
 	delete sceneManager;
-	C_FPSManager::GetInstance().Destroy();
-	C_GameInfo::GetInstance().Destroy();
-	C_SoundPlayer::GetInstance().Destroy();
-	C_KeyboardManager::GetInstance().Destroy();
+	FPSManager::GetInstance().Destroy();
+	GameInfo::GetInstance().Destroy();
+	SoundPlayer::GetInstance().Destroy();
+	KeyboardManager::GetInstance().Destroy();
 
 }
 
-bool C_GameManager::Update(){
+bool GameManager::Update(){
 
-	C_FPSManager::GetInstance().Update();
-	C_KeyboardManager::GetInstance().Update();
+	FPSManager::GetInstance().Update();
+	KeyboardManager::GetInstance().Update();
 	sceneManager->Update();
 
 	if(sceneManager->GetNextScene() == Scene_End){
@@ -40,13 +40,13 @@ bool C_GameManager::Update(){
 	return true;
 }
 
-void C_GameManager::Draw(){
+void GameManager::Draw(){
 
 	sceneManager->Draw();
 
 #ifdef _DEBUG
-	C_FPSManager::GetInstance().Draw();
+	FPSManager::GetInstance().Draw();
 #endif // FPS表示
-	C_FPSManager::GetInstance().Wait();
+	FPSManager::GetInstance().Wait();
 
 }

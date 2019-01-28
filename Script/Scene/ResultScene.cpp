@@ -2,7 +2,7 @@
 
 const int Flash_Time = 30;
 
-C_ResultScene::C_ResultScene(C_SceneChanger *argSceneChanger) : C_BaseScene(argSceneChanger){
+ResultScene::ResultScene(SceneChanger *argSceneChanger) : BaseScene(argSceneChanger){
 
 	resultImage = LoadGraph("Image/Result/Result.png");
 	pleaseKeyImage = LoadGraph("Image/Result/PleaseSpaseKey.png");
@@ -11,18 +11,18 @@ C_ResultScene::C_ResultScene(C_SceneChanger *argSceneChanger) : C_BaseScene(argS
 
 }
 
-C_ResultScene::~C_ResultScene(){
+ResultScene::~ResultScene(){
 }
 
-void C_ResultScene::Update(){
+void ResultScene::Update(){
 
 #ifdef _DEBUG
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_ESCAPE) == 1){
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_ESCAPE) == 1){
 		sceneChanger->SceneChange(Scene_Title);
 	}
 #endif // _DEBUG
 
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
 		sceneChanger->SceneChange(Scene_Title);
 	}
 
@@ -35,7 +35,7 @@ void C_ResultScene::Update(){
 
 }
 
-void C_ResultScene::Draw(){
+void ResultScene::Draw(){
 
 	DrawGraph(0, 0, resultImage, TRUE);
 

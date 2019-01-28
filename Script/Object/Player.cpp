@@ -7,36 +7,36 @@
 
 const int AnimeChange_Time = 30;
 
-C_Player::C_Player(C_Position<int> argPos):C_BaseCharacter(argPos){
+Player::Player(Position<int> argPos):BaseCharacter(argPos){
 
 	pos.SetPosition(argPos.GetX() * Block_Size, argPos.GetY() * Block_Size);
 	dire = Dire_Up * Image_Width;
 	imageNumber = 0;
 	int animeOrder[4] = { 0,1,0,2 };
 	int orderSize = sizeof(animeOrder) / sizeof(animeOrder[0]);
-	animation = new C_Animation(animeOrder, orderSize, AnimeChange_Time, &imageNumber);
+	animation = new Animation(animeOrder, orderSize, AnimeChange_Time, &imageNumber);
 
 }
 
-C_Player::~C_Player(){
+Player::~Player(){
 
 	delete animation;
 
 }
 
-void C_Player::Update(){
+void Player::Update(){
 
 	animation->Update();
 
 }
 
-void C_Player::Draw(){
+void Player::Draw(){
 	
 	DrawRotaGraph(pos.GetDx() + 16, pos.GetDy() + 16, (Block_Size / (double)Image_Size), 0.0, image[dire + imageNumber], TRUE);
 
 }
 
-void C_Player::Move(int argMoveDire){
+void Player::Move(int argMoveDire){
 
 	int vy[4] = { Block_Size,0,0,-Block_Size };		//yˆÚ“®—Ê
 	int vx[4] = { 0,Block_Size,-Block_Size,0 };		//xˆÚ“®—Ê
@@ -45,18 +45,18 @@ void C_Player::Move(int argMoveDire){
 
 }
 
-void C_Player::Direction(int argMoveDire){
+void Player::Direction(int argMoveDire){
 
 	dire = argMoveDire * Image_Width;
 
 }
 
-C_Position<int> C_Player::GetPosition(){
+Position<int> Player::GetPosition(){
 
 	return pos;
 }
 
-int C_Player::GetDirection(){
+int Player::GetDirection(){
 
 	return dire;
 }

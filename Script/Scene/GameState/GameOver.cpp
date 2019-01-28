@@ -2,27 +2,27 @@
 #include "DxLib.h"
 #include "../../System/SoundPlayer.h"
 
-C_GameOver::C_GameOver(C_GameScene *argGameScene):C_GameState(argGameScene){
+GameOver::GameOver(GameScene *argGameScene):GameState(argGameScene){
 
 	gameOverImage = LoadGraph("Image/Game/GameOver.png");
 
 }
 
 
-C_GameOver::~C_GameOver(){
+GameOver::~GameOver(){
 }
 
-void C_GameOver::Update(){
+void GameOver::Update(){
 
-	C_SoundPlayer::GetInstance().StopBGM();
+	SoundPlayer::GetInstance().StopBGM();
 
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
 		gameScene->NextScene(Scene_Result);
 	}
 
 }
 
-void C_GameOver::Draw(){
+void GameOver::Draw(){
 
 	DrawGraph(0, 0, gameOverImage, TRUE);
 

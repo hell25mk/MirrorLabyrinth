@@ -1,7 +1,7 @@
 #include "StageClear.h"
 #include "DxLib.h"
 
-C_StageClear::C_StageClear(C_GameScene *argGameScene):C_GameState(argGameScene){
+StageClear::StageClear(GameScene *argGameScene):GameState(argGameScene){
 
 	nowStageNum = gameScene->GetStageNum();
 	LoadDivGraph("Image/Share/Number.png", 10, 10, 1, 96, 96, numberImage);
@@ -9,12 +9,12 @@ C_StageClear::C_StageClear(C_GameScene *argGameScene):C_GameState(argGameScene){
 
 }
 
-C_StageClear::~C_StageClear(){
+StageClear::~StageClear(){
 }
 
-void C_StageClear::Update(){
+void StageClear::Update(){
 
-	if(C_KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
+	if(KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
 		int nextStageNum = nowStageNum + 1;
 		bool stageCheckFlag = nextStageNum > gameScene->Max_Stage_Num;
 
@@ -29,7 +29,7 @@ void C_StageClear::Update(){
 
 }
 
-void C_StageClear::Draw(){
+void StageClear::Draw(){
 
 	bool drawStageNumFlag = nowStageNum < 10;
 	if(drawStageNumFlag){

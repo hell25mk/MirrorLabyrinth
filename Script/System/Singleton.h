@@ -6,7 +6,7 @@
 
 #pragma once
 
-template <class Type> class C_Singleton{
+template <class Type> class Singleton{
 
 public:
 	static Type& GetInstance(){
@@ -18,12 +18,12 @@ public:
 	virtual void Destroy(){ }
 
 protected:
-	C_Singleton(){ }
-	virtual ~C_Singleton(){ }
+	Singleton(){ }
+	virtual ~Singleton(){ }
 
 private:
-	void operator=(const C_Singleton& obj){ }	//代入演算子禁止
-	C_Singleton(const C_Singleton &obj){ }		//コピーコンストラクタ禁止
+	void operator=(const Singleton& obj){ }	//代入演算子禁止
+	Singleton(const Singleton &obj){ }		//コピーコンストラクタ禁止
 
 };
 

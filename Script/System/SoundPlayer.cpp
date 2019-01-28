@@ -3,7 +3,7 @@
 
 const int Sound_Volume = 50;
 
-void C_SoundPlayer::Create(){
+void SoundPlayer::Create(){
 
 	//BGM Load
 	sound["Title"] = LoadSoundMem("Music/BGM_TitleSnece.ogg");
@@ -28,7 +28,7 @@ void C_SoundPlayer::Create(){
 
 }
 
-void C_SoundPlayer::PlayBGM(std::string argKey){
+void SoundPlayer::PlayBGM(std::string argKey){
 
 	/*if(!sound.count(argKey)){
 		return;
@@ -48,7 +48,7 @@ void C_SoundPlayer::PlayBGM(std::string argKey){
 
 }
 
-void C_SoundPlayer::StopBGM(){
+void SoundPlayer::StopBGM(){
 
 	if(CheckSoundMem(sound[nowPlaySound]) == 1){
 		StopSoundMem(sound[nowPlaySound]);
@@ -56,7 +56,7 @@ void C_SoundPlayer::StopBGM(){
 
 }
 
-void C_SoundPlayer::PlaySE(std::string argKey){
+void SoundPlayer::PlaySE(std::string argKey){
 
 	if(sound.count(argKey) == 0){
 		return;

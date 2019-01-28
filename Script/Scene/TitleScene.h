@@ -7,11 +7,11 @@
 
 #include "../Base/BaseScene.h"
 
-class C_TitleScene : public C_BaseScene{
+class TitleScene : public BaseScene{
 
 public:
-	C_TitleScene(C_SceneChanger *argSceneChanger);
-	virtual ~C_TitleScene();
+	TitleScene(SceneChanger* argSceneChanger);
+	virtual ~TitleScene();
 	void Update() override;
 	void Draw() override;
 
@@ -28,7 +28,7 @@ private:
 	e_TitleMenu selectMenu;
 	int backGroundImage;
 	int titleImage;
-	int *menuImage;
+	int* menuImage;
 
 };
 

@@ -8,13 +8,13 @@
 
 #include "../Base/BaseScene.h"
 
-class C_GameState;
+class GameState;
 
-class C_GameScene : public C_BaseScene{
+class GameScene : public BaseScene{
 
 public:
-	C_GameScene(C_SceneChanger *argSceneChanger);
-	virtual ~C_GameScene();
+	GameScene(SceneChanger* argSceneChanger);
+	virtual ~GameScene();
 	void Update() override;
 	void Draw() override;
 	void SetGameState(int argGameState);
@@ -39,7 +39,7 @@ public:
 	}e_GameState;
 
 private:
-	C_GameState *gameState;
+	GameState* gameState;
 	int nowStageNum;
 
 };

@@ -1,6 +1,6 @@
 #include "Animation.h"
 
-C_Animation::C_Animation(int animeOrder[], int orderSize, int animeChangeTime, int *imageNumber){
+Animation::Animation(int animeOrder[], int orderSize, int animeChangeTime, int *imageNumber){
 
 	this->animeOrderSize = orderSize;
 	this->animeOrder = new int[animeOrderSize];
@@ -16,13 +16,13 @@ C_Animation::C_Animation(int animeOrder[], int orderSize, int animeChangeTime, i
 
 }
 
-C_Animation::~C_Animation(){
+Animation::~Animation(){
 
 	delete animeOrder;
 
 }
 
-void C_Animation::Update(){
+void Animation::Update(){
 
 	animeCount++;
 

@@ -8,22 +8,22 @@
 #include "SceneChanger.h"
 #include <stack>
 
-class C_BaseScene;
+class BaseScene;
 
-class C_SceneManager : public C_SceneChanger{
+class SceneManager : public SceneChanger{
 
 public:
-	C_SceneManager();
-	virtual ~C_SceneManager();
+	SceneManager();
+	virtual ~SceneManager();
 	void Update();
 	void Draw();
 	void SceneChange(e_Scene argNextScene) override;
 	int GetNextScene();
 
 private:
-	C_BaseScene *nowScene;
+	BaseScene* nowScene;
 	e_Scene nextScene;
-	std::stack<C_BaseScene*> stackName;
+	std::stack<BaseScene*> stackName;
 
 };
 

@@ -8,18 +8,18 @@
 
 #include "../Base/BaseBlock.h"
 
-class C_Door : public C_BaseBlock{
+class Door : public BaseBlock{
 
 public:
-	C_Door(C_Position<int> argPos, const int *maxKeyNum, int *getKeyNum);
-	virtual ~C_Door();
+	Door(Position<int> argPos, const int* maxKeyNum, int* getKeyNum);
+	virtual ~Door();
 	virtual void Update() override;
 	virtual void Draw() override;
 	virtual bool HitAction() override;
 
 private:
 	const int *maxKeyNum;
-	int *getKeyNum;
+	int* getKeyNum;
 
 };
 

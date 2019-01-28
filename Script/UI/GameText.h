@@ -6,11 +6,11 @@
 
 #pragma once
 
-class C_GameText{
+class GameText{
 
 public:
-	C_GameText();
-	~C_GameText();
+	GameText();
+	~GameText();
 	void Draw();
 
 private:
