@@ -9,6 +9,7 @@
 #include "Singleton.h"
 #include "../Define/Enum.h"
 #include <map>
+#include <string>
 
 enum e_GameLevel{
 	Level_Easy,
@@ -32,7 +33,7 @@ public:
 	e_GameLevel GetGameLevel();
 
 protected:
-	GameInfo(){}
+	GameInfo() = default;
 	virtual ~GameInfo(){}
 
 private:

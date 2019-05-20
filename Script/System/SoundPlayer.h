@@ -7,6 +7,7 @@ Sound‚ğŠÇ—‚·‚éƒNƒ‰ƒX
 
 #include "Singleton.h"
 #include <map>
+#include <string>
 
 class SoundPlayer : public Singleton<SoundPlayer>{
 
