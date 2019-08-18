@@ -1,6 +1,13 @@
 #include "Animation.h"
 
-Animation::Animation(int animeOrder[], int orderSize, int animeChangeTime, int *imageNumber){
+/// <summary>
+/// コンストラクタ
+/// </summary>
+/// <param name="animeOrder">アニメーションを行う画像の番号を格納した配列</param>
+/// <param name="orderSize">animeOrderからどの範囲をアニメーションさせるか</param>
+/// <param name="animeChangeTime">アニメーションをする間隔</param>
+/// <param name="imageNumber">オブジェクトの画像番号を格納したポインタ</param>
+Animation::Animation(int animeOrder[], int orderSize, int animeChangeTime, int* imageNumber){
 
 	this->animeOrderSize = orderSize;
 	this->animeOrder = new int[animeOrderSize];
@@ -16,12 +23,18 @@ Animation::Animation(int animeOrder[], int orderSize, int animeChangeTime, int *
 
 }
 
+/// <summary>
+/// デストラクタ
+/// </summary>
 Animation::~Animation(){
 
 	delete animeOrder;
 
 }
 
+/// <summary>
+/// 更新処理を行う
+/// </summary>
 void Animation::Update(){
 
 	animeCount++;

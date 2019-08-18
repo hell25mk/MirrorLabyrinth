@@ -11,9 +11,23 @@ GameStateを継承
 class GameOver : public GameState{
 
 public:
-	GameOver(GameScene *argGameScene);
+	/// <summary>
+	/// コンストラクタ
+	/// </summary>
+	/// <param name="argSceneChanger">SceneChangerのポインタ</param>
+	GameOver(GameScene* argGameScene);
+	/// <summary>
+	/// デストラクタ
+	/// </summary>
 	virtual ~GameOver();
+
+	/// <summary>
+	/// 更新処理を行う
+	/// </summary>
 	virtual void Update() override;
+	/// <summary>
+	/// 描画処理を行う
+	/// </summary>
 	virtual void Draw() override;
 
 private:

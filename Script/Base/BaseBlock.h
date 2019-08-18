@@ -9,6 +9,7 @@ BaseObjectを継承
 #include "BaseObject.h"
 
 namespace{
+	//ブロックの画像番号
 	typedef enum{
 		Laby_Road,
 		Laby_Wall,
@@ -25,17 +26,39 @@ namespace{
 		Laby_Block3,
 		Laby_Block4,
 		Laby_Nore4,
-	}e_BlockImageKind;
+	}eBlockImageKind;
 }
 
 class BaseBlock : public BaseObject{
 
 public:
+	/// <summary>
+	/// コンストラクタ
+	/// </summary>
 	BaseBlock();
+	/// <summary>
+	/// コンストラクタ
+	/// </summary>
+	/// <param name="argPos">座標</param>
 	BaseBlock(Position<int> argPos);
+	/// <summary>
+	/// デストラクタ
+	/// </summary>
 	virtual ~BaseBlock();
+
+	/// <summary>
+	/// 更新処理を行う
+	/// </summary>
 	virtual void Update() = 0;
+	/// <summary>
+	/// 描画処理を行う
+	/// </summary>
 	virtual void Draw() = 0;
+
+	/// <summary>
+	/// オブジェクトに当たった時のアクション処理
+	/// </summary>
+	/// <returns>そのオブジェクトが通過できる場合true</returns>
 	virtual bool HitAction() = 0;
 
 protected:
@@ -43,7 +66,7 @@ protected:
 	static const int Image_Height;
 
 protected:
-	bool passFlag;					//通れるかどうか
+	bool canMove;					//通れるかどうか
 	static int* image;				//画像ポインタ
 	int imageKind;					//画像の種類
 

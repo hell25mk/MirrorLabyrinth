@@ -15,17 +15,41 @@ class Player;
 class Mirror : public BaseCharacter{
 
 public:
-	Mirror(Player *player);
+	/// <summary>
+	/// コンストラクタ
+	/// </summary>
+	/// <param name="player">プレイヤーを格納したポインタ</param>
+	Mirror(Player* player);
+	/// <summary>
+	/// デストラクタ
+	/// </summary>
 	virtual ~Mirror();
+
+	/// <summary>
+	/// 更新処理を行う
+	/// </summary>
 	virtual void Update() override;
+	/// <summary>
+	/// 描画処理を行う
+	/// </summary>
 	virtual void Draw() override;
+
+	/// <summary>
+/// プレイヤーの座標に対する場所に移動する
+/// </summary>
 	void Move();
+	/// <summary>
+	/// プレイヤーの向きに対する向きに変更する
+	/// </summary>
 	void Direction();
+	/// <summary>
+	/// 点滅しているかどうかを切り替える
+	/// </summary>
 	void Fhashing();
 
 private:
-	Player *player;
+	Player* player;
 	int flashTime;
-	bool flashFlag;
+	bool willFlash;
 
 };

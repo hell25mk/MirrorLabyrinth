@@ -30,6 +30,9 @@ std::vector<int> LabySampleVector{
 	 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 };
 
+/// <summary>
+/// コンストラクタ
+/// </summary>
 Laby::Laby(){
 
 	labyVector.resize(Laby_Height * Laby_Width);
@@ -39,47 +42,21 @@ Laby::Laby(){
 
 }
 
+/// <summary>
+/// デストラクタ
+/// </summary>
 Laby::~Laby(){
 	
 	std::vector<int>().swap(labyVector);
 
 }
 
-void Laby::PushBlockObject(int argBlockKind, Position<int> argPos){
+/// <summary>
+/// 更新処理を行う
+/// </summary>
+void Laby::Update() {
 
-	//ブロックを登録
-	labyVector[argPos.GetY() * Laby_Width + argPos.GetX()] = argBlockKind;
-
-	switch(argBlockKind){
-		case Laby_Player:
-			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<BaseBlock>(new Road(argPos));
-			break;
-		case Laby_Wall:
-			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<BaseBlock>(new Wall(argPos));
-			break;
-		case Laby_Road:
-			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<BaseBlock>(new Road(argPos));
-			break;
-		case Laby_Stairs:
-			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<BaseBlock>(new Stairs(argPos));
-			break;
-		case Laby_Door:
-			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<BaseBlock>(new Door(argPos, &maxKeyNum, &getKeyNum));
-			break;
-		case Laby_Key:
-			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<BaseBlock>(new Key(argPos, &getKeyNum));
-			maxKeyNum++;
-			break;
-		case Laby_Block:
-			blockVector[argPos.GetY() * Laby_Width + argPos.GetX()] = std::shared_ptr<BaseBlock>(new Block(argPos));
-			break;
-	}
-
-}
-
-void Laby::Update(){
-
-	for(auto itr = blockVector.begin(); itr != blockVector.end();){
+	for (auto itr = blockVector.begin(); itr != blockVector.end();) {
 
 		(*itr)->Update();
 		itr++;
@@ -88,9 +65,12 @@ void Laby::Update(){
 
 }
 
-void Laby::Draw(){
+/// <summary>
+/// 描画処理を行う
+/// </summary>
+void Laby::Draw() {
 
-	for(auto itr = blockVector.begin(); itr != blockVector.end();){
+	for (auto itr = blockVector.begin(); itr != blockVector.end();) {
 
 		(*itr)->Draw();
 		itr++;
@@ -99,10 +79,55 @@ void Laby::Draw(){
 
 }
 
+/// <summary>
+/// リストにオブジェクトを追加する
+/// </summary>
+/// <param name="argBlockKind">オブジェクトの種類</param>
+/// <param name="argPos">座標</param>
+void Laby::PushBlockObject(int argBlockKind, Position<int> argPos){
+
+	int pos = argPos.GetY() * Laby_Width + argPos.GetX();
+
+	//ブロックを登録
+	labyVector[pos] = argBlockKind;
+
+	switch(argBlockKind){
+		case Laby_Player:
+			blockVector[pos] = std::shared_ptr<BaseBlock>(new Road(argPos));
+			break;
+		case Laby_Wall:
+			blockVector[pos] = std::shared_ptr<BaseBlock>(new Wall(argPos));
+			break;
+		case Laby_Road:
+			blockVector[pos] = std::shared_ptr<BaseBlock>(new Road(argPos));
+			break;
+		case Laby_Stairs:
+			blockVector[pos] = std::shared_ptr<BaseBlock>(new Stairs(argPos));
+			break;
+		case Laby_Door:
+			blockVector[pos] = std::shared_ptr<BaseBlock>(new Door(argPos, &maxKeyNum, &getKeyNum));
+			break;
+		case Laby_Key:
+			blockVector[pos] = std::shared_ptr<BaseBlock>(new Key(argPos, &getKeyNum));
+			maxKeyNum++;
+			break;
+		case Laby_Block:
+			blockVector[pos] = std::shared_ptr<BaseBlock>(new Block(argPos));
+			break;
+	}
+
+}
+
+/// <summary>
+/// プレイヤーの移動先が移動できる場所か確認する
+/// </summary>
+/// <param name="argDire">プレイヤーの移動方向</param>
+/// <param name="argPos">プレイヤーの座標</param>
+/// <returns>移動できる場合true</returns>
 bool Laby::MoveCheck(int argDire, Position<int> argPos){
 
 	bool checkFlag = false;
-	Position<int> tempPos;		//仮座標
+	Position<int> tempPos;			//仮座標
 	int vy[4] = { 1,0,0,-1 };		//y移動量
 	int vx[4] = { 0,1,-1,0 };		//x移動量
 	//int test[4] = { Laby_Height - 1,Laby_Width - 1,0,0 };		//移動可能範囲
@@ -112,21 +137,23 @@ bool Laby::MoveCheck(int argDire, Position<int> argPos){
 
 #pragma region 参照チェック
 	if(tempPos.GetX() < 0){
-		return false;
+		return checkFlag;
 	}
 	if(tempPos.GetX() > Laby_Width - 1){
-		return false;
+		return checkFlag;
 	}
 	if(tempPos.GetY() < 0){
-		return false;
+		return checkFlag;
 	}
 	if(tempPos.GetY() > Laby_Height - 1){
-		return false;
+		return checkFlag;
 	}
 #pragma endregion
 
-	if(!blockVector[tempPos.GetY() * Laby_Width + tempPos.GetX()]->HitAction()){
-		return false;
+	//移動先が移動不可の場合falseを返す
+	int pos = tempPos.GetY() * Laby_Width + tempPos.GetX();
+	if(!blockVector[pos]->HitAction()){
+		return checkFlag;
 	}
 
 	checkFlag = true;
@@ -134,15 +161,19 @@ bool Laby::MoveCheck(int argDire, Position<int> argPos){
 	return checkFlag;
 }
 
+/// <summary>
+/// プレイヤーが階段に到達したか確認する
+/// </summary>
+/// <param name="argPos"></param>
+/// <returns>プレイヤーの座標が階段と同じならtrue</returns>
 bool Laby::ClearCheck(Position<int> const argPos){
 
+	//プレイヤーの現在位置を配列番号に直す
 	Position<int> tempPos;
-
 	tempPos = argPos;
-
-	int test = (tempPos.GetY() / Block_Size) * Laby_Width + (tempPos.GetX() / Block_Size);
-
-	if(labyVector[test] != Laby_Stairs){
+	int pos = (tempPos.GetY() / Block_Size) * Laby_Width + (tempPos.GetX() / Block_Size);
+	//プレイヤーの座標が階段と同じでなければfalseを返す
+	if(labyVector[pos] != Laby_Stairs){
 		return false;
 	}
 

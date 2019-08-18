@@ -6,6 +6,10 @@
 class GameState{
 
 public:
+	/// <summary>
+	/// コンストラクタ
+	/// </summary>
+	/// <param name="argSceneChanger">SceneChangerのポインタ</param>
 	GameState(GameScene* argGameScene){
 	
 		gameScene = argGameScene;

@@ -12,9 +12,23 @@
 class BaseScene{
 
 public:
-	BaseScene(SceneChanger *argSceneChanger);
+	/// <summary>
+	/// コンストラクタ
+	/// </summary>
+	/// <param name="argSceneChanger">SceneChangerのポインタ</param>
+	BaseScene(SceneChanger* argSceneChanger);
+	/// <summary>
+	/// デストラクタ
+	/// </summary>
 	virtual ~BaseScene();
+
+	/// <summary>
+	/// 更新処理を行う
+	/// </summary>
 	virtual void Update() = 0;
+	/// <summary>
+	/// 描画処理を行う
+	/// </summary>
 	virtual void Draw() = 0;
 
 protected:

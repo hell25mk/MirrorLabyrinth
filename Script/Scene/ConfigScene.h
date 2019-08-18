@@ -11,23 +11,53 @@
 class ConfigScene : public BaseScene{
 
 public:
+	/// <summary>
+	/// コンストラクタ
+	/// </summary>
+	/// <param name="argSceneChanger">SceneChangerのポインタ</param>
 	ConfigScene(SceneChanger* argSceneChanger);
+	/// <summary>
+	/// デストラクタ
+	/// </summary>
 	virtual ~ConfigScene();
+
+	/// <summary>
+	/// 更新処理を行う
+	/// </summary>
 	void Update() override;
+	/// <summary>
+	/// 描画処理を行う
+	/// </summary>
 	void Draw() override;
-	void Menu();
-	void GameLevel();
+
+	/// <summary>
+	/// 選択されているメニューを更新する
+	/// </summary>
+	void UpdateMenuSelect();
+	/// <summary>
+	/// ゲームレベルを更新する
+	/// </summary>
+	void UpdateGameLevel();
+	/// <summary>
+	/// メニュー関連を表示する
+	/// </summary>
+	void DrawMenu();
+	/// <summary>
+	/// ゲームレベル関連を描画する
+	/// </summary>
+	void DrawGameLevel();
 
 private:
+	//メニュー用
 	typedef enum{
 		Config_GameLevel,
 		Config_Exit,
 
 		Config_Num,
-	}e_ConfigMenu;
+	}eConfigMenu;
 
 private:
-	e_ConfigMenu selectMenu;
+	eConfigMenu selectMenu;
 	int backGroundImage;
 	int* menuImage;
 	int* levelImage;

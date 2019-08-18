@@ -5,7 +5,10 @@ const int BaseBlock::Image_Height = 3;
 
 int* BaseBlock::image;
 
-BaseBlock::BaseBlock(){
+/// <summary>
+/// コンストラクタ
+/// </summary>
+BaseBlock::BaseBlock() : imageKind(){
 
 	//NULLならメモリ確保
 	if(image == NULL){
@@ -13,11 +16,15 @@ BaseBlock::BaseBlock(){
 		LoadDivGraph("Image/Object/LabyBlockMaterial.png", Image_Width * Image_Height, Image_Width, Image_Height, Block_Size, Block_Size, image);
 	}
 
-	passFlag = true;
+	canMove = true;
 
 }
 
-BaseBlock::BaseBlock(Position<int> argPos):BaseObject(argPos){
+/// <summary>
+/// コンストラクタ
+/// </summary>
+/// <param name="argPos">座標</param>
+BaseBlock::BaseBlock(Position<int> argPos):BaseObject(argPos), imageKind() {
 
 	//NULLならメモリ確保
 	if(image == NULL){
@@ -25,10 +32,13 @@ BaseBlock::BaseBlock(Position<int> argPos):BaseObject(argPos){
 		LoadDivGraph("Image/Object/LabyBlockMaterial.png", Image_Width * Image_Height, Image_Width, Image_Height, Block_Size, Block_Size, image);
 	}
 
-	passFlag = true;
+	canMove = true;
 
 }
 
+/// <summary>
+/// デストラクタ
+/// </summary>
 BaseBlock::~BaseBlock(){
 
 	//確保したメモリを解放する

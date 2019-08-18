@@ -1,6 +1,10 @@
 #include "TitleScene.h"
 #include "../System/SoundPlayer.h"
 
+/// <summary>
+/// コンストラクタ
+/// </summary>
+/// <param name="argSceneChanger">SceneChangerのポインタ</param>
 TitleScene::TitleScene(SceneChanger *argSceneChanger):BaseScene(argSceneChanger){
 
 	SoundPlayer::GetInstance().PlayBGM("Title");
@@ -17,51 +21,62 @@ TitleScene::TitleScene(SceneChanger *argSceneChanger):BaseScene(argSceneChanger)
 
 }
 
+/// <summary>
+/// デストラクタ
+/// </summary>
 TitleScene::~TitleScene(){
 
 	delete[] menuImage;
 
 }
 
+/// <summary>
+/// 更新処理を行う
+/// </summary>
 void TitleScene::Update(){
 
 #ifdef _DEBUG
 	if(KeyboardManager::GetInstance().Input(KEY_INPUT_ESCAPE) == 1){
-		sceneChanger->SceneChange(Scene_End);
-}
+		sceneChanger->SetNextScene(Scene_End);
+	}
 
 	if(KeyboardManager::GetInstance().Input(KEY_INPUT_A) == 1){
-		sceneChanger->SceneChange(Scene_Game);
+		sceneChanger->SetNextScene(Scene_Game);
 	}
-#endif // DEBUG
+#endif //ESCでゲーム終了、Aでゲームシーンへ移動
 
+	//メニューの上下
 	if(KeyboardManager::GetInstance().Input(KEY_INPUT_DOWN) == 1){
 		SoundPlayer::GetInstance().PlaySE("Menu1");
-		selectMenu = (e_TitleMenu)((selectMenu + 1) % Title_Num);
+		selectMenu = (eTitleMenu)((selectMenu + 1) % Title_Num);
 	}
-
 	if(KeyboardManager::GetInstance().Input(KEY_INPUT_UP) == 1){
 		SoundPlayer::GetInstance().PlaySE("Menu1");
-		selectMenu = (e_TitleMenu)((selectMenu + (Title_Num - 1)) % Title_Num);
+		selectMenu = (eTitleMenu)((selectMenu + (Title_Num - 1)) % Title_Num);
 	}
 
+	//メニューの選択
 	if(KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
 		SoundPlayer::GetInstance().PlaySE("Menu2");
+		//選択されたメニューによってシーンを切り替える
 		switch(selectMenu){
 			case Title_Start:
-				sceneChanger->SceneChange(Scene_Game);
+				sceneChanger->SetNextScene(Scene_Game);
 				break;
 			case Title_Config:
-				sceneChanger->SceneChange(Scene_Config);
+				sceneChanger->SetNextScene(Scene_Config);
 				break;
 			case Title_Exit:
-				sceneChanger->SceneChange(Scene_End);
+				sceneChanger->SetNextScene(Scene_End);
 				break;
 		}
 	}
 
 }
 
+/// <summary>
+/// 描画処理を行う
+/// </summary>
 void TitleScene::Draw(){
 
 	//背景
@@ -71,8 +86,8 @@ void TitleScene::Draw(){
 
 	int drawAlpha[Title_Num] = { 128,128,128 };
 
+	//選択されているメニュー以外は薄く表示する
 	drawAlpha[selectMenu] = 255;
-
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, drawAlpha[Title_Start]);
 	DrawGraph(0, 0, menuImage[Title_Start], TRUE);
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, drawAlpha[Title_Config]);

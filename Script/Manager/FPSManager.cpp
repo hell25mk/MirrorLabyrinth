@@ -5,18 +5,27 @@ const int Color_White = GetColor(255, 255, 255);
 const int FPSManager::Average_Sample = 60;
 const int FPSManager::Basis_FPS = 60;
 
+/// <summary>
+/// 初期化処理を行う
+/// </summary>
 void FPSManager::Create(){
 
 	startTime = 0;
 	timeCount = 0;
-	fps = 0;
+	fps = 0.0f;
 
 }
 
+/// <summary>
+/// 終了処理を行う
+/// </summary>
 void FPSManager::Destroy(){
 }
 
-bool FPSManager::Update(){
+/// <summary>
+/// 更新処理を行う
+/// </summary>
+void FPSManager::Update(){
 
 	//1フレーム目なら時刻を記憶
 	if(timeCount == 0){
@@ -33,15 +42,20 @@ bool FPSManager::Update(){
 
 	timeCount++;
 
-	return true;
 }
 
+/// <summary>
+/// 描画処理を行う
+/// </summary>
 void FPSManager::Draw(){
 
 	DrawFormatString(800, 455, Color_White, "%4.1ffps", fps);
 
 }
 
+/// <summary>
+/// FPS調整のため処理を待機させる
+/// </summary>
 void FPSManager::Wait(){
 
 	int tookTime = GetNowCount() - startTime;					//かかった時間

@@ -2,7 +2,11 @@
 #include "DxLib.h"
 #include "../../System/SoundPlayer.h"
 
-GameStart::GameStart(GameScene *argGameScene):GameState(argGameScene){
+/// <summary>
+/// コンストラクタ
+/// </summary>
+/// <param name="argSceneChanger">SceneChangerのポインタ</param>
+GameStart::GameStart(GameScene* argGameScene):GameState(argGameScene){
 
 	nowStageNum = gameScene->GetStageNum();
 	SoundPlayer::GetInstance().PlayBGM("Stage");
@@ -12,9 +16,15 @@ GameStart::GameStart(GameScene *argGameScene):GameState(argGameScene){
 
 }
 
+/// <summary>
+/// デストラクタ
+/// </summary>
 GameStart::~GameStart(){
 }
 
+/// <summary>
+/// 更新処理を行う
+/// </summary>
 void GameStart::Update(){
 
 	if(KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
@@ -23,10 +33,14 @@ void GameStart::Update(){
 
 }
 
+/// <summary>
+/// 描画処理を行う
+/// </summary>
 void GameStart::Draw(){
 
-	bool drawStageNumFlag = nowStageNum < 10;
-	if(drawStageNumFlag){
+	//ステージが1桁か2桁かで処理を切り替える
+	bool isDrawStageNum = nowStageNum < 10;
+	if(isDrawStageNum){
 		DrawRotaGraph(400, 150, 1.2, 0.0, numberImage[nowStageNum], TRUE);
 	} else{
 		DrawRotaGraph(340, 150, 1.2, 0.0, numberImage[nowStageNum / 10], TRUE);		//2桁目

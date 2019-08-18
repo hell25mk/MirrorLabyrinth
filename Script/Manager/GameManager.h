@@ -14,13 +14,27 @@ class GameManager : public Singleton<GameManager>{
 
 public:
 	friend class Singleton<GameManager>;
+	/// <summary>
+	/// 初期化処理を行う
+	/// </summary>
 	virtual void Create() override;
+	/// <summary>
+	/// 終了処理を行う
+	/// </summary>
 	virtual void Destroy() override;
+
+	/// <summary>
+	/// 更新処理を行う
+	/// </summary>
+	/// <returns>シーンの移動先がScene_End以外だった場合trueを返す</returns>
 	bool Update();
+	/// <summary>
+	/// 描画処理を行う
+	/// </summary>
 	void Draw();
 
 protected:
-	GameManager(){ }
+	GameManager() : sceneManager(){ }
 	virtual ~GameManager(){ }
 
 private:

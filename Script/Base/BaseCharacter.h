@@ -19,10 +19,27 @@ class Animation;
 class BaseCharacter : public BaseObject{
 
 public:
+	/// <summary>
+	/// コンストラクタ
+	/// </summary>
 	BaseCharacter();
+	/// <summary>
+	/// コンストラクタ
+	/// </summary>
+	/// <param name="argPos">座標</param>
 	BaseCharacter(Position<int> argPos);
+	/// <summary>
+	/// デストラクタ
+	/// </summary>
 	virtual ~BaseCharacter();
+
+	/// <summary>
+	/// 更新処理を行う
+	/// </summary>
 	virtual void Update() = 0;
+	/// <summary>
+	/// 描画処理を行う
+	/// </summary>
 	virtual void Draw() = 0;
 
 protected:
@@ -32,9 +49,9 @@ protected:
 	static const int AnimeChange_Time;			//アニメーションの変動時間
 
 protected:
-	Animation * animation;						//アニメーション用のポインタ
+	Animation* animation;						//アニメーション用のポインタ
 	bool alivaFlag;								//オブジェクトが生きているか
-	static int *image;							//画像ポインタ
+	static int* image;							//画像ポインタ(今回のゲームではプレイヤーは同じ画像を使うのでstaticにして共有している)
 	int dire;									//オブジェクトの向いている方向
 	int imageNumber;							//現在の画像番号
 

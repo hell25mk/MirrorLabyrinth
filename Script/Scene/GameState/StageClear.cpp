@@ -1,6 +1,10 @@
 #include "StageClear.h"
 #include "DxLib.h"
 
+/// <summary>
+/// コンストラクタ
+/// </summary>
+/// <param name="argSceneChanger">SceneChangerのポインタ</param>
 StageClear::StageClear(GameScene *argGameScene):GameState(argGameScene){
 
 	nowStageNum = gameScene->GetStageNum();
@@ -9,9 +13,15 @@ StageClear::StageClear(GameScene *argGameScene):GameState(argGameScene){
 
 }
 
+/// <summary>
+/// デストラクタ
+/// </summary>
 StageClear::~StageClear(){
 }
 
+/// <summary>
+/// 更新処理を行う
+/// </summary>
 void StageClear::Update(){
 
 	if(KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
@@ -29,8 +39,12 @@ void StageClear::Update(){
 
 }
 
+/// <summary>
+/// 描画処理を行う
+/// </summary>
 void StageClear::Draw(){
 
+	//ステージ数が1桁か2桁かによって処理を変える
 	bool drawStageNumFlag = nowStageNum < 10;
 	if(drawStageNumFlag){
 		DrawRotaGraph(400, 150, 1.2, 0.0, numberImage[nowStageNum], TRUE);

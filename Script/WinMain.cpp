@@ -15,8 +15,9 @@ const int Window_Width = 896;
 const int Window_Height = 480;
 const int Color_Bit = 32;
 const char *Game_Title = "Mirror Labyrinth";
+const int Window_IconID = 25;
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow){
+int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPTSTR lpszCmdLine, _In_ int nCmdShow){
 
 	SRand((int)time(NULL));
 	WindowInit();
@@ -31,6 +32,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	while(ProcessLoop()){
 
+		//falseが返ってくるまでゲームを続ける
 		if(!(GameManager::GetInstance().Update())){
 			break;
 		}
@@ -46,17 +48,24 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	return 0;
 }
 
+/// <summary>
+/// @brief ウィンドウ生成前に行う初期化処理
+/// </summary>
 void WindowInit(){
 
 	ChangeWindowMode(TRUE);										//ウィンドウモードに変更
 	SetGraphMode(Window_Width, Window_Height, Color_Bit);		//ウィンドウのサイズを変更
 	SetWaitVSyncFlag(FALSE);									//垂直同期を取らない(FPS調整に必要)
 	SetMainWindowText(Game_Title);								//ウィンドウタイトルを設定
-	SetWindowIconID(25);										//ウィンドウアイコン用ID
+	SetWindowIconID(Window_IconID);								//ウィンドウアイコン用ID
 	ChangeFont("PixelMplus12", DX_CHARSET_DEFAULT);				//フォントの変更
 
 }
 
+/// <summary>
+/// @brief DxLibのループに必要な処理
+/// </summary>
+/// <returns>1つでも失敗した場合falseを返す</returns>
 bool ProcessLoop(){
 
 	if(ScreenFlip() != 0){

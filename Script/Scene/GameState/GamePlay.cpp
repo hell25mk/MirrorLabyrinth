@@ -10,12 +10,19 @@
 
 const int Player_Object = 0;
 
-GamePlay::GamePlay(GameScene *argGameScene):GameState(argGameScene){
+/// <summary>
+/// コンストラクタ
+/// </summary>
+/// <param name="argSceneChanger">SceneChangerのポインタ</param>
+GamePlay::GamePlay(GameScene* argGameScene):GameState(argGameScene){
 
 	StageCreate();
 
 }
 
+/// <summary>
+/// デストラクタ
+/// </summary>
 GamePlay::~GamePlay(){
 
 	SoundPlayer::GetInstance().StopBGM();
@@ -27,6 +34,9 @@ GamePlay::~GamePlay(){
 
 }
 
+/// <summary>
+/// 更新処理を行う
+/// </summary>
 void GamePlay::Update(){
 
 	int keyInput = Dire_Nore;
@@ -58,18 +68,24 @@ void GamePlay::Update(){
 
 	player->Update();
 	mirror->Update();
+
+	//プレイヤーが階段にいるか確認する
 	if(laby->ClearCheck(player->GetPosition())){
 		gameScene->SetGameState(gameScene->State_StageClear);
 	}
 
+	//タイマーを更新し時間切れの場合、ゲームオーバー画面へ
 	timer->Update();
-	bool timeOverFlag = timer->GetGameTimer() <= 0;
-	if(timeOverFlag){
+	bool isTimeOver = timer->GetGameTimer() <= 0;
+	if(isTimeOver){
 		gameScene->SetGameState(gameScene->State_GameOver);
 	}
 
 }
 
+/// <summary>
+/// 描画処理行う
+/// </summary>
 void GamePlay::Draw(){
 
 	laby->Draw();
@@ -80,6 +96,9 @@ void GamePlay::Draw(){
 
 }
 
+/// <summary>
+/// ファイルからステージを生成する
+/// </summary>
 void GamePlay::StageCreate(){
 
 	char fileName[64];
@@ -100,7 +119,7 @@ void GamePlay::StageCreate(){
 
 	laby = new Laby();
 
-	while(1){
+	while(true){
 
 		//一文字取得
 		inputc = FileRead_getc(fp);

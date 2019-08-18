@@ -3,21 +3,30 @@
 
 const int KeyboardManager::Key_Type_Num = 256;
 
+/// <summary>
+/// 初期化処理を行う
+/// </summary>
 void KeyboardManager::Create(){
 
 	arrKeyFrame = new int[Key_Type_Num];
 
 }
 
+/// <summary>
+/// 終了処理を行う
+/// </summary>
 void KeyboardManager::Destroy(){
 
 	delete[] arrKeyFrame;
 
 }
 
+/// <summary>
+/// 更新処理を行う
+/// </summary>
 void KeyboardManager::Update(){
 
-	char tmpKey[256];
+	char tmpKey[Key_Type_Num];
 
 	GetHitKeyStateAll(tmpKey);
 	
@@ -33,6 +42,11 @@ void KeyboardManager::Update(){
 
 }
 
+/// <summary>
+/// そのキーが現在どのくらい押されているかを返す
+/// </summary>
+/// <param name="argKeyCode">キーコード</param>
+/// <returns>押されているフレーム数</returns>
 int KeyboardManager::Input(int argKeyCode){
 
 	return arrKeyFrame[argKeyCode];

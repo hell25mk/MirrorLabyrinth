@@ -12,14 +12,31 @@ class FPSManager : public Singleton<FPSManager>{
 
 public:
 	friend class Singleton<FPSManager>;
+	/// <summary>
+	/// 初期化処理を行う
+	/// </summary>
 	virtual void Create() override;
+	/// <summary>
+	/// 終了処理を行う
+	/// </summary>
 	virtual void Destroy() override;
-	bool Update();
+
+	/// <summary>
+	/// 更新処理を行う
+	/// </summary>
+	void Update();
+	/// <summary>
+	/// 描画処理を行う
+	/// </summary>
 	void Draw();
+
+	/// <summary>
+	/// FPS調整のため処理を待機させる
+	/// </summary>
 	void Wait();
 
 protected:
-	FPSManager(){ }
+	FPSManager() : startTime(0),timeCount(0),fps(0.0f){ }
 	virtual ~FPSManager(){ }
 
 private:

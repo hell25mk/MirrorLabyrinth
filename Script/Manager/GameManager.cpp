@@ -5,6 +5,9 @@
 #include "../System/SoundPlayer.h"
 #include "../System/GameInfo.h"
 
+/// <summary>
+/// 初期化処理を行う
+/// </summary>
 void GameManager::Create(){
 
 	//ゲームのシステム部分の生成
@@ -16,6 +19,9 @@ void GameManager::Create(){
 
 }
 
+/// <summary>
+/// 終了処理を行う
+/// </summary>
 void GameManager::Destroy(){
 
 	//メモリの解放
@@ -27,6 +33,10 @@ void GameManager::Destroy(){
 
 }
 
+/// <summary>
+/// 更新処理を行う
+/// </summary>
+/// <returns>シーンの移動先がScene_End以外だった場合trueを返す</returns>
 bool GameManager::Update(){
 
 	FPSManager::GetInstance().Update();
@@ -40,13 +50,18 @@ bool GameManager::Update(){
 	return true;
 }
 
+/// <summary>
+/// 描画処理を行う
+/// </summary>
 void GameManager::Draw(){
 
 	sceneManager->Draw();
 
+	//Debug時のみFPSを表示する
 #ifdef _DEBUG
 	FPSManager::GetInstance().Draw();
-#endif // FPS表示
+#endif
+
 	FPSManager::GetInstance().Wait();
 
 }

@@ -7,6 +7,10 @@
 
 const int AnimeChange_Time = 30;
 
+/// <summary>
+/// コンストラクタ
+/// </summary>
+/// <param name="argPos">座標</param>
 Player::Player(Position<int> argPos):BaseCharacter(argPos){
 
 	pos.SetPosition(argPos.GetX() * Block_Size, argPos.GetY() * Block_Size);
@@ -18,24 +22,37 @@ Player::Player(Position<int> argPos):BaseCharacter(argPos){
 
 }
 
+/// <summary>
+/// デストラクタ
+/// </summary>
 Player::~Player(){
 
 	delete animation;
 
 }
 
+/// <summary>
+/// 更新処理を行う
+/// </summary>
 void Player::Update(){
 
 	animation->Update();
 
 }
 
+/// <summary>
+/// 描画処理を行う
+/// </summary>
 void Player::Draw(){
 	
 	DrawRotaGraph(pos.GetDx() + 16, pos.GetDy() + 16, (Block_Size / (double)Image_Size), 0.0, image[dire + imageNumber], TRUE);
 
 }
 
+/// <summary>
+/// 座標を更新する
+/// </summary>
+/// <param name="argMoveDire">移動する方向</param>
 void Player::Move(int argMoveDire){
 
 	int vy[4] = { Block_Size,0,0,-Block_Size };		//y移動量
@@ -45,17 +62,29 @@ void Player::Move(int argMoveDire){
 
 }
 
+/// <summary>
+/// 向きを更新する
+/// </summary>
+/// <param name="argMoveDire">移動する方向</param>
 void Player::Direction(int argMoveDire){
 
 	dire = argMoveDire * Image_Width;
 
 }
 
+/// <summary>
+/// 座標を取得する
+/// </summary>
+/// <returns>プレイヤーの座標</returns>
 Position<int> Player::GetPosition(){
 
 	return pos;
 }
 
+/// <summary>
+/// 向きを取得する
+/// </summary>
+/// <returns>プレイヤーの向き</returns>
 int Player::GetDirection(){
 
 	return dire;

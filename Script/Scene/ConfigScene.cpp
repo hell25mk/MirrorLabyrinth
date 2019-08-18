@@ -2,19 +2,27 @@
 #include "../System/GameInfo.h"
 #include "../System/SoundPlayer.h"
 
-ConfigScene::ConfigScene(SceneChanger *argSceneChanger): BaseScene(argSceneChanger){
+/// <summary>
+/// コンストラクタ
+/// </summary>
+/// <param name="argSceneChanger">SceneChangerのポインタ</param>
+ConfigScene::ConfigScene(SceneChanger* argSceneChanger) : BaseScene(argSceneChanger),selectMenu(){
 	
+	//背景画像
 	backGroundImage = LoadGraph("Image/Share/BackGround.png");
 
+	//メニュー画面の画像
 	menuImage = new int[Config_Num];
 	menuImage[Config_GameLevel] = LoadGraph("Image/Config/ConfigMenuGameLevel.png");
 	menuImage[Config_Exit] = LoadGraph("Image/Config/ConfigMenuBack.png");
 
+	//難易度の画像
 	levelImage = new int[Level_Num];
 	levelImage[Level_Easy] = LoadGraph("Image/Config/EasyLevel.png");
 	levelImage[Level_Normal] = LoadGraph("Image/Config/NormalLevel.png");
 	levelImage[Level_Hard] = LoadGraph("Image/Config/HardLevel.png");
 
+	//難易度の説明画像
 	contentImage = new int[Level_Num];
 	contentImage[Level_Easy] = LoadGraph("Image/Config/EasyLevelContent.png");
 	contentImage[Level_Normal] = LoadGraph("Image/Config/NormalLevelContent.png");
@@ -22,6 +30,9 @@ ConfigScene::ConfigScene(SceneChanger *argSceneChanger): BaseScene(argSceneChang
 
 }
 
+/// <summary>
+/// デストラクタ
+/// </summary>
 ConfigScene::~ConfigScene(){
 
 	delete[] contentImage;
@@ -30,32 +41,82 @@ ConfigScene::~ConfigScene(){
 
 }
 
+/// <summary>
+/// 更新処理を行う
+/// </summary>
 void ConfigScene::Update(){
 
 #ifdef _DEBUG
 	if(KeyboardManager::GetInstance().Input(KEY_INPUT_ESCAPE) == 1){
-		sceneChanger->SceneChange(Scene_Title);
+		sceneChanger->SetNextScene(Scene_Title);
 	}
-#endif // _DEBUG
+#endif //ESCでタイトルへ戻る
 
-	if(KeyboardManager::GetInstance().Input(KEY_INPUT_DOWN) == 1){
+	UpdateMenuSelect();
+
+	//ゲームレベルを選択していないなら処理を終える
+	if (selectMenu != Config_GameLevel) {
+		return;
+	}
+
+	UpdateGameLevel();
+	
+}
+
+/// <summary>
+///	描画処理を行う
+/// </summary>
+void ConfigScene::Draw(){
+
+	DrawGraph(0, 0, backGroundImage, TRUE);		//拝啓の描画
+	DrawMenu();
+	DrawGameLevel();
+
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
+}
+
+/// <summary>
+/// 選択されているメニューを更新する
+/// </summary>
+void ConfigScene::UpdateMenuSelect() {
+
+	//メニューの上下
+	if (KeyboardManager::GetInstance().Input(KEY_INPUT_DOWN) == 1) {
 		SoundPlayer::GetInstance().PlaySE("Menu1");
-		selectMenu = (e_ConfigMenu)((selectMenu + 1) % Config_Num);
+		selectMenu = (eConfigMenu)((selectMenu + 1) % Config_Num);
 	}
-
-	if(KeyboardManager::GetInstance().Input(KEY_INPUT_UP) == 1){
+	if (KeyboardManager::GetInstance().Input(KEY_INPUT_UP) == 1) {
 		SoundPlayer::GetInstance().PlaySE("Menu1");
-		selectMenu = (e_ConfigMenu)((selectMenu + (Config_Num - 1)) % Config_Num);
+		selectMenu = (eConfigMenu)((selectMenu + (Config_Num - 1)) % Config_Num);
 	}
 
-	if(KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1){
-		if(selectMenu == Config_Exit){
+	//メニューの選択
+	if (KeyboardManager::GetInstance().Input(KEY_INPUT_SPACE) == 1) {
+		if (selectMenu == Config_Exit) {
 			SoundPlayer::GetInstance().PlaySE("Menu2");
-			sceneChanger->SceneChange(Scene_Title);
+			sceneChanger->SetNextScene(Scene_Title);
 		}
 	}
 
-	switch(selectMenu){
+}
+
+/// <summary>
+/// ゲームレベルを更新する
+/// </summary>
+void ConfigScene::UpdateGameLevel() {
+
+	//ゲームレベルの選択
+	if (KeyboardManager::GetInstance().Input(KEY_INPUT_LEFT) == 1) {
+		SoundPlayer::GetInstance().PlaySE("Menu1");
+		GameInfo::GetInstance().DownGameLevel();
+	}
+	if (KeyboardManager::GetInstance().Input(KEY_INPUT_RIGHT) == 1) {
+		SoundPlayer::GetInstance().PlaySE("Menu1");
+		GameInfo::GetInstance().UpGameLevel();
+	}
+
+	/*switch(selectMenu){
 		case Config_GameLevel:
 			if(KeyboardManager::GetInstance().Input(KEY_INPUT_LEFT) == 1){
 				SoundPlayer::GetInstance().PlaySE("Menu1");
@@ -66,21 +127,14 @@ void ConfigScene::Update(){
 				GameInfo::GetInstance().UpGameLevel();
 			}
 			break;
-	}
-	
-}
-
-void ConfigScene::Draw(){
-
-	DrawGraph(0, 0, backGroundImage, TRUE);
-	Menu();
-	GameLevel();
-
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+	}*/
 
 }
 
-void ConfigScene::Menu(){
+/// <summary>
+/// メニュー関連を表示する
+/// </summary>
+void ConfigScene::DrawMenu(){
 
 	int drawAlpha[2] = { 128,128 };
 
@@ -93,13 +147,18 @@ void ConfigScene::Menu(){
 
 }
 
-void ConfigScene::GameLevel(){
+/// <summary>
+/// ゲームレベル関連を描画する
+/// </summary>
+void ConfigScene::DrawGameLevel(){
 
 	int drawAlpha[3] = { 128,128,128 };
-	e_GameLevel gameLevel = GameInfo::GetInstance().GetGameLevel();
+	eGameLevel gameLevel = GameInfo::GetInstance().GetGameLevel();
 
+	//現在選択されているゲームレベルの透明度を最大にする(透過させない)
 	drawAlpha[gameLevel] = 255;
 
+	//各レベルの画像を表示する(選択されているレベル以外は薄く表示される)
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, drawAlpha[Level_Easy]);
 	DrawGraph(0, 0, levelImage[Level_Easy], TRUE);
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, drawAlpha[Level_Normal]);
@@ -107,6 +166,7 @@ void ConfigScene::GameLevel(){
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, drawAlpha[Level_Hard]);
 	DrawGraph(0, 0, levelImage[Level_Hard], TRUE);
 
+	//レベルの説明テキストを表示する
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255);
 	DrawGraph(0, 0, contentImage[gameLevel], TRUE);
 

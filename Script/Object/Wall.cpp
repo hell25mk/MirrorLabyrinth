@@ -4,22 +4,32 @@
 const int Laby_Height = 15;
 const int Laby_Width = 20;
 
+/// <summary>
+/// コンストラクタ
+/// </summary>
+/// <param name="argPos">座標</param>
 Wall::Wall(Position<int> argPos):BaseBlock(argPos){
 
 	imageKind = Laby_Wall;
-	passFlag = false;
+	canMove = false;
 
 }
 
+/// <summary>
+/// デストラクタ
+/// </summary>
 Wall::~Wall(){
 }
 
+/// <summary>
+/// 更新処理を行う
+/// </summary>
 void Wall::Update(){
-
-
-
 }
 
+/// <summary>
+/// 描画処理を行う
+/// </summary>
 void Wall::Draw(){
 
 	DrawGraph((pos.GetDx() * Block_Size), (pos.GetDy() * Block_Size), image[Laby_Road], TRUE);
@@ -39,8 +49,11 @@ void Wall::Draw(){
 	DrawGraph((pos.GetDx() * Block_Size), (pos.GetDy() * Block_Size), image[imageKind], TRUE);
 
 }
-
+/// <summary>
+/// オブジェクトに当たった時のアクション処理
+/// </summary>
+/// <returns>そのオブジェクトが通過できる場合true</returns>
 bool Wall::HitAction(){
 
-	return passFlag;
+	return canMove;
 }

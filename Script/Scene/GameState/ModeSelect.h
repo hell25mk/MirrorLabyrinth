@@ -11,19 +11,34 @@ GameStateを継承
 class ModeSelect : public GameState{
 
 public:
+	/// <summary>
+	/// コンストラクタ
+	/// </summary>
+	/// <param name="argSceneChanger">SceneChangerのポインタ</param>
 	ModeSelect(GameScene* argGameScene);
+	/// <summary>
+	/// デストラクタ
+	/// </summary>
 	virtual ~ModeSelect();
+
+	/// <summary>
+	/// 更新処理を行う
+	/// </summary>
 	virtual void Update() override;
+	/// <summary>
+	/// 描画処理を行う
+	/// </summary>
 	virtual void Draw() override;
 
 private:
+	//メニュー用
 	typedef enum{
 		Mode_Play,
 		Mode_Select,
 		Mode_Exit,
 
 		Mode_Num,
-	}e_ModeSelect;
+	}eModeSelect;
 
 private:
 	int nowSelectMode;
