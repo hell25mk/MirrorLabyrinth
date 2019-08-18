@@ -59,6 +59,7 @@ bool SceneManager::SceneChange() {
 
 	delete nowScene;
 
+	//‚¢‚¢•û–@‚ª•‚‚©‚Î‚È‚©‚Á‚½‚Ì‚Å’Pƒ‚Éswitch•¶‚É‚µ‚Ä‚¢‚é
 	switch (nextScene) {
 	case Scene_Title:
 		nowScene = new TitleScene(this);

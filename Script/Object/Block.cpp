@@ -36,6 +36,7 @@ void Block::Update(){
 /// </summary>
 void Block::Draw(){
 
+	//床を描画してからそのオブジェクトを描画している	他のオブジェクトも同様のことをしている
 	DrawGraph((pos.GetDx() * Block_Size), (pos.GetDy() * Block_Size), image[Laby_Road], TRUE);
 	DrawGraph((pos.GetDx() * Block_Size), ((Reflect_Space - pos.GetDy()) * Block_Size), image[imageKind + damage], TRUE);
 

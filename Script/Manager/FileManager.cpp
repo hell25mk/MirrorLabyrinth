@@ -20,10 +20,9 @@ void FileManager::Destroy(){
 /// <returns>開いたファイルポを格納した変数</returns>
 int FileManager::FileOpen(char* fileDirectory){
 
-	//ファイルを開く
 	filePoint = FileRead_open(fileDirectory);
 
-	//ファイルが開けなかったら
+	//ファイルが開けなかった
 	if(filePoint == NULL){
 		return NULL;
 	}

@@ -12,6 +12,7 @@ const int Image_Height = 3;
 const int Block_Size = 32;
 
 //読み込まれなかった場合のテストマップ
+//csvファイルに変えたほうがいいかもしれない
 std::vector<int> LabySampleVector{
 	 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 	 1,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
@@ -91,6 +92,7 @@ void Laby::PushBlockObject(int argBlockKind, Position<int> argPos){
 	//ブロックを登録
 	labyVector[pos] = argBlockKind;
 
+	//種類が増えた場合を考えて効率的な方法を見つける必要有り
 	switch(argBlockKind){
 		case Laby_Player:
 			blockVector[pos] = std::shared_ptr<BaseBlock>(new Road(argPos));
