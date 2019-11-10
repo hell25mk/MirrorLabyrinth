@@ -35,7 +35,7 @@ protected:
 
 private:
 	void operator=(const Singleton& obj){ }		//代入演算子を禁止する
-	Singleton(const Singleton &obj){ }			//コピーコンストラクタを禁止する
+	Singleton(const Singleton &obj){ }			//コピーメンバを初期化するを禁止する
 
 };
 

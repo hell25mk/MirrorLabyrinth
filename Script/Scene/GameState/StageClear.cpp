@@ -2,7 +2,7 @@
 #include "DxLib.h"
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="argSceneChanger">SceneChangerのポインタ</param>
 StageClear::StageClear(GameScene *argGameScene):GameState(argGameScene){
@@ -14,13 +14,13 @@ StageClear::StageClear(GameScene *argGameScene):GameState(argGameScene){
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 StageClear::~StageClear(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void StageClear::Update(){
 
@@ -40,7 +40,7 @@ void StageClear::Update(){
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void StageClear::Draw(){
 

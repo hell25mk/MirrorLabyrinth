@@ -8,7 +8,7 @@
 const int AnimeChange_Time = 30;
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="argPos">座標</param>
 Player::Player(Position<int> argPos):BaseCharacter(argPos){
@@ -23,7 +23,7 @@ Player::Player(Position<int> argPos):BaseCharacter(argPos){
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 Player::~Player(){
 
@@ -32,7 +32,7 @@ Player::~Player(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void Player::Update(){
 
@@ -41,7 +41,7 @@ void Player::Update(){
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void Player::Draw(){
 	

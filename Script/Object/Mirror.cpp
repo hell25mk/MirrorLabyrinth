@@ -10,7 +10,7 @@ const int FlashLoopTime = 180;
 const int AnimeChange_Time = 30;
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="player">プレイヤーの変数を格納したポインタ</param>
 Mirror::Mirror(Player* player):BaseCharacter(){
@@ -27,7 +27,7 @@ Mirror::Mirror(Player* player):BaseCharacter(){
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 Mirror::~Mirror(){
 
@@ -36,7 +36,7 @@ Mirror::~Mirror(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void Mirror::Update(){
 
@@ -46,7 +46,7 @@ void Mirror::Update(){
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void Mirror::Draw(){
 

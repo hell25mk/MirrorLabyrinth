@@ -1,7 +1,7 @@
 #include "Animation.h"
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="animeOrder">アニメーションを行う画像の番号を格納した配列</param>
 /// <param name="orderSize">animeOrderからどの範囲をアニメーションさせるか</param>
@@ -24,7 +24,7 @@ Animation::Animation(int animeOrder[], int orderSize, int animeChangeTime, int* 
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 Animation::~Animation(){
 
@@ -33,7 +33,7 @@ Animation::~Animation(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void Animation::Update(){
 

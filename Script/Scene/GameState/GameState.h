@@ -7,7 +7,7 @@ class GameState{
 
 public:
 	/// <summary>
-	/// コンストラクタ
+	/// メンバを初期化する
 	/// </summary>
 	/// <param name="argSceneChanger">SceneChangerのポインタ</param>
 	GameState(GameScene* argGameScene){

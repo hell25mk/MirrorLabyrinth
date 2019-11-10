@@ -10,7 +10,7 @@ class Animation{
 
 public:
 	/// <summary>
-	/// コンストラクタ
+	/// メンバを初期化する
 	/// </summary>
 	/// <param name="animeOrder">アニメーションを行う画像の番号を格納した配列</param>
 	/// <param name="orderSize">animeOrderからどの範囲をアニメーションさせるか</param>
@@ -18,12 +18,12 @@ public:
 	/// <param name="imageNumber">オブジェクトの画像番号を格納したポインタ</param>
 	Animation(int animeOrder[],int orderSize,int animeChangeTime,int* imageNumber);
 	/// <summary>
-	/// デストラクタ
+	/// メモリを確保していた場合は解放する
 	/// </summary>
 	~Animation();
 
 	/// <summary>
-	/// 更新処理を行う
+	/// 1ループ内で必要な更新処理を行う
 	/// </summary>
 	void Update();
 

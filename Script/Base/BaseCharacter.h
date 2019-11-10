@@ -20,25 +20,25 @@ class BaseCharacter : public BaseObject{
 
 public:
 	/// <summary>
-	/// コンストラクタ
+	/// メンバを初期化する
 	/// </summary>
 	BaseCharacter();
 	/// <summary>
-	/// コンストラクタ
+	/// メンバを初期化する
 	/// </summary>
 	/// <param name="argPos">座標</param>
 	BaseCharacter(Position<int> argPos);
 	/// <summary>
-	/// デストラクタ
+	/// メモリを確保していた場合は解放する
 	/// </summary>
 	virtual ~BaseCharacter();
 
 	/// <summary>
-	/// 更新処理を行う
+	/// 1ループ内で必要な更新処理を行う
 	/// </summary>
 	virtual void Update() = 0;
 	/// <summary>
-	/// 描画処理を行う
+	/// 1ループ内で必要な描画処理を行う
 	/// </summary>
 	virtual void Draw() = 0;
 
@@ -50,7 +50,6 @@ protected:
 
 protected:
 	Animation* animation;						//アニメーション用のポインタ
-	bool alivaFlag;								//オブジェクトが生きているか
 	static int* image;							//画像ポインタ(今回のゲームではプレイヤーは同じ画像を使うのでstaticにして共有している)
 	int dire;									//オブジェクトの向いている方向
 	int imageNumber;							//現在の画像番号

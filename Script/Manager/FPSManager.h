@@ -22,11 +22,11 @@ public:
 	virtual void Destroy() override;
 
 	/// <summary>
-	/// 更新処理を行う
+	/// 1ループ内で必要な更新処理を行う
 	/// </summary>
 	void Update();
 	/// <summary>
-	/// 描画処理を行う
+	/// 1ループ内で必要な描画処理を行う
 	/// </summary>
 	void Draw();
 

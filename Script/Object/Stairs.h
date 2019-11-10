@@ -13,21 +13,21 @@ class Stairs : public BaseBlock{
 
 public:
 	/// <summary>
-	/// コンストラクタ
+	/// メンバを初期化する
 	/// </summary>
 	/// <param name="argPos">座標</param>
 	Stairs(Position<int> argPos);
 	/// <summary>
-	/// デストラクタ
+	/// メモリを確保していた場合は解放する
 	/// </summary>
 	~Stairs();
 
 	/// <summary>
-	/// 更新処理を行う
+	/// 1ループ内で必要な更新処理を行う
 	/// </summary>
 	virtual void Update() override;
 	/// <summary>
-	/// 描画処理を行う
+	/// 1ループ内で必要な描画処理を行う
 	/// </summary>
 	virtual void Draw() override;
 

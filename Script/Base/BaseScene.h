@@ -13,21 +13,21 @@ class BaseScene{
 
 public:
 	/// <summary>
-	/// コンストラクタ
+	/// メンバを初期化する
 	/// </summary>
 	/// <param name="argSceneChanger">SceneChangerのポインタ</param>
 	BaseScene(SceneChanger* argSceneChanger);
 	/// <summary>
-	/// デストラクタ
+	/// メモリを確保していた場合は解放する
 	/// </summary>
 	virtual ~BaseScene();
 
 	/// <summary>
-	/// 更新処理を行う
+	/// 1ループ内で必要な更新処理を行う
 	/// </summary>
 	virtual void Update() = 0;
 	/// <summary>
-	/// 描画処理を行う
+	/// 1ループ内で必要な描画処理を行う
 	/// </summary>
 	virtual void Draw() = 0;
 

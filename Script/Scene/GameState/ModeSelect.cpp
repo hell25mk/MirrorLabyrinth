@@ -3,7 +3,7 @@
 #include "../../System/SoundPlayer.h"
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="argSceneChanger">SceneChangerのポインタ</param>
 ModeSelect::ModeSelect(GameScene* argGameScene):
@@ -20,13 +20,13 @@ ModeSelect::ModeSelect(GameScene* argGameScene):
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 ModeSelect::~ModeSelect(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void ModeSelect::Update(){
 
@@ -82,7 +82,7 @@ void ModeSelect::Update(){
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void ModeSelect::Draw(){
 

@@ -9,16 +9,16 @@ class GameText{
 
 public:
 	/// <summary>
-	/// コンストラクタ
+	/// メンバを初期化する
 	/// </summary>
 	GameText();
 	/// <summary>
-	/// デストラクタ
+	/// メモリを確保していた場合は解放する
 	/// </summary>
 	~GameText();
 
 	/// <summary>
-	/// 描画処理を行う
+	/// 1ループ内で必要な描画処理を行う
 	/// </summary>
 	void Draw();
 

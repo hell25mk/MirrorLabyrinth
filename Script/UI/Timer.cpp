@@ -6,25 +6,25 @@ const int Color_White = GetColor(255, 255, 255);
 const int Color_Red = GetColor(255, 0, 0);
 
 //1ステージの最大持ち時間
-const int Timer::BasisTime = 60;
+const int Timer::Basis_Time = 60;
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 Timer::Timer() : startTime(0),second(0),minute(0){
 
-	nowGameTime = BasisTime  / (GameInfo::GetInstance().GetGameLevel() + 1);		//ゲーム難易度によって制限時間の変更
+	nowGameTime = Basis_Time  / (GameInfo::GetInstance().GetGameLevel() + 1);		//ゲーム難易度によって制限時間の変更
 
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 Timer::~Timer(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void Timer::Update(){
 
@@ -46,7 +46,7 @@ void Timer::Update(){
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void Timer::Draw(){
 

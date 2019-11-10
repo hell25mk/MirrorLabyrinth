@@ -9,13 +9,13 @@ template <class Type> class Position{
 
 public:
 	/// <summary>
-	/// コンストラクタ
+	/// メンバを初期化する
 	/// </summary>
 	Position() : Position(0, 0) {
 	}
 
 	/// <summary>
-	/// コンストラクタ
+	/// メンバを初期化する
 	/// </summary>
 	/// <param name="x">xの値</param>
 	/// <param name="y">yの値</param>
@@ -27,7 +27,7 @@ public:
 	}
 
 	/// <summary>
-	/// デストラクタ
+	/// メモリを確保していた場合は解放する
 	/// </summary>
 	~Position(){}
 

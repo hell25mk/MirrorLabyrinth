@@ -11,7 +11,7 @@
 const int Player_Object = 0;
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="argSceneChanger">SceneChangerのポインタ</param>
 GamePlay::GamePlay(GameScene* argGameScene):GameState(argGameScene){
@@ -21,7 +21,7 @@ GamePlay::GamePlay(GameScene* argGameScene):GameState(argGameScene){
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 GamePlay::~GamePlay(){
 
@@ -35,7 +35,7 @@ GamePlay::~GamePlay(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void GamePlay::Update(){
 

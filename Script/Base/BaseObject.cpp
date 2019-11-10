@@ -3,13 +3,13 @@
 const int BaseObject::Block_Size = 32;
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 BaseObject::BaseObject() : pos(){
 }
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="argPos">座標</param>
 BaseObject::BaseObject(Position<int> const argPos){
@@ -20,7 +20,7 @@ BaseObject::BaseObject(Position<int> const argPos){
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 BaseObject::~BaseObject(){
 }

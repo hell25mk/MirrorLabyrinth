@@ -5,7 +5,7 @@ const int Laby_Height = 15;
 const int Laby_Width = 20;
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="argPos">座標</param>
 Wall::Wall(Position<int> argPos):BaseBlock(argPos){
@@ -16,19 +16,19 @@ Wall::Wall(Position<int> argPos):BaseBlock(argPos){
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 Wall::~Wall(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void Wall::Update(){
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void Wall::Draw(){
 

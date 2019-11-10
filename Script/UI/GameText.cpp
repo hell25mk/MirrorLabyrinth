@@ -5,7 +5,7 @@
 const int Color_White = GetColor(255, 255, 255);
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 GameText::GameText(){
 
@@ -17,13 +17,13 @@ GameText::GameText(){
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 GameText::~GameText(){
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void GameText::Draw(){
 

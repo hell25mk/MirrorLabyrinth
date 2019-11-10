@@ -22,7 +22,7 @@ void KeyboardManager::Destroy(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void KeyboardManager::Update(){
 

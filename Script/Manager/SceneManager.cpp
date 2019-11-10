@@ -4,7 +4,7 @@
 #include "KeyboardManager.h"
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 SceneManager::SceneManager() : nextScene(Scene_None) {
 
@@ -14,7 +14,7 @@ SceneManager::SceneManager() : nextScene(Scene_None) {
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 SceneManager::~SceneManager() {
 
@@ -23,7 +23,7 @@ SceneManager::~SceneManager() {
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void SceneManager::Update() {
 
@@ -37,7 +37,7 @@ void SceneManager::Update() {
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void SceneManager::Draw() {
 

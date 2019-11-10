@@ -1,8 +1,9 @@
-/*-----------------------------------------------------------------------
-ゲーム名	：MirrorLabyrinth (鏡の迷宮)
-ゲーム内容	：迷路ゲーム
-ゲーム概要	：上下に鏡写しになっているプレイヤーをゴール(階段)まで導く
-------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*
+*<file>WinMain.cpp</file>
+*<summary>
+*DXライブラリ関連の初期化やメインループを行う
+*</summary>
+*---------------------------------------------------------------------------------------------------------------------*/
 
 #include "DxLib.h"
 #include <ctime>
@@ -20,8 +21,8 @@ const int Window_IconID = 25;
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPTSTR lpszCmdLine, _In_ int nCmdShow){
 
 	SRand((int)time(NULL));
-	WindowInit();
 
+	WindowInit();
 	//DxLib初期化
 	if(DxLib_Init() == -1){
 		return -1;
@@ -49,7 +50,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 }
 
 /// <summary>
-/// @brief ウィンドウ生成前に行う初期化処理
+/// ウィンドウ生成前に行う初期化処理
 /// </summary>
 void WindowInit(){
 
@@ -63,7 +64,7 @@ void WindowInit(){
 }
 
 /// <summary>
-/// @brief DxLibのループに必要な処理
+/// DxLibのループに必要な処理
 /// </summary>
 /// <returns>1つでも失敗した場合falseを返す</returns>
 bool ProcessLoop(){

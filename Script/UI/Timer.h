@@ -11,20 +11,20 @@ class Timer{
 
 public:
 	/// <summary>
-	/// コンストラクタ
+	/// メンバを初期化する
 	/// </summary>
 	Timer();
 	/// <summary>
-	/// デストラクタ
+	/// メモリを確保していた場合は解放する
 	/// </summary>
 	~Timer();
 
 	/// <summary>
-	/// 更新処理を行う
+	/// 1ループ内で必要な更新処理を行う
 	/// </summary>
 	void Update();
 	/// <summary>
-	/// 描画処理を行う
+	/// 1ループ内で必要な描画処理を行う
 	/// </summary>
 	void Draw();
 
@@ -35,7 +35,7 @@ public:
 	int GetGameTimer();
 
 private:
-	static const int BasisTime;
+	static const int Basis_Time;
 	int nowGameTime;
 	int startTime;
 	int second;

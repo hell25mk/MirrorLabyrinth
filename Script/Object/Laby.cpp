@@ -32,7 +32,7 @@ std::vector<int> LabySampleVector{
 };
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 Laby::Laby(){
 
@@ -44,7 +44,7 @@ Laby::Laby(){
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 Laby::~Laby(){
 	
@@ -53,7 +53,7 @@ Laby::~Laby(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void Laby::Update() {
 
@@ -67,7 +67,7 @@ void Laby::Update() {
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void Laby::Draw() {
 
@@ -94,7 +94,7 @@ void Laby::PushBlockObject(int argBlockKind, Position<int> argPos){
 
 	//種類が増えた場合を考えて効率的な方法を見つける必要有り
 	switch(argBlockKind){
-		case Laby_Player:
+		case Laby_Player:		//プレイヤーの生成位置にはをRoadを生成する
 			blockVector[pos] = std::shared_ptr<BaseBlock>(new Road(argPos));
 			break;
 		case Laby_Wall:
@@ -128,7 +128,7 @@ void Laby::PushBlockObject(int argBlockKind, Position<int> argPos){
 /// <returns>移動できる場合true</returns>
 bool Laby::MoveCheck(int argDire, Position<int> argPos){
 
-	bool checkFlag = false;
+	bool canMove = false;
 	Position<int> tempPos;			//仮座標
 	int vy[4] = { 1,0,0,-1 };		//y移動量
 	int vx[4] = { 0,1,-1,0 };		//x移動量
@@ -139,28 +139,28 @@ bool Laby::MoveCheck(int argDire, Position<int> argPos){
 
 #pragma region 参照チェック
 	if(tempPos.GetX() < 0){
-		return checkFlag;
+		return canMove;
 	}
 	if(tempPos.GetX() > Laby_Width - 1){
-		return checkFlag;
+		return canMove;
 	}
 	if(tempPos.GetY() < 0){
-		return checkFlag;
+		return canMove;
 	}
 	if(tempPos.GetY() > Laby_Height - 1){
-		return checkFlag;
+		return canMove;
 	}
 #pragma endregion
 
 	//移動先が移動不可の場合falseを返す
 	int pos = tempPos.GetY() * Laby_Width + tempPos.GetX();
 	if(!blockVector[pos]->HitAction()){
-		return checkFlag;
+		return canMove;
 	}
 
-	checkFlag = true;
+	canMove = true;
 
-	return checkFlag;
+	return canMove;
 }
 
 /// <summary>

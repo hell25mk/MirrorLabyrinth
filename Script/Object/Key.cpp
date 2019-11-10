@@ -4,7 +4,8 @@
 #include "../System/SoundPlayer.h"
 #include "../Define/Enum.h"
 
-/// コンストラクタ
+/// <summary>
+/// メンバを初期化する
 /// </summary>
 /// <param name="argPos">座標</param>
 /// <param name="getKeyNum">取得した鍵の数を格納したポインタ</param>
@@ -25,19 +26,19 @@ Key::Key(Position<int> argPos, int *getKeyNum):BaseBlock(argPos){
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 Key::~Key(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void Key::Update(){
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void Key::Draw(){
 

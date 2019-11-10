@@ -3,7 +3,7 @@
 #include "../../System/SoundPlayer.h"
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="argSceneChanger">SceneChangerのポインタ</param>
 GameStart::GameStart(GameScene* argGameScene):GameState(argGameScene){
@@ -17,13 +17,13 @@ GameStart::GameStart(GameScene* argGameScene):GameState(argGameScene){
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 GameStart::~GameStart(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void GameStart::Update(){
 
@@ -34,7 +34,7 @@ void GameStart::Update(){
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void GameStart::Draw(){
 

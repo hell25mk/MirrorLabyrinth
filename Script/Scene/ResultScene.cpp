@@ -3,7 +3,7 @@
 const int Flash_Time = 30;
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="argSceneChanger">SceneChangerのポインタ</param>
 ResultScene::ResultScene(SceneChanger* argSceneChanger) : BaseScene(argSceneChanger){
@@ -16,13 +16,13 @@ ResultScene::ResultScene(SceneChanger* argSceneChanger) : BaseScene(argSceneChan
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 ResultScene::~ResultScene(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void ResultScene::Update(){
 
@@ -47,7 +47,7 @@ void ResultScene::Update(){
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void ResultScene::Draw(){
 

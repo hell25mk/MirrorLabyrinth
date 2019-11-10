@@ -12,23 +12,23 @@ class Door : public BaseBlock{
 
 public:
 	/// <summary>
-	/// コンストラクタ
+	/// メンバを初期化する
 	/// </summary>
 	/// <param name="argPos">座標</param>
 	/// <param name="maxKeyNum">鍵の最大数を格納したポインタ</param>
 	/// <param name="getKeyNum">取得した鍵の数を格納したポインタ</param>
 	Door(Position<int> argPos, const int* maxKeyNum, int* getKeyNum);
 	/// <summary>
-	/// デストラクタ
+	/// メモリを確保していた場合は解放する
 	/// </summary>
 	virtual ~Door();
 
 	/// <summary>
-	/// 更新処理を行う
+	/// 1ループ内で必要な更新処理を行う
 	/// </summary>
 	virtual void Update() override;
 	/// <summary>
-	/// 描画処理を行う
+	/// 1ループ内で必要な描画処理を行う
 	/// </summary>
 	virtual void Draw() override;
 

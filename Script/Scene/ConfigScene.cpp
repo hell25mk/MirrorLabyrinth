@@ -3,7 +3,7 @@
 #include "../System/SoundPlayer.h"
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="argSceneChanger">SceneChangerのポインタ</param>
 ConfigScene::ConfigScene(SceneChanger* argSceneChanger) : BaseScene(argSceneChanger),selectMenu(){
@@ -31,7 +31,7 @@ ConfigScene::ConfigScene(SceneChanger* argSceneChanger) : BaseScene(argSceneChan
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 ConfigScene::~ConfigScene(){
 
@@ -42,7 +42,7 @@ ConfigScene::~ConfigScene(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void ConfigScene::Update(){
 
@@ -64,7 +64,7 @@ void ConfigScene::Update(){
 }
 
 /// <summary>
-///	描画処理を行う
+///	1ループ内で必要な描画処理を行う
 /// </summary>
 void ConfigScene::Draw(){
 

@@ -8,7 +8,7 @@ const int GameScene::Laby_Height = 15;
 const int GameScene::Laby_Width = 20;
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="argSceneChanger">SceneChangerのポインタ</param>
 GameScene::GameScene(SceneChanger* argSceneChanger):BaseScene(argSceneChanger){
@@ -19,7 +19,7 @@ GameScene::GameScene(SceneChanger* argSceneChanger):BaseScene(argSceneChanger){
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 GameScene::~GameScene(){
 
@@ -28,7 +28,7 @@ GameScene::~GameScene(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void GameScene::Update(){
 
@@ -42,7 +42,7 @@ void GameScene::Update(){
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void GameScene::Draw(){
 

@@ -4,7 +4,7 @@
 #include "../Define/Enum.h"
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="argPos">座標</param>
 /// <param name="maxKeyNum">鍵の最大数を格納したポインタ</param>
@@ -19,13 +19,13 @@ Door::Door(Position<int> argPos, const int *maxKeyNum, int *getKeyNum):BaseBlock
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 Door::~Door(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void Door::Update(){
 
@@ -38,7 +38,7 @@ void Door::Update(){
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void Door::Draw(){
 

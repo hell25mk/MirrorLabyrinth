@@ -6,7 +6,7 @@ const int BaseBlock::Image_Height = 3;
 int* BaseBlock::image;
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 BaseBlock::BaseBlock() : imageKind(){
 
@@ -21,7 +21,7 @@ BaseBlock::BaseBlock() : imageKind(){
 }
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="argPos">座標</param>
 BaseBlock::BaseBlock(Position<int> argPos):BaseObject(argPos), imageKind() {
@@ -37,7 +37,7 @@ BaseBlock::BaseBlock(Position<int> argPos):BaseObject(argPos), imageKind() {
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 BaseBlock::~BaseBlock(){
 

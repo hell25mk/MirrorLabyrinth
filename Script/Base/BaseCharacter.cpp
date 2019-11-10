@@ -8,9 +8,9 @@ const int BaseCharacter::AnimeChange_Time = 30;
 int* BaseCharacter::image;
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
-BaseCharacter::BaseCharacter() : animation(), alivaFlag(true),dire(), imageNumber() {
+BaseCharacter::BaseCharacter() : animation(), dire(), imageNumber() {
 
 	//NULLならメモリ確保
 	if (image == NULL) {
@@ -21,11 +21,11 @@ BaseCharacter::BaseCharacter() : animation(), alivaFlag(true),dire(), imageNumbe
 }
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="argPos">座標</param>
 BaseCharacter::BaseCharacter(Position<int> argPos):
-	BaseObject(pos), animation(), alivaFlag(true), dire(), imageNumber() {
+	BaseObject(pos), animation(), dire(), imageNumber() {
 
 	//NULLならメモリ確保
 	if(image == NULL){
@@ -33,12 +33,10 @@ BaseCharacter::BaseCharacter(Position<int> argPos):
 		LoadDivGraph("Image/Object/PlayerMaterial.png", Image_Width * Image_Height, Image_Width, Image_Height, Image_Size, Image_Size, image);
 	}
 
-	alivaFlag = true;
-
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 BaseCharacter::~BaseCharacter(){
 

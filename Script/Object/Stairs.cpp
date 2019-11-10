@@ -5,9 +5,9 @@
 const int Laby_Height = 15;
 
 /// <summary>
-	/// コンストラクタ
-	/// </summary>
-	/// <param name="argPos">座標</param>
+/// メンバを初期化する
+/// </summary>
+/// <param name="argPos">座標</param>
 Stairs::Stairs(Position<int> argPos):BaseBlock(argPos){
 
 	imageKind = Laby_Stairs;
@@ -15,19 +15,19 @@ Stairs::Stairs(Position<int> argPos):BaseBlock(argPos){
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 Stairs::~Stairs(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void Stairs::Update(){
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void Stairs::Draw(){
 

@@ -3,7 +3,7 @@
 #include "../Define/Enum.h"
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="argPos">座標</param>
 Road::Road(Position<int> argPos):BaseBlock(argPos){
@@ -13,19 +13,19 @@ Road::Road(Position<int> argPos):BaseBlock(argPos){
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 Road::~Road(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void Road::Update(){
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void Road::Draw(){
 

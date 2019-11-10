@@ -1,7 +1,7 @@
 #include "BaseScene.h"
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="argSceneChanger">SceneChangerのポインタ</param>
 BaseScene::BaseScene(SceneChanger *argSceneChanger){
@@ -11,7 +11,7 @@ BaseScene::BaseScene(SceneChanger *argSceneChanger){
 };
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 BaseScene::~BaseScene(){
 

@@ -2,7 +2,7 @@
 #include "../System/SoundPlayer.h"
 
 /// <summary>
-/// コンストラクタ
+/// メンバを初期化する
 /// </summary>
 /// <param name="argSceneChanger">SceneChangerのポインタ</param>
 TitleScene::TitleScene(SceneChanger *argSceneChanger):BaseScene(argSceneChanger){
@@ -22,7 +22,7 @@ TitleScene::TitleScene(SceneChanger *argSceneChanger):BaseScene(argSceneChanger)
 }
 
 /// <summary>
-/// デストラクタ
+/// メモリを確保していた場合は解放する
 /// </summary>
 TitleScene::~TitleScene(){
 
@@ -31,7 +31,7 @@ TitleScene::~TitleScene(){
 }
 
 /// <summary>
-/// 更新処理を行う
+/// 1ループ内で必要な更新処理を行う
 /// </summary>
 void TitleScene::Update(){
 
@@ -75,7 +75,7 @@ void TitleScene::Update(){
 }
 
 /// <summary>
-/// 描画処理を行う
+/// 1ループ内で必要な描画処理を行う
 /// </summary>
 void TitleScene::Draw(){
 
